@@ -10,8 +10,7 @@
 MainWindow::MainWindow() :
     QMainWindow(nullptr),
     scene_(new QGraphicsScene(-1920/2,-1080/2,1920,1080)),
-    view_(new QGraphicsView(scene_))
-    {
+    view_(new QGraphicsView(scene_)) {
   setCentralWidget(view_);
 
   view_->scale(1/view_->devicePixelRatio(), 1/view_->devicePixelRatio());
@@ -21,7 +20,8 @@ MainWindow::MainWindow() :
   view_->setRenderHint(QPainter::RenderHint::Antialiasing);
   view_->setOptimizationFlag(
       QGraphicsView::OptimizationFlag::DontSavePainterState);
-  view_->setViewportUpdateMode(QGraphicsView::ViewportUpdateMode::FullViewportUpdate);
+  view_->setViewportUpdateMode(
+      QGraphicsView::ViewportUpdateMode::FullViewportUpdate);
   entity = new MobTest();
   scene_->addItem(entity);
   scene_->setFocusItem(entity);
@@ -42,20 +42,20 @@ MainWindow::MainWindow() :
     y,
     x + width / 2,
     y + height,
-    QPen(Qt::blue)
-  );
+    QPen(Qt::blue));
+
   scene_->addLine(
       x,
       y + height / 2,
       x + width,
       y + height / 2,
-      QPen(Qt::blue)
-  );
+      QPen(Qt::blue));
 
   view_->centerOn(0, 0);
 
-  //QTimer* timer = new QTimer(this);
-  //timer->setInterval(1000);
-  //timer->start();
-  //connect(timer, &QTimer::timeout, this, [&](){entity->setPos(entity->pos() + QPointF{100, 100});});
+  // QTimer* timer = new QTimer(this);
+  // timer->setInterval(1000);
+  // timer->start();
+  // connect(timer, &QTimer::timeout, this, [&](){entity->setPos(
+  // entity->pos() + QPointF{100, 100});});
 }

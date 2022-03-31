@@ -19,6 +19,7 @@ void MobTest::paint(QPainter* painter,
 
   painter->restore();
 }
+
 void MobTest::keyPressEvent(QKeyEvent* event) {
   setRotation(50);
   if (event->key() == Qt::Key::Key_Left) {

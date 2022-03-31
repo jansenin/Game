@@ -1,5 +1,5 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#ifndef MODEL_BASICOBJECTS_INTERFACE_ENTITY_H_
+#define MODEL_BASICOBJECTS_INTERFACE_ENTITY_H_
 
 #include <QGraphicsItem>
 #include <QPainter>
@@ -27,4 +27,4 @@ class Entity
   float width_;
 };
 
-#endif //ENTITY_H
+#endif  // MODEL_BASICOBJECTS_INTERFACE_ENTITY_H_

@@ -1,5 +1,5 @@
-#ifndef GAME_FIELD_H
-#define GAME_FIELD_H
+#ifndef MODEL_MAP_GAME_FIELD_H_
+#define MODEL_MAP_GAME_FIELD_H_
 
 #include <vector>
 #include <unordered_set>
@@ -19,10 +19,11 @@ class GameField : public Tickable {
   void AddTowerSlot(TowerSlot* tower_slot);
   const std::unordered_set<TowerSlot*>& GetTowerSlots();
   const std::unordered_set<Mob*>& GetMobs();
+
  private:
-  std::unordered_set<Mob*> mobs_{0};
-  std::unordered_set<TowerSlot*> tower_slots_{0};
+  std::unordered_set<Mob*> mobs_;
+  std::unordered_set<TowerSlot*> tower_slots_;
   // std::vector<Projectiles> projectiles_;
 };
 
-#endif //GAME_FIELD_H
+#endif  // MODEL_MAP_GAME_FIELD_H_

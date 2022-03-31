@@ -1,4 +1,5 @@
 #include "game_field.h"
+
 GameField::GameField() {}
 
 GameField::GameField(
@@ -9,12 +10,15 @@ GameField::GameField(
 void GameField::AddMob(Mob* mob) {
   mobs_.insert(mob);
 }
+
 void GameField::AddTowerSlot(TowerSlot* tower_slot) {
   tower_slots_.insert(tower_slot);
 }
+
 const std::unordered_set<TowerSlot*>& GameField::GetTowerSlots() {
   return tower_slots_;
 }
+
 const std::unordered_set<Mob*>& GameField::GetMobs() {
   return mobs_;
 }

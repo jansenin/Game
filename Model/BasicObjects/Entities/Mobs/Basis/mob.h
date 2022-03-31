@@ -1,5 +1,5 @@
-#ifndef MOB_H
-#define MOB_H
+#ifndef MODEL_BASICOBJECTS_ENTITIES_MOBS_BASIS_MOB_H_
+#define MODEL_BASICOBJECTS_ENTITIES_MOBS_BASIS_MOB_H_
 
 #include "../../../Interface/entity.h"
 
@@ -8,4 +8,4 @@ class Mob : public Entity {
   Mob(QPointF coordinates, int health, qreal width, qreal height);
 };
 
-#endif //MOB_H
+#endif  // MODEL_BASICOBJECTS_ENTITIES_MOBS_BASIS_MOB_H_

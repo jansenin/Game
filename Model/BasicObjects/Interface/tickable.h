@@ -1,5 +1,5 @@
-#ifndef TICKABLE_H
-#define TICKABLE_H
+#ifndef MODEL_BASICOBJECTS_INTERFACE_TICKABLE_H_
+#define MODEL_BASICOBJECTS_INTERFACE_TICKABLE_H_
 
 #include "../../../Utilities/time.h"
 
@@ -8,4 +8,4 @@ class Tickable {
   virtual void Tick(Time delta) = 0;
 };
 
-#endif //TICKABLE_H
+#endif  // MODEL_BASICOBJECTS_INTERFACE_TICKABLE_H_

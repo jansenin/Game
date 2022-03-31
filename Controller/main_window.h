@@ -1,5 +1,5 @@
-#ifndef MAIN_WINDOW_H
-#define MAIN_WINDOW_H
+#ifndef CONTROLLER_MAIN_WINDOW_H_
+#define CONTROLLER_MAIN_WINDOW_H_
 
 #include <QMainWindow>
 #include <QGraphicsScene>
@@ -20,4 +20,4 @@ class MainWindow : public QMainWindow {
   Entity* entity;
 };
 
-#endif //MAIN_WINDOW_H
+#endif  // CONTROLLER_MAIN_WINDOW_H_
