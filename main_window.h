@@ -5,8 +5,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 
-#include "../Model/Map/game_field.h"
-#include "../Model/BasicObjects/Interface/entity.h"
+
+#include "Controller/controller.h"
 
 class MainWindow : public QMainWindow {
   Q_OBJECT
@@ -14,10 +14,8 @@ class MainWindow : public QMainWindow {
   MainWindow();
 
  private:
-  GameField* gamefield_;
-  QGraphicsScene* scene_;
-  QGraphicsView* view_;
-  Entity* entity;
+  Controller* controller_;
+
 };
 
 #endif  // CONTROLLER_MAIN_WINDOW_H_

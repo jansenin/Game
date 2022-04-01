@@ -10,11 +10,9 @@ float Entity::GetWidth() const {
 
 Entity::Entity(QPointF coordinates,
                int health, qreal width, qreal height)
-    : Damagable(health), QGraphicsItem(), width_(width), height_(height) {
+    : Damageable(health), QGraphicsItem(), width_(width), height_(height) {
   setPos(coordinates);
-  setFlag(ItemIsMovable);
   setFlag(ItemSendsGeometryChanges);
-  height_ = width_ = 10;
 }
 
 QRectF Entity::boundingRect() const {

@@ -9,9 +9,10 @@ class TowerSlot : public Entity {
   explicit TowerSlot(QPointF coordinates);
   [[nodiscard]] bool isTakenUp() const;
   void TakeUpArea(Tower* tower);
-  void FreeArea(Tower* tower);
+  void ClearArea();
+  void Tick(Time time) override;
 
- private:
+ protected:
   Tower* tower_;
 };
 

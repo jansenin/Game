@@ -8,6 +8,7 @@
 #include "../BasicObjects/Entities/Mobs/Basis/mob.h"
 #include "../BasicObjects/Entities/Towers/tower.h"
 #include "../BasicObjects/Entities/Towers/TowerSlots/tower_slot.h"
+#include "../../View/game_view.h"
 
 class GameField : public Tickable {
  public:
@@ -19,10 +20,12 @@ class GameField : public Tickable {
   void AddTowerSlot(TowerSlot* tower_slot);
   const std::unordered_set<TowerSlot*>& GetTowerSlots();
   const std::unordered_set<Mob*>& GetMobs();
+  void Tick(Time time) override;
 
  private:
   std::unordered_set<Mob*> mobs_;
   std::unordered_set<TowerSlot*> tower_slots_;
+  GameView* view_;
   // std::vector<Projectiles> projectiles_;
 };
 

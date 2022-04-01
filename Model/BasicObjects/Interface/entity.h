@@ -11,7 +11,7 @@
 
 class Entity
     : public Tickable,
-      public Damagable,
+      public Damageable,
       public QGraphicsItem {
  public:
   Entity(QPointF coordinates,
@@ -20,7 +20,7 @@ class Entity
   [[nodiscard]] float GetHeight() const;
   [[nodiscard]] float GetWidth() const;
 
-  QRectF boundingRect() const override;
+  [[nodiscard]] QRectF boundingRect() const override;
 
  protected:
   float height_;

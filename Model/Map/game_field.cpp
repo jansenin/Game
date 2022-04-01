@@ -22,3 +22,12 @@ const std::unordered_set<TowerSlot*>& GameField::GetTowerSlots() {
 const std::unordered_set<Mob*>& GameField::GetMobs() {
   return mobs_;
 }
+
+void GameField::Tick(Time time) {
+  for (auto& i : mobs_) {
+    i->Tick(time);
+  }
+  for (auto& i : tower_slots_) {
+    i->Tick(time);
+  }
+}

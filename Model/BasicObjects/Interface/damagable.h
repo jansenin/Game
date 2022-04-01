@@ -3,12 +3,12 @@
 
 #include "../../../Utilities/damage.h"
 
-class Damagable {
+class Damageable {
  public:
-  explicit Damagable(int health);
+  explicit Damageable(int health);
   virtual void ApplyDamage(Damage damage);
 
- private:
+ protected:
   int health_;
   virtual void SetHealth(int health);
 };

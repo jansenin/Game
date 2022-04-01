@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 COMPONENTS
+find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
@@ -22,8 +22,11 @@ add_executable(Game
         Model/BasicObjects/Entities/Towers/tower.cpp
         Model/BasicObjects/Entities/Towers/TowerSlots/tower_slot.cpp
         Model/Map/game_field.cpp
-        Controller/main_window.cpp
+        main_window.cpp
         Utilities/damage.cpp
-        Utilities/time.cpp)
+        Utilities/time.cpp
+        View/game_view.cpp
+        Controller/controller.cpp
+        Controller/controller.h)
 
 target_link_libraries(Game Qt::Core Qt::Gui Qt::Widgets)

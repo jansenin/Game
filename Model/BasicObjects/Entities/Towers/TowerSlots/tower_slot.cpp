@@ -8,8 +8,14 @@ void TowerSlot::TakeUpArea(Tower* tower) {
   tower_ = tower;
 }
 
-void TowerSlot::FreeArea(Tower* tower) {
+void TowerSlot::ClearArea() {
   tower_ = nullptr;
 }
 
 TowerSlot::TowerSlot(QPointF coordinates) : Entity(coordinates, 0, 50, 50) {}
+
+void TowerSlot::Tick(Time time) {
+  if (tower_ != nullptr) {
+    tower_->Tick(time);
+  }
+}

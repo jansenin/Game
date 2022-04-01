@@ -3,14 +3,14 @@
 #include <cmath>
 #include <algorithm>
 
-Damagable::Damagable(int health) {
+Damageable::Damageable(int health) {
   health_ = health;
 }
 
-void Damagable::ApplyDamage(Damage damage) {
+void Damageable::ApplyDamage(Damage damage) {
   SetHealth(std::max(health_ - damage.GetDamage(), 0));
 }
 
-void Damagable::SetHealth(int health) {
+void Damageable::SetHealth(int health) {
   health_ = health;
 }
