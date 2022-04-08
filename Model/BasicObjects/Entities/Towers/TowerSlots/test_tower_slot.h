@@ -1,11 +1,11 @@
-#ifndef TEST_TOWER_SLOT_H__
-#define TEST_TOWER_SLOT_H__
+#ifndef MODEL_BASICOBJECTS_ENTITIES_TOWERS_TOWERSLOTS_TEST_TOWER_SLOT_H_
+#define MODEL_BASICOBJECTS_ENTITIES_TOWERS_TOWERSLOTS_TEST_TOWER_SLOT_H_
 
 #include "tower_slot.h"
 
 class TestTowerSlot : public TowerSlot {
  public:
-  TestTowerSlot(const QPointF& coordinates);
+  explicit TestTowerSlot(const QPointF& coordinates);
 
  protected:
   void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
@@ -16,4 +16,4 @@ class TestTowerSlot : public TowerSlot {
              QWidget* widget) override;
 };
 
-#endif //TEST_TOWER_SLOT_H__
+#endif  // MODEL_BASICOBJECTS_ENTITIES_TOWERS_TOWERSLOTS_TEST_TOWER_SLOT_H_

@@ -2,7 +2,7 @@
 
 std::unordered_map<QString, QPixmap*> ResourceCacher::pixmaps;
 
-QPixmap* ResourceCacher::Pixmap(QString resource_path) {
+QPixmap* ResourceCacher::Pixmap(const QString& resource_path) {
   if (pixmaps.count(resource_path) == 0) {
     pixmaps[resource_path] = new QPixmap(resource_path);
   }

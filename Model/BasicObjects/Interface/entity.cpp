@@ -16,9 +16,7 @@ Entity::Entity(
 QRectF Entity::boundingRect() const {
   return QRectF(
       pixmap->rect().translated(
-          QPoint{-pixmap->width()/2, -pixmap->height()/2}
-      )
-  );
+          QPoint{ -pixmap->width()/2, -pixmap->height()/2 }));
 }
 
 void Entity::paint(QPainter* painter,

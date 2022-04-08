@@ -1,10 +1,9 @@
-#ifndef CONTROLLER_MAIN_WINDOW_H_
-#define CONTROLLER_MAIN_WINDOW_H_
+#ifndef MAIN_WINDOW_H_
+#define MAIN_WINDOW_H_
 
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsView>
-
 
 #include "Controller/controller.h"
 
@@ -15,7 +14,6 @@ class MainWindow : public QMainWindow {
 
  private:
   Controller* controller_;
-
 };
 
-#endif  // CONTROLLER_MAIN_WINDOW_H_
+#endif  // MAIN_WINDOW_H_

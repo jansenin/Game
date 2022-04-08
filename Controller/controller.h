@@ -1,5 +1,5 @@
-#ifndef CONTROLLER_H
-#define CONTROLLER_H
+#ifndef CONTROLLER_CONTROLLER_H_
+#define CONTROLLER_CONTROLLER_H_
 
 #include <QObject>
 
@@ -20,4 +20,4 @@ class Controller : public QObject {
   Entity* entity;
 };
 
-#endif //CONTROLLER_H
+#endif  // CONTROLLER_CONTROLLER_H_

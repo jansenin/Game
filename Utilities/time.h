@@ -5,7 +5,7 @@
 
 class Time {
  public:
-  Time(int ms);
+  explicit Time(int ms);
 
   [[nodiscard]] int ms() const;
   [[nodiscard]] qreal seconds() const;

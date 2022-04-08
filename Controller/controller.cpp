@@ -1,4 +1,4 @@
-#include "controller.h"
+#include "Controller/controller.h"
 
 #include <QPushButton>
 #include <QGraphicsProxyWidget>
@@ -9,14 +9,14 @@
 #include "Model/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 
 Controller::Controller() :
-  scene_(new QGraphicsScene(-1920/2,-1080/2,1920,1080)),
-      view_(new GameView(scene_)) {
+  scene_(new QGraphicsScene(-1920.0/2, -1080.0/2, 1920, 1080)),
+  view_(new GameView(scene_)) {
   QPushButton* close_button = new QPushButton();
   QGraphicsProxyWidget* close_button_proxy = scene_->addWidget(close_button);
   close_button_proxy->setGeometry(QRectF(
       scene_->sceneRect().topRight() - QPointF{100, 0},
-      scene_->sceneRect().topRight() + QPointF{0, 100}
-  ));
+      scene_->sceneRect().topRight() + QPointF{0, 100}));
+
   close_button->setText("Close");
   QObject::connect(close_button, &QPushButton::clicked, &QApplication::exit);
 
@@ -69,17 +69,17 @@ Controller::Controller() :
   // connect(timer, &QTimer::timeout, this, [&](){entity->setPos(
   // entity->pos() + QPointF{100, 100});});
 
-   QTimer* timer = new QTimer(this);
-   timer->setInterval(1000 / 30);
-   timer->start();
-   connect(timer, &QTimer::timeout, this, [&](){
-     for (QGraphicsItem* graphics_item : scene_->items()) {
-       if (Tickable* tickable = dynamic_cast<Tickable*>(graphics_item)) {
-         // TODO make time dependency(it could have been more than 1000/30 ms)
-         tickable->Tick(Time(1000 / 30));
-       }
-     }
-   });
+  QTimer* timer = new QTimer(this);
+  timer->setInterval(1000 / 30);
+  timer->start();
+  connect(timer, &QTimer::timeout, this, [&](){
+    for (QGraphicsItem* graphics_item : scene_->items()) {
+      if (Tickable* tickable = dynamic_cast<Tickable*>(graphics_item)) {
+        // TODO(jansenin): make time dependency(it
+        //  could have been more than 1000/30 ms)
+        tickable->Tick(Time(1000 / 30));
+      }
+  }});
 }
 
 GameView* Controller::GetView() const {

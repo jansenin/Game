@@ -1,5 +1,5 @@
-#ifndef TEST_TOWER_H__
-#define TEST_TOWER_H__
+#ifndef MODEL_BASICOBJECTS_ENTITIES_TOWERS_TEST_TOWER_H_
+#define MODEL_BASICOBJECTS_ENTITIES_TOWERS_TEST_TOWER_H_
 
 #include <QTimer>
 #include <QPolygonF>
@@ -19,4 +19,4 @@ class TestTower : public Tower {
   QPolygonF scene_attack_area_;
 };
 
-#endif //TEST_TOWER_H__
+#endif  // MODEL_BASICOBJECTS_ENTITIES_TOWERS_TEST_TOWER_H_

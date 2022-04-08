@@ -1,15 +1,11 @@
-#ifndef GAME_VIEW_H
-#define GAME_VIEW_H
+#ifndef VIEW_GAME_VIEW_H_
+#define VIEW_GAME_VIEW_H_
 
 #include <QGraphicsView>
-
 
 class GameView : public QGraphicsView {
  public:
   explicit GameView(QGraphicsScene* scene);
-
- private:
-
 };
 
-#endif //GAME_VIEW_H
+#endif  // VIEW_GAME_VIEW_H_

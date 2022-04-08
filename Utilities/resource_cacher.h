@@ -1,5 +1,5 @@
-#ifndef RESOURCE_CACHER_H__
-#define RESOURCE_CACHER_H__
+#ifndef UTILITIES_RESOURCE_CACHER_H_
+#define UTILITIES_RESOURCE_CACHER_H_
 
 #include <unordered_map>
 
@@ -7,10 +7,10 @@
 
 class ResourceCacher {
  public:
-  static QPixmap* Pixmap(QString resource_path);
+  static QPixmap* Pixmap(const QString& resource_path);
 
  private:
   static std::unordered_map<QString, QPixmap*> pixmaps;
 };
 
-#endif //RESOURCE_CACHER_H__
+#endif  // UTILITIES_RESOURCE_CACHER_H_
