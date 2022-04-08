@@ -4,6 +4,8 @@ int Time::ms() const {
   return ms_;
 }
 
-int Time::seconds() const {
-  return ms_ / 1000;
+qreal Time::seconds() const {
+  return ms_ / 1000.0;
 }
+
+Time::Time(int ms) : ms_(ms) {}

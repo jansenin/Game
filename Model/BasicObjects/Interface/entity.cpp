@@ -1,20 +1,37 @@
 #include "entity.h"
 
-float Entity::GetHeight() const {
-  return height_;
-}
+#include <utility>
+#include "Utilities/resource_cacher.h"
 
-float Entity::GetWidth() const {
-  return width_;
-}
-
-Entity::Entity(QPointF coordinates,
-               int health, qreal width, qreal height)
-    : Damageable(health), QGraphicsItem(), width_(width), height_(height) {
+Entity::Entity(
+    QPointF coordinates,
+    QString path_to_pixmap,
+    int health)
+    : Damageable(health), QGraphicsItem(),
+    pixmap(ResourceCacher::Pixmap(std::move(path_to_pixmap))) {
   setPos(coordinates);
   setFlag(ItemSendsGeometryChanges);
 }
 
 QRectF Entity::boundingRect() const {
-  return QRectF(-GetWidth() / 2, -GetHeight() / 2, GetWidth(), GetHeight());
+  return QRectF(
+      pixmap->rect().translated(
+          QPoint{-pixmap->width()/2, -pixmap->height()/2}
+      )
+  );
+}
+
+void Entity::paint(QPainter* painter,
+                   const QStyleOptionGraphicsItem* option,
+                   QWidget* widget) {
+  painter->save();
+
+  painter->drawPixmap(Entity::boundingRect().toRect(), *pixmap);
+  painter->drawRect(Entity::boundingRect());
+
+  painter->restore();
+}
+
+void Entity::MoveBy(QPointF delta) {
+  setPos(pos() + delta);
 }

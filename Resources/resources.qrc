@@ -1,0 +1,10 @@
+<RCC>
+    <qresource>
+        <file>images/background.png</file>
+        <file>images/test_bullet.png</file>
+        <file>images/test_mob.png</file>
+        <file>images/test_tower.png</file>
+        <file>images/test_tower_gun.png</file>
+        <file>images/test_tower_slot.png</file>
+    </qresource>
+</RCC>

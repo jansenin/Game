@@ -5,26 +5,34 @@
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
+#include <QPixmap>
+#include <QString>
+#include <QObject>
 
 #include "tickable.h"
 #include "damagable.h"
 
 class Entity
-    : public Tickable,
+    : public QObject,
+      public Tickable,
       public Damageable,
       public QGraphicsItem {
+  Q_OBJECT
  public:
-  Entity(QPointF coordinates,
-         int health, qreal width, qreal height);
-
-  [[nodiscard]] float GetHeight() const;
-  [[nodiscard]] float GetWidth() const;
+  Entity(
+      QPointF coordinates,
+      QString path_to_pixmap,
+      int health = 0);
 
   [[nodiscard]] QRectF boundingRect() const override;
+  void paint(QPainter* painter,
+             const QStyleOptionGraphicsItem* option,
+             QWidget* widget) override;
+
+  void MoveBy(QPointF delta);
 
  protected:
-  float height_;
-  float width_;
+  QPixmap* pixmap;
 };
 
 #endif  // MODEL_BASICOBJECTS_INTERFACE_ENTITY_H_

@@ -1,8 +1,6 @@
 #include "tower.h"
 
-Tower::Tower(QPointF coordinates, int health, qreal width, qreal height, int price, qreal range)
-    : Entity(coordinates, health, width, height), price_(price), range_(range) {}
+#include <utility>
 
-int Tower::GetPrice() const {
-  return price_;
-}
+Tower::Tower(QPointF coordinates, QString path_to_pixmap, int health)
+    : Entity(coordinates, std::move(path_to_pixmap), health) {}

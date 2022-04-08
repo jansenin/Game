@@ -1,9 +1,10 @@
 #include "main_window.h"
 
-#include <iostream>
-
 #include <QVBoxLayout>
 #include <QTimer>
+#include <QResource>
+#include <QFile>
+#include <QDir>
 
 MainWindow::MainWindow() :
     QMainWindow(nullptr) {

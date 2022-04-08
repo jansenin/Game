@@ -1,7 +1,9 @@
 #include "tower_slot.h"
 
-bool TowerSlot::isTakenUp() const {
-  return tower_ == nullptr;
+#include <utility>
+
+bool TowerSlot::IsTakenUp() const {
+  return tower_ != nullptr;
 }
 
 void TowerSlot::TakeUpArea(Tower* tower) {
@@ -12,7 +14,8 @@ void TowerSlot::ClearArea() {
   tower_ = nullptr;
 }
 
-TowerSlot::TowerSlot(QPointF coordinates) : Entity(coordinates, 0, 50, 50) {}
+TowerSlot::TowerSlot(QPointF coordinates, QString path_to_pixmap)
+  : Entity(coordinates, std::move(path_to_pixmap)) {}
 
 void TowerSlot::Tick(Time time) {
   if (tower_ != nullptr) {

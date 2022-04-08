@@ -1,10 +1,14 @@
 #ifndef UTILITIES_TIME_H_
 #define UTILITIES_TIME_H_
 
+#include <QtGlobal>
+
 class Time {
  public:
+  Time(int ms);
+
   [[nodiscard]] int ms() const;
-  [[nodiscard]] int seconds() const;
+  [[nodiscard]] qreal seconds() const;
 
  private:
   int ms_;

@@ -12,7 +12,12 @@ find_package(Qt6 COMPONENTS
         Widgets
         REQUIRED)
 
-add_executable(Game
+set(RESOURCES
+        Resources/resources.qrc)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+add_executable(Game ${RESOURCES}
         main.cpp
         Model/BasicObjects/Interface/damagable.cpp
         Model/BasicObjects/Interface/tickable.cpp
@@ -27,6 +32,11 @@ add_executable(Game
         Utilities/time.cpp
         View/game_view.cpp
         Controller/controller.cpp
-        Controller/controller.h)
+        Utilities/resource_cacher.cpp
+        Model/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
+        Model/BasicObjects/Entities/Towers/test_tower.cpp
+        Model/BasicObjects/Entities/Projectiles/self_directed_projectile.cpp
+        Utilities/math.cpp
+        Model/BasicObjects/Entities/Projectiles/test_projectile.cpp)
 
 target_link_libraries(Game Qt::Core Qt::Gui Qt::Widgets)

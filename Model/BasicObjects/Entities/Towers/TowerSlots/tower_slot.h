@@ -6,8 +6,8 @@
 
 class TowerSlot : public Entity {
  public:
-  explicit TowerSlot(QPointF coordinates);
-  [[nodiscard]] bool isTakenUp() const;
+  TowerSlot(QPointF coordinates, QString path_to_pixmap);
+  [[nodiscard]] bool IsTakenUp() const;
   void TakeUpArea(Tower* tower);
   void ClearArea();
   void Tick(Time time) override;

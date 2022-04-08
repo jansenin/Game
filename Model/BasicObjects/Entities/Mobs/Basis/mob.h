@@ -3,9 +3,11 @@
 
 #include "../../../Interface/entity.h"
 
+#include <QPixmap>
+
 class Mob : public Entity {
  public:
-  Mob(QPointF coordinates, int health, qreal width, qreal height);
+  Mob(QPointF coordinates, QString path_to_pixmap, int health = 0);
 };
 
 #endif  // MODEL_BASICOBJECTS_ENTITIES_MOBS_BASIS_MOB_H_

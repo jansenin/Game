@@ -2,34 +2,24 @@
 
 #include <QGraphicsScene>
 
+#include "Utilities/resource_cacher.h"
+#include "Utilities/math.h"
+
 void MobTest::Tick(Time delta) {
-  setPos(pos() + QPointF{static_cast<qreal>(delta.ms() * 5), 0});
-}
-
-void MobTest::paint(QPainter* painter,
-                    const QStyleOptionGraphicsItem* option,
-                    QWidget* widget) {
-  painter->save();
-
-  static QPen pen(Qt::black);
-  static QBrush brush(Qt::white);
-  painter->setPen(pen);
-  painter->setBrush(brush);
-  painter->drawRect(boundingRect());
-
-  painter->restore();
+  //setPos(pos() + QPointF{static_cast<qreal>(delta.seconds() * 5), 0});
 }
 
 void MobTest::keyPressEvent(QKeyEvent* event) {
-  setRotation(50);
+  if (health_ == 0) return;
+  QPointF velocity_vector = mapToParent(pos() + QPointF{0, -10}) - mapToParent(pos());
   if (event->key() == Qt::Key::Key_Left) {
-    setPos(pos() + QPointF{-1, 0});
+    setRotation(rotation() - 10);
   } else if (event->key() == Qt::Key::Key_Right) {
-    setPos(pos() + QPointF{1, 0});
+    setRotation(rotation() + 10);
   } else if (event->key() == Qt::Key::Key_Up) {
-    setPos(pos() + QPointF{0, -1});
+    setPos(pos() + velocity_vector);
   } else if (event->key() == Qt::Key::Key_Down) {
-    setPos(pos() + QPointF{0, 1});
+    setPos(pos() - velocity_vector);
   }
   update();
 }
@@ -38,6 +28,6 @@ void MobTest::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   scene()->addItem(new MobTest(pos() + QPointF{10, 30}));
 }
 
-MobTest::MobTest(const QPointF& coordinates) : Mob(coordinates, 10, 50, 50) {
+MobTest::MobTest(const QPointF& coordinates) : Mob(coordinates, ":images/test_mob.png", 30) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
