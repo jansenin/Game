@@ -17,26 +17,31 @@ set(RESOURCES
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-add_executable(Game ${RESOURCES}
-        main.cpp
-        Model/BasicObjects/Interface/damagable.cpp
-        Model/BasicObjects/Interface/tickable.cpp
-        Model/BasicObjects/Interface/entity.cpp
-        Model/BasicObjects/Entities/Mobs/Basis/mob.cpp
-        Model/BasicObjects/Entities/Mobs/mob_test.cpp
-        Model/BasicObjects/Entities/Towers/tower.cpp
-        Model/BasicObjects/Entities/Towers/TowerSlots/tower_slot.cpp
-        Model/Map/game_field.cpp
-        main_window.cpp
+set(GAME_OBJECTS
+        GameObjects/BasicObjects/Interface/damageable.cpp
+        GameObjects/BasicObjects/Interface/entity.cpp
+        GameObjects/BasicObjects/Entities/Mobs/Basis/mob.cpp
+        GameObjects/BasicObjects/Entities/Mobs/test_mob.cpp
+        GameObjects/BasicObjects/Entities/Towers/tower.cpp
+        GameObjects/BasicObjects/Entities/Towers/TowerSlots/tower_slot.cpp
+        GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
+        GameObjects/BasicObjects/Entities/Towers/test_tower.cpp
+        GameObjects/BasicObjects/Entities/Projectiles/autoguided_projectile.cpp
+        GameObjects/BasicObjects/Entities/Projectiles/test_projectile.cpp)
+
+set(UTILITIES
         Utilities/damage.cpp
         Utilities/time.cpp
-        View/game_view.cpp
-        Controller/controller.cpp
-        Utilities/resource_cacher.cpp
-        Model/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
-        Model/BasicObjects/Entities/Towers/test_tower.cpp
-        Model/BasicObjects/Entities/Projectiles/self_directed_projectile.cpp
-        Utilities/math.cpp
-        Model/BasicObjects/Entities/Projectiles/test_projectile.cpp)
+        Utilities/vector_f.cpp
+        Utilities/Resources/pixmap_loader.cpp
+        Utilities/timer.cpp)
+
+add_executable(Game
+        ${RESOURCES}
+        ${GAME_OBJECTS}
+        ${UTILITIES}
+        main.cpp
+        main_window.cpp
+        Controller/controller.cpp game_view.cpp game_view.h constants.cpp)
 
 target_link_libraries(Game Qt::Core Qt::Gui Qt::Widgets)

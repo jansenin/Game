@@ -1,23 +1,31 @@
-#ifndef CONTROLLER_CONTROLLER_H_
-#define CONTROLLER_CONTROLLER_H_
+#pragma once
 
 #include <QObject>
+#include <QGraphicsScene>
+#include <QGraphicsView>
 
-#include "../View/game_view.h"
-#include "../Model/Map/game_field.h"
-#include "../Model/BasicObjects/Interface/entity.h"
+#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "game_view.h"
 
 class Controller : public QObject {
   Q_OBJECT
  public:
-  Controller();
+  static Controller* Instance();
+
   [[nodiscard]] GameView* GetView() const;
 
+ public slots:
+  void TickAllTickables();
+
  private:
-  GameField* game_field_;
+  static Controller* instance;
+
+  Controller();
+
+  void SetupScene();
+  void LaunchTickTimer();
+
   QGraphicsScene* scene_;
   GameView* view_;
-  Entity* entity;
+  QTimer* tick_timer_;
 };
-
-#endif  // CONTROLLER_CONTROLLER_H_

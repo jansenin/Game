@@ -1,5 +1,4 @@
-#ifndef UTILITIES_DAMAGE_H_
-#define UTILITIES_DAMAGE_H_
+#pragma once
 
 class Damage {
  public:
@@ -9,5 +8,3 @@ class Damage {
  private:
   int damage_ = 0;
 };
-
-#endif  // UTILITIES_DAMAGE_H_

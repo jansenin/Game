@@ -1,14 +1,9 @@
 #include "main_window.h"
 
-#include <QVBoxLayout>
-#include <QTimer>
-#include <QResource>
-#include <QFile>
-#include <QDir>
+#include "Controller/controller.h"
 
 MainWindow::MainWindow() :
     QMainWindow(nullptr) {
-  controller_ = new Controller();
-  setCentralWidget(controller_->GetView());
+  setCentralWidget(Controller::Instance()->GetView());
   showFullScreen();
 }

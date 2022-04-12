@@ -1,5 +1,4 @@
-#ifndef UTILITIES_TIME_H_
-#define UTILITIES_TIME_H_
+#pragma once
 
 #include <QtGlobal>
 
@@ -10,8 +9,20 @@ class Time {
   [[nodiscard]] int ms() const;
   [[nodiscard]] qreal seconds() const;
 
+  bool operator<(const Time& rhs) const;
+  bool operator>(const Time& rhs) const;
+  bool operator<=(const Time& rhs) const;
+  bool operator>=(const Time& rhs) const;
+
+  Time operator+(const Time& rhs) const;
+  // there is no check for negative time
+  Time operator-(const Time& rhs) const;
+
+  Time& operator+=(const Time& rhs);
+  Time& operator-=(const Time& rhs);
+
+  Time& operator-();
+
  private:
   int ms_;
 };
-
-#endif  // UTILITIES_TIME_H_
