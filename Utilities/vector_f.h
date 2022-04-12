@@ -6,7 +6,7 @@ class VectorF : public QPointF {
  public:
   VectorF();
   explicit VectorF(const QPoint& p);
-  VectorF(const QPointF& p);
+  VectorF(const QPointF& p);  // NOLINT
   VectorF(qreal x, qreal y);
 
   qreal lengthSquared();
