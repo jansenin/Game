@@ -8,5 +8,10 @@
 
 class Mob : public Entity {
  public:
-  Mob(const VectorF& coordinates, QPixmap* pixmap, int health = 0);
+  Mob(const VectorF& coordinates, QPixmap* pixmap, int health, qreal speed = 1);
+  qreal GetSpeed() const;
+  void SetSpeed(qreal speed);
+
+ private:
+  qreal speed_;
 };

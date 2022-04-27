@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 COMPONENTS
+find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
@@ -34,7 +34,7 @@ set(UTILITIES
         Utilities/time.cpp
         Utilities/vector_f.cpp
         Utilities/Resources/pixmap_loader.cpp
-        Utilities/timer.cpp)
+        Utilities/timer.cpp Utilities/route.cpp Utilities/route.h)
 
 add_executable(Game
         ${RESOURCES}
