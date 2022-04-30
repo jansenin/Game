@@ -6,7 +6,9 @@
 #include "constants.h"
 
 void TestMob::Tick(Time delta) {
-  MoveBy(VectorF{delta.seconds() * Entities::TestMob::kPassiveMoveSpeed, 0});
+  if (!Mob::route_.isEnd()) {
+    Mob::route_.Move(Mob::speed_ * delta.seconds());
+  }
 }
 
 void TestMob::keyPressEvent(QKeyEvent* event) {
@@ -29,10 +31,14 @@ void TestMob::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 }
 
 TestMob::TestMob(const VectorF& coordinates)
-  : Mob(
-      coordinates,
-      PixmapLoader::Pixmaps::kTestMob,
-      Entities::TestMob::kHealth) {
+    : Mob(
+    coordinates,
+    PixmapLoader::Pixmaps::kTestMob,
+    Entities::TestMob::kHealth, Route(this, {coordinates,
+                                             QPointF(coordinates.x() + 100,
+                                                     coordinates.y() + 100),
+                                             QPointF(coordinates.x() - 250,
+                                                     coordinates.y() + 50)})) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
 void TestMob::paint(QPainter* painter,

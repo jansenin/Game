@@ -1,17 +1,18 @@
 #pragma once
 
 #include "GameObjects/BasicObjects/Interface/entity.h"
+#include "Utilities/vector_f.h"
+#include "Utilities/route.h"
 
 #include <QPixmap>
 
-#include "Utilities/vector_f.h"
-
 class Mob : public Entity {
  public:
-  Mob(const VectorF& coordinates, QPixmap* pixmap, int health, qreal speed = 1);
-  qreal GetSpeed() const;
+  Mob(const VectorF& coordinates, QPixmap* pixmap, int health, Route&& route, qreal speed = 20);
+  [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 
- private:
+ protected:
+  Route route_;
   qreal speed_;
 };

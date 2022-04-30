@@ -6,11 +6,15 @@
 
 class Route {
  public:
+  Route(Entity* entity, const std::vector<QPointF>& points) :
+  entity_(entity), points_(points), index_(0) {}
+  Route(Route&& route);
   void Move(qreal distance);
   bool isEnd();
 
  private:
-  const std::vector<QPointF>& points;
-  int index;
-  Entity* entity;
+  void ChooseIndex();
+  std::vector<QPointF> points_;
+  int index_{0};
+  Entity* entity_;
 };
