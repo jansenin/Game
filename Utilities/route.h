@@ -7,7 +7,7 @@
 
 class Route {
  public:
-  Route(const std::vector<QPointF>& points) :
+  Route(const std::vector<QPointF>& points) :  // NOLINT
   points_(points) {}
   void Move(Entity* entity, qreal distance);
   void AddEntity(Entity* entity);

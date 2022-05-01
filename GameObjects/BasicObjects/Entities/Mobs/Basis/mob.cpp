@@ -1,5 +1,6 @@
 #include "mob.h"
 #include <utility>
+#include <vector>
 
 std::vector<Route>
     routes{Route({QPointF(50, 50),
