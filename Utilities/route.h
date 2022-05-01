@@ -3,18 +3,19 @@
 #include "../Utilities/vector_f.h"
 #include <QPointF>
 #include <vector>
+#include <map>
 
 class Route {
  public:
-  Route(Entity* entity, const std::vector<QPointF>& points) :
-  entity_(entity), points_(points), index_(0) {}
-  Route(Route&& route);
-  void Move(qreal distance);
-  bool isEnd();
+  Route(const std::vector<QPointF>& points) :
+  points_(points) {}
+  void Move(Entity* entity, qreal distance);
+  void AddEntity(Entity* entity);
+  bool isEnd(Entity* entity);
+  VectorF GetStart() const;
 
  private:
-  void ChooseIndex();
+  void ChooseIndex(Entity* entity);
   std::vector<QPointF> points_;
-  int index_{0};
-  Entity* entity_;
+  std::map<Entity*, int> entities_{};
 };

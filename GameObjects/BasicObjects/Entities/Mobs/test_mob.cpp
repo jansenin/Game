@@ -6,8 +6,8 @@
 #include "constants.h"
 
 void TestMob::Tick(Time delta) {
-  if (!Mob::route_.isEnd()) {
-    Mob::route_.Move(Mob::speed_ * delta.seconds());
+  if (!Mob::route_->isEnd(this)) {
+    Mob::route_->Move(this, Mob::speed_ * delta.seconds());
   }
 }
 
@@ -34,11 +34,7 @@ TestMob::TestMob(const VectorF& coordinates)
     : Mob(
     coordinates,
     PixmapLoader::Pixmaps::kTestMob,
-    Entities::TestMob::kHealth, Route(this, {coordinates,
-                                             QPointF(coordinates.x() + 100,
-                                                     coordinates.y() + 100),
-                                             QPointF(coordinates.x() - 250,
-                                                     coordinates.y() + 50)})) {
+    Entities::TestMob::kHealth) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
 }
 void TestMob::paint(QPainter* painter,

@@ -11,12 +11,11 @@ class Mob : public Entity {
   Mob(const VectorF& coordinates,
       QPixmap* pixmap,
       int health,
-      Route&& route,
       qreal speed = 20);
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 
  protected:
-  Route route_;
+  Route* route_{nullptr};
   qreal speed_;
 };
