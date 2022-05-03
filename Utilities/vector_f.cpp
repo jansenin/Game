@@ -1,5 +1,5 @@
 #include "vector_f.h"
-#include <Qtmath>
+#include <QtMath>
 
 VectorF::VectorF() {}
 VectorF::VectorF(const QPoint& p) : QPointF(p) {}

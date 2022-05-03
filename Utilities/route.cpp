@@ -1,5 +1,5 @@
 #include "route.h"
-#include <Qtmath>
+#include <QtMath>
 
 bool Route::isEnd(Entity* entity) {
   return entity_indexes_[entity] == points_.size() - 1;
