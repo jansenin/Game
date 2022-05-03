@@ -16,7 +16,8 @@ void Route::Move(Entity* entity, qreal distance) {
 void Route::ChooseIndex(Entity* entity) {
   qreal square_distance =
       pow((points_[entity_indexes_[entity] + 1].x() - entity->pos().x()), 2) +
-          pow((points_[entity_indexes_[entity] + 1].y() - entity->pos().y()), 2);
+          pow((points_[entity_indexes_[entity] + 1].y() - entity->pos().y()),
+              2);
   if (square_distance <= kThreshold * kThreshold) {
     ++entity_indexes_[entity];
   }
