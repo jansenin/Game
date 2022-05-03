@@ -5,17 +5,20 @@
 #include <vector>
 #include <map>
 
+static constexpr qreal kThreshold = 2;
+
 class Route {
  public:
-  Route(const std::vector<QPointF>& points) :  // NOLINT
+  explicit Route(const std::vector<QPointF>& points) :
   points_(points) {}
   void Move(Entity* entity, qreal distance);
   void AddEntity(Entity* entity);
+  void RemoveEntity(Entity* entity);
   bool isEnd(Entity* entity);
-  VectorF GetStart() const;
+  [[nodiscard]] VectorF GetStart() const;
 
  private:
   void ChooseIndex(Entity* entity);
   std::vector<QPointF> points_;
-  std::map<Entity*, int> entities_{};
+  std::map<Entity*, int> entity_indexes_{};
 };
