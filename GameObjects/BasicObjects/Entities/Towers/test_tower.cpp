@@ -1,6 +1,7 @@
 #include "test_tower.h"
 
 #include <QGraphicsScene>
+#include <QtMath>
 
 #include "GameObjects/BasicObjects/Entities/Projectiles/test_projectile.h"
 #include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
@@ -10,7 +11,7 @@
 namespace {
 QPolygonF CreateAttackArea(qreal range) {
   const int points_count = Entities::kCircleAttackAreaApproximationPointsCount;
-  QList<QPointF> points;
+  QVector<QPointF> points;
   for (int i = 0 ; i < points_count; ++i) {
     qreal angle = i * 2 * M_PI / points_count;
     points.push_back(QPointF { cos(angle), sin(angle) } * range);

@@ -34,7 +34,9 @@ set(UTILITIES
         Utilities/time.cpp
         Utilities/vector_f.cpp
         Utilities/Resources/pixmap_loader.cpp
-        Utilities/timer.cpp)
+        Utilities/timer.cpp
+        Utilities/route.cpp
+        Utilities/route.h)
 
 add_executable(Game
         ${RESOURCES}
