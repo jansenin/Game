@@ -4,7 +4,7 @@
 
 std::vector<Route>
     routes{Route({QPointF(50, 50), QPointF(150, 300),
-                  QPointF(-100, -50)})};  // TODO move in level
+                  QPointF(-100, -50)})};  // TODO(parfen01): move in level
 
 Mob::Mob(const VectorF& coordinates,
          QPixmap* pixmap,
