@@ -7,7 +7,7 @@
 class Wave : public Tickable {
  public:
   explicit Wave(int ms, std::map<Mob*, Time>&&  mobs) : time_to_start_(ms),
-                                        mobs_time_to_spawn_(std::move(mobs)) {};
+                                        mobs_time_to_spawn_(std::move(mobs)) {}
   void Tick(Time delta) override;
   void RemoveMobFromWave(Mob*);
   [[nodiscard]] bool IsStarted() const;
