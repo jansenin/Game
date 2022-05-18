@@ -36,7 +36,8 @@ set(UTILITIES
         Utilities/Resources/pixmap_loader.cpp
         Utilities/timer.cpp
         Utilities/route.cpp
-        Utilities/route.h)
+        Utilities/wave.cpp
+        wave_manager.cpp)
 
 add_executable(Game
         ${RESOURCES}
