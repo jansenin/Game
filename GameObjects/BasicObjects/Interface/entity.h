@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QGraphicsItem>
 #include <QPainter>
 #include <QGraphicsSceneMouseEvent>
 #include <QKeyEvent>
@@ -11,12 +10,13 @@
 #include "tickable.h"
 #include "damageable.h"
 #include "Utilities/vector_f.h"
+#include "GameObjects/BasicObjects/Interface/graphics_item.h"
 
 class Entity
     : public QObject,
       public Tickable,
       public Damageable,
-      public QGraphicsItem {
+      public GraphicsItem {
   Q_OBJECT
  public:
   Entity(
@@ -28,8 +28,6 @@ class Entity
   void paint(QPainter* painter,
              const QStyleOptionGraphicsItem* option,
              QWidget* widget) override;
-
-  void MoveBy(const VectorF& delta);
 
  protected:
   QPixmap* pixmap;

@@ -8,7 +8,7 @@ AutoguidedProjectile::AutoguidedProjectile(
     Entity* target,
     qreal speed,
     Damage damage)
-    : Entity(coordinates, pixmap),
+    : Projectile(coordinates, pixmap),
     target_(target), speed_(speed), damage_(damage) {}
 
 void AutoguidedProjectile::Tick(Time delta) {

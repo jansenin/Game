@@ -1,9 +1,8 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Interface/entity.h"
-
 #include <QPixmap>
 
+#include "GameObjects/BasicObjects/Interface/entity.h"
 #include "Utilities/vector_f.h"
 
 class Mob : public Entity {

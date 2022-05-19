@@ -18,3 +18,9 @@ GameView::GameView(QGraphicsScene* scene, QWidget* parent)
 
   centerOn(0, 0);
 }
+
+GameScene* GameView::scene() {
+  auto result = dynamic_cast<GameScene*>(QGraphicsView::scene());
+  assert(result != nullptr);
+  return result;
+}

@@ -27,7 +27,9 @@ set(GAME_OBJECTS
         GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
         GameObjects/BasicObjects/Entities/Towers/test_tower.cpp
         GameObjects/BasicObjects/Entities/Projectiles/autoguided_projectile.cpp
-        GameObjects/BasicObjects/Entities/Projectiles/test_projectile.cpp)
+        GameObjects/BasicObjects/Entities/Projectiles/test_projectile.cpp
+        GameObjects/BasicObjects/Interface/graphics_item.cpp
+        GameObjects/BasicObjects/Entities/Projectiles/projectile.cpp)
 
 set(UTILITIES
         Utilities/damage.cpp
@@ -42,6 +44,8 @@ add_executable(Game
         ${UTILITIES}
         main.cpp
         main_window.cpp
-        Controller/controller.cpp game_view.cpp game_view.h constants.cpp)
+        Controller/controller.cpp
+        game_view.cpp
+        constants.cpp game_scene.cpp game_scene.h)
 
 target_link_libraries(Game Qt::Core Qt::Gui Qt::Widgets)

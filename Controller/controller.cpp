@@ -12,7 +12,7 @@
 Controller* Controller::instance;
 
 Controller::Controller() :
-  scene_(new QGraphicsScene(kSceneRect)),
+  scene_(new GameScene(kSceneRect)),
   view_(new GameView(scene_)),
   tick_timer_(new QTimer(this)) {
   SetupScene();
@@ -21,6 +21,10 @@ Controller::Controller() :
 
 GameView* Controller::GetView() const {
   return view_;
+}
+
+GameScene* Controller::GetScene() const {
+  return scene_;
 }
 
 void Controller::SetupScene() {
