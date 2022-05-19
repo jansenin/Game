@@ -14,7 +14,7 @@ class Projectile;
 
 class GameScene : public QGraphicsScene {
  public:
-  GameScene(const QRectF& scene_rect, QObject* parent = nullptr);
+  explicit GameScene(const QRectF& scene_rect, QObject* parent = nullptr);
 
   GameView* view();
 

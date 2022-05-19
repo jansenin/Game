@@ -8,7 +8,7 @@
 
 class GraphicsItem : public QGraphicsItem {
  public:
-  GraphicsItem(QGraphicsItem* parent = nullptr);
+  explicit GraphicsItem(QGraphicsItem* parent = nullptr);
 
   GameScene* scene();
   GameView* view();
