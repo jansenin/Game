@@ -22,6 +22,11 @@ class GameScene : public QGraphicsScene {
   void clear();
   void addItem(GraphicsItem* item);
 
+  [[nodiscard]] const std::set<Mob*>& Mobs() const;
+  [[nodiscard]] const std::set<Tower*>& Towers() const;
+  [[nodiscard]] const std::set<TowerSlot*>& TowerSlots() const;
+  [[nodiscard]] const std::set<Projectile*>& Projectiles() const;
+
  private:
   std::set<Mob*> mobs_;
   std::set<Tower*> towers_;

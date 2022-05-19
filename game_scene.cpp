@@ -76,3 +76,19 @@ void GameScene::addItem(GraphicsItem* item) {
 
   QGraphicsScene::addItem(item);
 }
+
+const std::set<Mob*>& GameScene::Mobs() const {
+  return mobs_;
+}
+
+const std::set<Tower*>& GameScene::Towers() const {
+  return towers_;
+}
+
+const std::set<TowerSlot*>& GameScene::TowerSlots() const {
+  return tower_slots_;
+}
+
+const std::set<Projectile*>& GameScene::Projectiles() const {
+  return projectiles_;
+}
