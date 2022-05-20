@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "GameObjects/BasicObjects/Entities/Projectiles/projectile.h"
 
-class AutoguidedProjectile : public Entity {
+class AutoguidedProjectile : public Projectile {
  public:
   AutoguidedProjectile(const VectorF& coordinates,
                        QPixmap* pixmap,

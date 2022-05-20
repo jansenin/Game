@@ -6,6 +6,7 @@
 
 #include "GameObjects/BasicObjects/Interface/entity.h"
 #include "game_view.h"
+#include "game_scene.h"
 
 class Controller : public QObject {
   Q_OBJECT
@@ -13,6 +14,7 @@ class Controller : public QObject {
   static Controller* Instance();
 
   [[nodiscard]] GameView* GetView() const;
+  [[nodiscard]] GameScene* GetScene() const;
 
  public slots:
   void TickAllTickables();
@@ -25,7 +27,7 @@ class Controller : public QObject {
   void SetupScene();
   void LaunchTickTimer();
 
-  QGraphicsScene* scene_;
+  GameScene* scene_;
   GameView* view_;
   QTimer* tick_timer_;
 };

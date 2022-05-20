@@ -4,7 +4,7 @@ Entity::Entity(
     const VectorF& coordinates,
     QPixmap* pixmap,
     int health)
-    : Damageable(health), QGraphicsItem(),
+    : Damageable(health), GraphicsItem(),
     pixmap(pixmap) {
   setPos(coordinates);
   setFlag(ItemSendsGeometryChanges);
@@ -22,8 +22,4 @@ void Entity::paint(QPainter* painter,
   painter->save();
   painter->drawPixmap(Entity::boundingRect().toRect(), *pixmap);
   painter->restore();
-}
-
-void Entity::MoveBy(const VectorF& delta) {
-  setPos(pos() + delta);
 }
