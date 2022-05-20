@@ -62,6 +62,6 @@ Time operator*(int lhs, const Time& rhs) {
   return rhs * lhs;
 }
 
-Time operator "" _ms(uint64_t ms) {
+Time operator "" _ms(unsigned long long int ms) { // NOLINT
   return Time(ms);
 }

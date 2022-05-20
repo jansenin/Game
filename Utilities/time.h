@@ -32,4 +32,9 @@ class Time {
 
 Time operator*(int lhs, const Time& rhs);
 
-Time operator "" _ms(uint64_t ms);
+// cpplint говорит, что unsigned long long int(Тип из си) нужно поменять на
+// int16/int32/int64...(тип из C++), но в документации к пользовательским
+// литералам сказано, что в них могут использоваться только определённые
+// типы(и записи unsigned long long int в C++ я не нашёл, а это единственный
+// целочисленный тип)
+Time operator "" _ms(unsigned long long int ms); // NOLINT
