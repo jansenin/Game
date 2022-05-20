@@ -1,6 +1,5 @@
 #include "test_tower.h"
 
-#include <QGraphicsScene>
 #include <QtMath>
 
 #include "GameObjects/BasicObjects/Entities/Projectiles/test_projectile.h"

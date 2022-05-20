@@ -15,6 +15,6 @@ void Damageable::SetHealth(int health) {
   health_ = health;
 }
 
-int Damageable::GetHealth() {
+int Damageable::GetHealth() const {
   return health_;
 }

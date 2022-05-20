@@ -12,7 +12,7 @@ class TestMob : public Mob {
   void Tick(Time delta) override;
   void ApplyDamage(Damage damage) override;
 
-  virtual ~TestMob();
+  ~TestMob() override;
 
  protected:
   void keyPressEvent(QKeyEvent* event) override;

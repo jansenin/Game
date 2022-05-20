@@ -1,7 +1,5 @@
 #include "test_mob.h"
 
-#include <iostream>
-
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
@@ -13,7 +11,6 @@ void TestMob::Tick(Time delta) {
   }
   if (is_destroying_ && animation_->WasEndedDuringPreviousUpdate()) {
     animation_->SetIndex(animation_->FrameCount() - 1);
-    std::cout << "test mob will be destroyed" << std::endl;
     deleteLater();
   }
 

@@ -20,7 +20,7 @@ class Animation : public Tickable {
   void NextFrame();
   void Reset();
 
-  bool WasEndedDuringPreviousUpdate() const;
+  [[nodiscard]] bool WasEndedDuringPreviousUpdate() const;
   [[nodiscard]] int FrameCount() const;
   [[nodiscard]] Time TimeBetweenFrames() const;
   [[nodiscard]] Time TimeToNextFrame() const;

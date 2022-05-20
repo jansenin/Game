@@ -6,7 +6,7 @@ class Damageable {
  public:
   explicit Damageable(int health);
   virtual void ApplyDamage(Damage damage);
-  int GetHealth();
+  [[nodiscard]] int GetHealth() const;
 
  protected:
   int health_;
