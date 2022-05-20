@@ -30,6 +30,8 @@ TestTower::TestTower(const VectorF& coordinates)
 }
 
 void TestTower::Tick(Time delta) {
+  Tower::Tick(delta);
+
   attack_timer_.Tick(delta);
 
   if (attack_timer_.IsExpired()) {
@@ -37,6 +39,9 @@ void TestTower::Tick(Time delta) {
         scene()->items(scene_attack_area_);
     for (QGraphicsItem* item : items_in_attack_area) {
       if (Mob* mob = dynamic_cast<Mob*>(item)) {
+        if (mob->GetHealth() <= 0) {
+          continue;
+        }
         scene()->addItem(new TestProjectile(scenePos(), mob));
         attack_timer_.Start(Entities::TestTower::kAttackCooldown);
         break;

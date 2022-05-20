@@ -1,12 +1,23 @@
 #include "test_mob.h"
 
-#include <QGraphicsScene>
+#include <iostream>
 
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
 void TestMob::Tick(Time delta) {
-  if (!Mob::route_->isEnd(this)) {
+  Mob::Tick(delta);
+  if (is_creating_ && animation_->WasEndedDuringPreviousUpdate()) {
+    is_creating_ = false;
+    animation_ = idle_animation_;
+  }
+  if (is_destroying_ && animation_->WasEndedDuringPreviousUpdate()) {
+    animation_->SetIndex(animation_->FrameCount() - 1);
+    std::cout << "test mob will be destroyed" << std::endl;
+    deleteLater();
+  }
+
+  if (!is_creating_ && !Mob::route_->isEnd(this)) {
     Mob::route_->Move(this, Mob::speed_ * delta.seconds());
   }
 }
@@ -23,26 +34,46 @@ void TestMob::keyPressEvent(QKeyEvent* event) {
     setPos(pos() + velocity_vector);
   } else if (event->key() == Qt::Key::Key_Down) {
     setPos(pos() - velocity_vector);
+  } else if (event->key() == Qt::Key::Key_Space && !is_destroying_) {
+    health_ = 0;
+    is_destroying_ = true;
+    disappearing_animation_->Reset();
+    animation_ = disappearing_animation_;
   }
 }
 
 void TestMob::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-  scene()->addItem(new TestMob(pos() + VectorF{10, 30}));
+  scene()->addItem(new TestMob(pos() + VectorF{100, 100}));
 }
 
 TestMob::TestMob(const VectorF& coordinates)
     : Mob(
-    coordinates,
-    PixmapLoader::Pixmaps::kTestMob,
-    Entities::TestMob::kHealth) {
+      coordinates,
+      // TODO(jansenin): Было бы лучше инициализировать анимации отдельно от моба
+      new Animation(PixmapLoader::Pixmaps::kFireTotemAppearing, 50_ms),
+      Entities::TestMob::kHealth,
+      100),
+    is_destroying_(false),
+    idle_animation_(new Animation(PixmapLoader::Pixmaps::kFireTotemIdle, 50_ms)),
+    disappearing_animation_(new Animation(PixmapLoader::Pixmaps::kFireTotemDisappear, 50_ms)),
+    appearing_animation_(animation_),
+    is_creating_(true) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
+  setScale(1.4);
 }
-void TestMob::paint(QPainter* painter,
-                    const QStyleOptionGraphicsItem* option,
-                    QWidget* widget) {
-  Entity::paint(painter, option, widget);
-  if (health_ == 0) {
-    painter->drawLine(-50, -50, 50, 50);
-    painter->drawLine(50, -50, -50, 50);
+
+TestMob::~TestMob() {
+  delete idle_animation_;
+  delete disappearing_animation_;
+  delete appearing_animation_;
+}
+
+void TestMob::ApplyDamage(Damage damage) {
+  Damageable::ApplyDamage(damage);
+
+  if (health_ <= 0 && !is_destroying_) {
+    disappearing_animation_->Reset();
+    is_destroying_ = true;
+    animation_ = disappearing_animation_;
   }
 }

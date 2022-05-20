@@ -1,5 +1,7 @@
 #include "game_scene.h"
 
+#include <iostream>
+
 #include "GameObjects/BasicObjects/Interface/graphics_item.h"
 #include "game_view.h"
 #include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
@@ -8,11 +10,7 @@
 #include "GameObjects/BasicObjects/Entities/Projectiles/projectile.h"
 
 GameScene::GameScene(const QRectF& scene_rect, QObject* parent)
-    : QGraphicsScene(scene_rect, parent),
-    mobs_(std::set<Mob*>()),
-    towers_(std::set<Tower*>()),
-    tower_slots_(std::set<TowerSlot*>()),
-    projectiles_(std::set<Projectile*>()) {}
+    : QGraphicsScene(scene_rect, parent) {}
 
 GameView* GameScene::view() {
   auto result = dynamic_cast<GameView*>(QGraphicsScene::views().at(0));
@@ -20,75 +18,43 @@ GameView* GameScene::view() {
   return result;
 }
 
-void GameScene::removeItem(GraphicsItem* item) {
-  auto mob = dynamic_cast<Mob*>(item);
-  if (mob != nullptr) {
-    mobs_.erase(mob);
+std::vector<Mob*> GameScene::Mobs() const {
+  std::vector<Mob*> result;
+  for (auto item : items()) {
+    if (auto mob = dynamic_cast<Mob*>(item)) {
+      result.push_back(mob);
+    }
   }
-
-  auto tower = dynamic_cast<Tower*>(item);
-  if (tower != nullptr) {
-    towers_.erase(tower);
-  }
-
-  auto tower_slot = dynamic_cast<TowerSlot*>(item);
-  if (tower_slot != nullptr) {
-    tower_slots_.erase(tower_slot);
-  }
-
-  auto projectile = dynamic_cast<Projectile*>(item);
-  if (projectile != nullptr) {
-    projectiles_.erase(projectile);
-  }
-
-  QGraphicsScene::removeItem(item);
+  return result;
 }
 
-void GameScene::clear() {
-  mobs_.clear();
-  towers_.clear();
-  tower_slots_.clear();
-  projectiles_.clear();
-
-  QGraphicsScene::clear();
-}
-
-void GameScene::addItem(GraphicsItem* item) {
-  auto mob = dynamic_cast<Mob*>(item);
-  if (mob != nullptr) {
-    mobs_.erase(mob);
+std::vector<Tower*> GameScene::Towers() const {
+  std::vector<Tower*> result;
+  for (auto item : items()) {
+    if (auto tower = dynamic_cast<Tower*>(item)) {
+      result.push_back(tower);
+    }
   }
+  return result;
+}
 
-  auto tower = dynamic_cast<Tower*>(item);
-  if (tower != nullptr) {
-    towers_.erase(tower);
+std::vector<TowerSlot*> GameScene::TowerSlots() const {
+  std::vector<TowerSlot*> result;
+  for (auto item : items()) {
+    if (auto tower_slot = dynamic_cast<TowerSlot*>(item)) {
+      result.push_back(tower_slot);
+    }
   }
+  return result;
+}
 
-  auto tower_slot = dynamic_cast<TowerSlot*>(item);
-  if (tower_slot != nullptr) {
-    tower_slots_.erase(tower_slot);
+std::vector<Projectile*> GameScene::Projectiles() const {
+  std::vector<Projectile*> result;
+  for (auto item : items()) {
+    if (auto projectile = dynamic_cast<Projectile*>(item)) {
+      result.push_back(projectile);
+    }
   }
-
-  auto projectile = dynamic_cast<Projectile*>(item);
-  if (projectile != nullptr) {
-    projectiles_.erase(projectile);
-  }
-
-  QGraphicsScene::addItem(item);
+  return result;
 }
 
-const std::set<Mob*>& GameScene::Mobs() const {
-  return mobs_;
-}
-
-const std::set<Tower*>& GameScene::Towers() const {
-  return towers_;
-}
-
-const std::set<TowerSlot*>& GameScene::TowerSlots() const {
-  return tower_slots_;
-}
-
-const std::set<Projectile*>& GameScene::Projectiles() const {
-  return projectiles_;
-}

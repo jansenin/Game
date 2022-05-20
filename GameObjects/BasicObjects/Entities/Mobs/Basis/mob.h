@@ -12,6 +12,12 @@ class Mob : public Entity {
       QPixmap* pixmap,
       int health,
       qreal speed = 0);
+
+  Mob(const VectorF& coordinates,
+      Animation* animation,
+      int health,
+      qreal speed = 0);
+
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 

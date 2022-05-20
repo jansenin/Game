@@ -48,3 +48,20 @@ Time& Time::operator-() {
   ms_ = -ms_;
   return *this;
 }
+
+Time Time::operator*(int rhs) const {
+  return Time(ms() * rhs);
+}
+
+Time& Time::operator*=(int rhs) {
+  ms_ *= rhs;
+  return *this;
+}
+
+Time operator*(int lhs, const Time& rhs) {
+  return rhs * lhs;
+}
+
+Time operator "" _ms(unsigned long long ms) {
+  return Time(ms);
+}

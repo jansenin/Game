@@ -6,6 +6,8 @@
 class TowerSlot : public Entity {
  public:
   TowerSlot(const VectorF& coordinates, QPixmap* pixmap);
+  TowerSlot(const VectorF& coordinates, Animation* animation);
+
   [[nodiscard]] bool IsTakenUp() const;
   void TakeUpArea(Tower* tower);
   void ClearArea();

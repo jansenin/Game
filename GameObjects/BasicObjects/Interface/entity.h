@@ -11,6 +11,7 @@
 #include "damageable.h"
 #include "Utilities/vector_f.h"
 #include "GameObjects/BasicObjects/Interface/graphics_item.h"
+#include "Utilities/animation.h"
 
 class Entity
     : public QObject,
@@ -24,11 +25,17 @@ class Entity
       QPixmap* pixmap,
       int health = 0);
 
+  Entity(
+      const VectorF& coordinates,
+      Animation* animation,
+      int health = 0);
+
   [[nodiscard]] QRectF boundingRect() const override;
   void paint(QPainter* painter,
              const QStyleOptionGraphicsItem* option,
              QWidget* widget) override;
+  void Tick(Time delta) override;
 
  protected:
-  QPixmap* pixmap;
+  Animation* animation_;
 };

@@ -10,12 +10,17 @@ class TestMob : public Mob {
   explicit TestMob(const VectorF& coordinates = VectorF{0, 0});
 
   void Tick(Time delta) override;
+  void ApplyDamage(Damage damage) override;
 
-  void paint(QPainter* painter,
-             const QStyleOptionGraphicsItem* option,
-             QWidget* widget) override;
+  virtual ~TestMob();
 
  protected:
   void keyPressEvent(QKeyEvent* event) override;
   void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+
+  bool is_destroying_;
+  bool is_creating_;
+  Animation* idle_animation_;
+  Animation* disappearing_animation_;
+  Animation* appearing_animation_;
 };

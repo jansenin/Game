@@ -13,9 +13,14 @@ void TowerSlot::ClearArea() {
 }
 
 TowerSlot::TowerSlot(const VectorF& coordinates, QPixmap* pixmap)
-  : Entity(coordinates, pixmap), tower_(nullptr) {}
+  : TowerSlot(coordinates, new Animation(pixmap)) {}
+
+TowerSlot::TowerSlot(const VectorF& coordinates, Animation* animation)
+    : Entity(coordinates, animation), tower_(nullptr) {}
 
 void TowerSlot::Tick(Time time) {
+  Entity::Tick(time);
+
   if (tower_ != nullptr) {
     tower_->Tick(time);
   }
