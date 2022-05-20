@@ -1,5 +1,7 @@
 #include "pixmap_loader.h"
 
+#include <utility>
+
 using P = PixmapLoader::Pixmaps;
 
 QPixmap* P::kBackground;
@@ -37,8 +39,7 @@ std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
   for (int i = 0 ; i < frames_count ; ++i) {
     int x = i * frame_width + start_x;
     QPixmap* frame = new QPixmap(std::move(source->copy(
-        QRect(x, y, frame_width, frame_height)
-    )));
+        QRect(x, y, frame_width, frame_height))));
     result.push_back(frame);
   }
 

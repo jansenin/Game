@@ -46,13 +46,16 @@ void TestMob::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 TestMob::TestMob(const VectorF& coordinates)
     : Mob(
       coordinates,
-      // TODO(jansenin): Было бы лучше инициализировать анимации отдельно от моба
+      // TODO(jansenin): Было бы лучше инициализировать анимации отдельно
+      //  от моба
       new Animation(PixmapLoader::Pixmaps::kFireTotemAppearing, 50_ms),
       Entities::TestMob::kHealth,
       100),
     is_destroying_(false),
-    idle_animation_(new Animation(PixmapLoader::Pixmaps::kFireTotemIdle, 50_ms)),
-    disappearing_animation_(new Animation(PixmapLoader::Pixmaps::kFireTotemDisappear, 50_ms)),
+    idle_animation_(
+        new Animation(PixmapLoader::Pixmaps::kFireTotemIdle, 50_ms)),
+    disappearing_animation_(
+        new Animation(PixmapLoader::Pixmaps::kFireTotemDisappear, 50_ms)),
     appearing_animation_(animation_),
     is_creating_(true) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);

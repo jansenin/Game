@@ -30,7 +30,7 @@ void Entity::paint(QPainter* painter,
   painter->save();
   static QPen pen(QColor(0, 0, 255, 50));
   painter->setPen(pen);
-  //painter->drawRect(boundingRect());
+  // painter->drawRect(boundingRect());
   painter->drawPixmap(Entity::boundingRect().toRect(), *animation_->Frame());
   painter->restore();
 }

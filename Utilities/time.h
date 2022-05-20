@@ -32,4 +32,4 @@ class Time {
 
 Time operator*(int lhs, const Time& rhs);
 
-Time operator "" _ms(unsigned long long ms);
+Time operator "" _ms(uint64_t ms);

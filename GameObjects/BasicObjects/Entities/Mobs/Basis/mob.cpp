@@ -21,7 +21,8 @@ Mob::Mob(const VectorF& coordinates,
 Mob::Mob(const VectorF& coordinates,
          QPixmap* pixmap,
          int health,
-         qreal speed) : Mob(coordinates, new Animation(pixmap), health, speed) {}
+         qreal speed)
+    : Mob(coordinates, new Animation(pixmap), health, speed) {}
 
 qreal Mob::GetSpeed() const {
   return speed_;

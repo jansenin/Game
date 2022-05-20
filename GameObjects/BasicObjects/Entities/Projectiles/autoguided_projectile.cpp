@@ -23,7 +23,7 @@ AutoguidedProjectile::AutoguidedProjectile(
     qreal speed,
     Damage damage)
     : AutoguidedProjectile(
-        coordinates,new Animation(pixmap), target, speed, damage) {}
+        coordinates, new Animation(pixmap), target, speed, damage) {}
 
 void AutoguidedProjectile::Tick(Time delta) {
   Projectile::Tick(delta);
@@ -63,7 +63,8 @@ void AutoguidedProjectile::FindNewTargetOrDie() {
   } else {
     auto old_target = target_;
     for (auto new_target : scene()->Mobs()) {
-      if (new_target != target_ && VectorF(new_target->scenePos() - scenePos()).length() < 100) {
+      if (new_target != target_ &&
+          VectorF(new_target->scenePos() - scenePos()).length() < 100) {
         SetTarget(new_target);
         break;
       }

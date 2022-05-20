@@ -1,5 +1,7 @@
 #include "animation.h"
 
+#include <utility>
+
 Animation::Animation(std::vector<QPixmap*> frames, Time time_between_frames)
   : frames_(std::move(frames)),
   time_between_frames_(time_between_frames),
@@ -11,7 +13,7 @@ Animation::Animation(std::vector<QPixmap*> frames, Time time_between_frames)
 
 Animation::Animation(QPixmap* pixmap)
   // doesn't matter what time between frames is, it just must be non-zero
-  : Animation(std::vector<QPixmap*>{pixmap},1_ms) {}
+  : Animation(std::vector<QPixmap*>{pixmap}, 1_ms) {}
 
 void Animation::Tick(Time delta) {
   time_to_next_frame_ -= delta;
