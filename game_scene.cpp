@@ -1,7 +1,5 @@
 #include "game_scene.h"
 
-#include <iostream>
-
 #include "GameObjects/BasicObjects/Interface/graphics_item.h"
 #include "game_view.h"
 #include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
