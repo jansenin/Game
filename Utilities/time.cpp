@@ -62,6 +62,18 @@ Time operator*(int lhs, const Time& rhs) {
   return rhs * lhs;
 }
 
+Time Time::operator*(double rhs) const {
+  return Time(ms_ * rhs);
+}
+
+Time Time::operator*=(double rhs) const {
+  return Time(ms_ * rhs);
+}
+
+Time operator*(double lhs, const Time& rhs) {
+  return Time(rhs.ms_ * lhs);
+}
+
 Time operator "" _ms(unsigned long long int ms) { // NOLINT
   return Time(ms);
 }

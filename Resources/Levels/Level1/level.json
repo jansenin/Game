@@ -1,0 +1,107 @@
+{
+  "startMoney": 100,
+  "towerSlotPositions": [
+    {
+      "x": -495,
+      "y": -160
+    },
+    {
+      "x": -140,
+      "y": 60
+    }
+  ],
+  "routes": [
+    {
+      "points": [
+        {
+          "x": -200,
+          "y": -200
+        },
+        {
+          "x": 600,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 100
+        }
+      ]
+    },
+    {
+      "points": [
+        {
+          "x": -1000,
+          "y": -10
+        },
+        {
+          "x": -640,
+          "y": -10
+        },
+        {
+          "x": -640,
+          "y": -300
+        },
+        {
+          "x": -260,
+          "y": -310
+        },
+        {
+          "x": -260,
+          "y": 110
+        },
+        {
+          "x": 250,
+          "y": 110
+        },
+        {
+          "x": 250,
+          "y": -80
+        },
+        {
+          "x": 1000,
+          "y": -80
+        }
+      ]
+    }
+  ],
+  "waves": [
+    {
+      "startTimeRelativeToPrevWave": 0,
+      "spawnEntries": [
+        {
+          "mobType": "TestMob",
+          "count": 4,
+          "startTime": 0,
+          "entryDuration": 1000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "TestMob",
+          "count": 4,
+          "startTime": 2000,
+          "entryDuration": 1000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "TestMob",
+          "count": 4,
+          "startTime": 4000,
+          "entryDuration": 1000,
+          "routeIndex": 1
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 5000,
+      "spawnEntries": [
+        {
+          "mobType": "TestMob",
+          "count": 30,
+          "startTime": 0,
+          "entryDuration": 2000,
+          "routeIndex": 0
+        }
+      ]
+    }
+  ]
+}

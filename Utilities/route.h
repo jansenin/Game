@@ -1,15 +1,16 @@
 #pragma once
-#include "../GameObjects/BasicObjects/Interface/entity.h"
-#include "../Utilities/vector_f.h"
-#include <QPointF>
+
 #include <vector>
 #include <map>
 
-static constexpr qreal kThreshold = 2;
+#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "Utilities/vector_f.h"
+
+static constexpr qreal kThreshold = 5;
 
 class Route {
  public:
-  explicit Route(const std::vector<QPointF>& points) :
+  explicit Route(const std::vector<VectorF>& points) :
   points_(points) {}
   void Move(Entity* entity, qreal distance);
   void AddEntity(Entity* entity);
@@ -19,6 +20,6 @@ class Route {
 
  private:
   void ChooseIndex(Entity* entity);
-  std::vector<QPointF> points_;
+  std::vector<VectorF> points_;
   std::map<Entity*, int> entity_indexes_{};
 };

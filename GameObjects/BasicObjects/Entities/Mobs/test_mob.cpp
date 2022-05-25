@@ -13,9 +13,10 @@ void TestMob::Tick(Time delta) {
     animation_->SetIndex(animation_->FrameCount() - 1);
     deleteLater();
   }
-
-  if (!is_creating_ && !Mob::route_->isEnd(this)) {
-    Mob::route_->Move(this, Mob::speed_ * delta.seconds());
+  if (route_ != nullptr) {
+    if (!is_creating_ && !route_->isEnd(this)) {
+      route_->Move(this, speed_ * delta.seconds());
+    }
   }
 }
 
@@ -50,7 +51,7 @@ TestMob::TestMob(const VectorF& coordinates)
       //  от моба
       new Animation(PixmapLoader::Pixmaps::kFireTotemAppearing, 50_ms),
       Entities::TestMob::kHealth,
-      100),
+      300),
     is_destroying_(false),
     idle_animation_(
         new Animation(PixmapLoader::Pixmaps::kFireTotemIdle, 50_ms)),
@@ -76,4 +77,9 @@ void TestMob::ApplyDamage(Damage damage) {
     is_destroying_ = true;
     animation_ = disappearing_animation_;
   }
+}
+
+void TestMob::SetRoute(Route* route) {
+  Mob::SetRoute(route);
+  MoveToRouteStart();
 }

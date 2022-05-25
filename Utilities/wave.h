@@ -1,14 +1,16 @@
 #pragma once
+
 #include "GameObjects/BasicObjects/Interface/tickable.h"
 #include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
 #include <map>
 #include <utility>
 
-class Wave : public Tickable {
+class Wave {
  public:
-  explicit Wave(Time ms, std::map<Mob*, Time>&&  mobs) : time_to_start_(ms),
+  explicit Wave(Time time, std::map<Mob*, Time>&&  mobs) : time_to_start_(time),
                                         mobs_time_to_spawn_(std::move(mobs)) {}
-  void Tick(Time delta) override;
+  void Tick(Time delta);
+  // TODO(jansenin): we need to use it somewhere
   void RemoveMobFromWave(Mob*);
   [[nodiscard]] bool IsStarted() const;
   [[nodiscard]] bool IsEnded() const;

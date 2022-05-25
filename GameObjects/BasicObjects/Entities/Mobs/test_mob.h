@@ -11,6 +11,7 @@ class TestMob : public Mob {
 
   void Tick(Time delta) override;
   void ApplyDamage(Damage damage) override;
+  void SetRoute(Route* route) override;
 
   ~TestMob() override;
 
