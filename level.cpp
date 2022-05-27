@@ -1,5 +1,9 @@
 #include "level.h"
 
+#include <algorithm>
+#include <map>
+#include <utility>
+
 #include <QFile>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -71,8 +75,9 @@ Level::Level(int level_number) : level_number_(level_number) {
     for (auto json_spawn_entry : spawn_entries) {
       QJsonObject object = json_spawn_entry.toObject();
       SpawnEntry spawn_entry(object);
-      wave_duration = Time(std::max(spawn_entry.GetEntryEndTime().ms(), wave_duration.ms()));
-      spawn_entry.AddMobsToWave(mobs, routes_);
+      wave_duration = Time(
+          std::max(spawn_entry.GetEntryEndTime().ms(), wave_duration.ms()));
+      spawn_entry.AddMobsToWave(&mobs, routes_);
     }
     previous_wave_end_time += wave_duration;
     Wave* wave = new Wave(current_wave_start_time, std::move(mobs));
@@ -127,7 +132,7 @@ int Level::GetStartMoney() const {
   return startMoney_;
 }
 
-Level::SpawnEntry::SpawnEntry(QJsonObject& spawn_root_object)
+Level::SpawnEntry::SpawnEntry(const QJsonObject& spawn_root_object)
   : start_time_(Time(spawn_root_object.value("startTime").toInt())),
     mob_type_(spawn_root_object.value("mobType").toString()),
     count_(spawn_root_object.value("count").toInt()),
@@ -136,12 +141,12 @@ Level::SpawnEntry::SpawnEntry(QJsonObject& spawn_root_object)
   {}
 
 void Level::SpawnEntry::AddMobsToWave(
-    std::map<Mob*, Time>& mobs,
+    std::map<Mob*, Time>* mobs,
     const std::vector<Route*>& routes) const {
   if (count_ == 1) {
     Mob* mob = CreateMobFromType(mob_type_);
     mob->SetRoute(routes.at(route_index_));
-    mobs.insert(std::make_pair(mob, start_time_));
+    mobs->insert(std::make_pair(mob, start_time_));
   }
   for (int i = 0; i < count_; ++i) {
     Time spawn_time = start_time_;
@@ -149,7 +154,7 @@ void Level::SpawnEntry::AddMobsToWave(
 
     Mob* mob = CreateMobFromType(mob_type_);
     mob->SetRoute(routes.at(route_index_));
-    mobs.insert(std::make_pair(mob, spawn_time));
+    mobs->insert(std::make_pair(mob, spawn_time));
   }
 }
 

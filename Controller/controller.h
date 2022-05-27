@@ -11,6 +11,7 @@
 
 class Controller : public QObject {
   Q_OBJECT
+
  public:
   static Controller* Instance();
 

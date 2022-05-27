@@ -3,6 +3,7 @@
 #include "GameObjects/BasicObjects/Entities/Mobs/test_mob.h"
 #include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "constants.h"
+#include "utility.h"
 
 Mob* CreateMobFromType(QString type) {
   if (type == Entities::kTestMobId) {

@@ -1,6 +1,6 @@
-#ifndef LEVEL_H
-#define LEVEL_H
+#pragma once
 
+#include <map>
 #include <vector>
 
 #include <QJsonDocument>
@@ -26,11 +26,11 @@ class Level {
  private:
   class SpawnEntry {
    public:
-    explicit SpawnEntry(QJsonObject& spawn_root_object);
+    explicit SpawnEntry(const QJsonObject& spawn_root_object);
 
     [[nodiscard]] Time GetEntryEndTime() const;
     void AddMobsToWave(
-        std::map<Mob*, Time>& mobs,
+        std::map<Mob*, Time>* mobs,
         const std::vector<Route*>& routes) const;
 
    private:
@@ -47,5 +47,3 @@ class Level {
   int level_number_;
   int startMoney_;
 };
-
-#endif //LEVEL_H

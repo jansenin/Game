@@ -26,10 +26,10 @@ void PixmapLoader::LoadPixmaps() {
   P::kTestTowerGun = new QPixmap(":images/test_tower_gun.png");
   P::kTestTowerSlot = new QPixmap(":images/test_tower_slot.png");
   for (int i = 1; i <= LevelData::kLevelsCount; ++i) {
-    P::kLevelMaps.push_back(new QPixmap(":Levels/Level" +
-    QString::fromStdString(std::to_string(i)) + "/map.png"));
+    P::kLevelMaps.push_back(new QPixmap(":Levels/Level"
+    + QString::number(i)
+    + "/map.png"));
   }
-
   LoadFireTotemAnimations();
 }
 
