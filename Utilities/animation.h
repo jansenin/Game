@@ -5,7 +5,7 @@
 #include <QPixmap>
 
 #include "Utilities/time.h"
-#include "GameObjects/BasicObjects/Interface/tickable.h"
+#include "GameObjects/Interface/tickable.h"
 
 class Animation : public Tickable {
  public:

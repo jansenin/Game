@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Entities/Projectiles/projectile.h"
+#include "projectile.h"
 
 class AutoguidedProjectile : public Projectile {
  public:

@@ -10,5 +10,15 @@
 
         <file>Levels/Level1/map.png</file>
         <file>Levels/Level1/level.json</file>
+
+        <file>GUI/Default textured box/top_left_corner.png</file>
+        <file>GUI/Default textured box/top_right_corner.png</file>
+        <file>GUI/Default textured box/bottom_left_corner.png</file>
+        <file>GUI/Default textured box/bottom_right_corner.png</file>
+        <file>GUI/Default textured box/left_side.png</file>
+        <file>GUI/Default textured box/right_side.png</file>
+        <file>GUI/Default textured box/top_side.png</file>
+        <file>GUI/Default textured box/bottom_side.png</file>
+        <file>GUI/Default textured box/inside.png</file>
     </qresource>
 </RCC>

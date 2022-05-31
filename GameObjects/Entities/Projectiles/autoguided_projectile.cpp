@@ -1,7 +1,7 @@
 #include <QGraphicsScene>
 
 #include "autoguided_projectile.h"
-#include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 
 AutoguidedProjectile::AutoguidedProjectile(
     const VectorF& coordinates,

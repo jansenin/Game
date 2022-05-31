@@ -2,8 +2,8 @@
 
 #include <QtMath>
 
-#include "GameObjects/BasicObjects/Entities/Projectiles/test_projectile.h"
-#include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/Entities/Projectiles/test_projectile.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 

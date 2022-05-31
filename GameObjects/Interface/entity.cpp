@@ -1,7 +1,5 @@
 #include "entity.h"
 
-#include <iostream>
-
 Entity::Entity(
     const VectorF& coordinates,
     QPixmap* pixmap,

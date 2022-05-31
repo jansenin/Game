@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "GameObjects/Interface/entity.h"
 
 class Tower : public Entity {
  public:

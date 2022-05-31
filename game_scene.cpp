@@ -1,11 +1,11 @@
 #include "game_scene.h"
 
-#include "GameObjects/BasicObjects/Interface/graphics_item.h"
+#include "GameObjects/Interface/graphics_item.h"
 #include "game_view.h"
-#include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
-#include "GameObjects/BasicObjects/Entities/Towers/tower.h"
-#include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/tower_slot.h"
-#include "GameObjects/BasicObjects/Entities/Projectiles/projectile.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/Entities/Towers/tower.h"
+#include "GameObjects/Entities/Towers/TowerSlots/tower_slot.h"
+#include "GameObjects/Entities/Projectiles/projectile.h"
 
 GameScene::GameScene(const QRectF& scene_rect, QObject* parent)
     : QGraphicsScene(scene_rect, parent) {}

@@ -3,7 +3,7 @@
 #include <vector>
 #include <map>
 
-#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "GameObjects/Interface/entity.h"
 #include "Utilities/vector_f.h"
 
 static constexpr qreal kThreshold = 5;

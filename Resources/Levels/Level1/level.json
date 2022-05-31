@@ -8,6 +8,18 @@
     {
       "x": -140,
       "y": 60
+    },
+    {
+      "x": -50,
+      "y": 60
+    },
+    {
+      "x": 40,
+      "y": 60
+    },
+    {
+      "x": 130,
+      "y": 60
     }
   ],
   "routes": [
@@ -70,21 +82,21 @@
       "spawnEntries": [
         {
           "mobType": "TestMob",
-          "count": 4,
+          "count": 10,
           "startTime": 0,
           "entryDuration": 1000,
           "routeIndex": 1
         },
         {
           "mobType": "TestMob",
-          "count": 4,
+          "count": 10,
           "startTime": 2000,
           "entryDuration": 1000,
           "routeIndex": 1
         },
         {
           "mobType": "TestMob",
-          "count": 4,
+          "count": 10,
           "startTime": 4000,
           "entryDuration": 1000,
           "routeIndex": 1

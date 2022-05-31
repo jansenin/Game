@@ -1,6 +1,6 @@
 #include "test_tower_slot.h"
 
-#include "GameObjects/BasicObjects/Entities/Towers/test_tower.h"
+#include "GameObjects/Entities/Towers/test_tower.h"
 #include <Utilities/Resources/pixmap_loader.h>
 
 TestTowerSlot::TestTowerSlot(const VectorF& coordinates) : TowerSlot(

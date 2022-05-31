@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Interface/tickable.h"
-#include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/Interface/tickable.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include <map>
 #include <utility>
 

@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "Utilities/utility.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"

@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObjects/BasicObjects/Interface/tickable.h"
+#include "GameObjects/Interface/tickable.h"
 #include "Utilities/wave.h"
 #include <utility>
 #include <vector>

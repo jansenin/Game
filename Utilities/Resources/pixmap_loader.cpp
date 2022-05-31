@@ -13,10 +13,26 @@ QPixmap* P::kTestTowerGun;
 QPixmap* P::kTestTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
 
-QPixmap* P::kFireTotemAnimations;
-std::vector<QPixmap*> P::kFireTotemIdle;
-std::vector<QPixmap*> P::kFireTotemDisappear;
-std::vector<QPixmap*> P::kFireTotemAppearing;
+QPixmap* P::FireTotem::kAnimations;
+std::vector<QPixmap*> P::FireTotem::kIdle;
+std::vector<QPixmap*> P::FireTotem::kDisappear;
+std::vector<QPixmap*> P::FireTotem::kAppearing;
+
+// -----------------------------------------------------------------------------
+
+QPixmap* P::UI::DefaultTexturedBox::kTopLeftCorner;
+QPixmap* P::UI::DefaultTexturedBox::kTopRightCorner;
+QPixmap* P::UI::DefaultTexturedBox::kBottomLeftCorner;
+QPixmap* P::UI::DefaultTexturedBox::kBottomRightCorner;
+
+QPixmap* P::UI::DefaultTexturedBox::kLeftSide;
+QPixmap* P::UI::DefaultTexturedBox::kRightSide;
+QPixmap* P::UI::DefaultTexturedBox::kTopSide;
+QPixmap* P::UI::DefaultTexturedBox::kBottomSide;
+
+QPixmap* P::UI::DefaultTexturedBox::kInside;
+
+TexturedBoxPixmaps PixmapLoader::kDefaultTexturedBoxPixmaps;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
@@ -31,6 +47,7 @@ void PixmapLoader::LoadPixmaps() {
   }
 
   LoadFireTotemAnimations();
+  LoadUI();
 }
 
 std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
@@ -68,29 +85,68 @@ void PixmapLoader::LoadFireTotemAnimations() {
   const int appear_animation_row = 0;
   const int appear_animation_column = 0;
 
-  P::kFireTotemAnimations = new QPixmap(":images/fire_totem.png");
+  P::FireTotem::kAnimations = new QPixmap(":images/fire_totem.png");
 
-  P::kFireTotemIdle = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kIdle = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       idle_animation_frames_count,
       idle_animation_column * frame_width,
       idle_animation_row * frame_height);
 
-  P::kFireTotemDisappear = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kDisappear = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       disappear_animation_frames_count,
       disappear_animation_column * frame_width,
       disappear_animation_row * frame_height);
 
-  P::kFireTotemAppearing = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kAppearing = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       appear_animation_frames_count,
       appear_animation_column * frame_width,
       appear_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadUI() {
+  LoadDefaultTextureBox();
+}
+
+void PixmapLoader::LoadDefaultTextureBox() {
+  using T = P::UI::DefaultTexturedBox;
+
+  T::kTopLeftCorner = new QPixmap(
+      ":GUI/Default textured box/top_left_corner.png");
+  T::kTopRightCorner = new QPixmap(
+      ":GUI/Default textured box/top_right_corner.png");
+  T::kBottomLeftCorner = new QPixmap(
+      ":GUI/Default textured box/bottom_left_corner.png");
+  T::kBottomRightCorner = new QPixmap(
+      ":GUI/Default textured box/bottom_right_corner.png");
+  T::kLeftSide = new QPixmap(
+      ":GUI/Default textured box/left_side.png");
+  T::kRightSide = new QPixmap(
+      ":GUI/Default textured box/right_side.png");
+  T::kTopSide = new QPixmap(
+      ":GUI/Default textured box/top_side.png");
+  T::kBottomSide = new QPixmap(
+      ":GUI/Default textured box/bottom_side.png");
+  T::kInside = new QPixmap(
+      ":GUI/Default textured box/inside.png");
+
+  kDefaultTexturedBoxPixmaps = TexturedBoxPixmaps {
+      T::kTopLeftCorner,
+      T::kTopRightCorner,
+      T::kBottomLeftCorner,
+      T::kBottomRightCorner,
+      T::kLeftSide,
+      T::kRightSide,
+      T::kTopSide,
+      T::kBottomSide,
+      T::kInside
+  };
 }

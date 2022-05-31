@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameObjects/BasicObjects/Entities/Towers/tower.h"
-#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "GameObjects/Entities/Towers/tower.h"
+#include "GameObjects/Interface/entity.h"
 
 class TowerSlot : public Entity {
  public:

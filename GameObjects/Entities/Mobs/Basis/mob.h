@@ -2,7 +2,7 @@
 
 #include <QPixmap>
 
-#include "GameObjects/BasicObjects/Interface/entity.h"
+#include "GameObjects/Interface/entity.h"
 #include "Utilities/vector_f.h"
 #include "Utilities/route.h"
 
@@ -11,12 +11,14 @@ class Mob : public Entity {
   Mob(const VectorF& coordinates,
       QPixmap* pixmap,
       int health,
-      qreal speed = 0);
+      int damage_to_base,
+      qreal speed);
 
   Mob(const VectorF& coordinates,
       Animation* animation,
       int health,
-      qreal speed = 0);
+      int damage_to_base,
+      qreal speed);
 
   virtual void SetRoute(Route* route);
   void MoveToRouteStart();
@@ -24,7 +26,11 @@ class Mob : public Entity {
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 
+  void Tick(Time delta) override;
+
  protected:
   Route* route_{nullptr};
   qreal speed_;
+  bool dealed_damage_to_base_;
+  int damage_to_base_;
 };

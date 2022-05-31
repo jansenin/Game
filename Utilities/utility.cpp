@@ -1,7 +1,7 @@
-#include <QString>
+#include "utility.h"
 
-#include "GameObjects/BasicObjects/Entities/Mobs/test_mob.h"
-#include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/Entities/Mobs/test_mob.h"
+#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "constants.h"
 
 Mob* CreateMobFromType(QString type) {

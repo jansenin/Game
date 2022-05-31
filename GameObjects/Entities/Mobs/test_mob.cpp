@@ -13,7 +13,7 @@ void TestMob::Tick(Time delta) {
     animation_->SetIndex(animation_->FrameCount() - 1);
     deleteLater();
   }
-  if (route_ != nullptr) {
+  if (route_ != nullptr && !is_destroying_) {
     if (!is_creating_ && !route_->isEnd(this)) {
       route_->Move(this, speed_ * delta.seconds());
     }
@@ -49,18 +49,28 @@ TestMob::TestMob(const VectorF& coordinates)
       coordinates,
       // TODO(jansenin): Было бы лучше инициализировать анимации отдельно
       //  от моба
-      new Animation(PixmapLoader::Pixmaps::kFireTotemAppearing, 50_ms),
+      new Animation(PixmapLoader::Pixmaps::FireTotem::kAppearing, 50_ms),
       Entities::TestMob::kHealth,
+      1,
       300),
     is_destroying_(false),
     idle_animation_(
-        new Animation(PixmapLoader::Pixmaps::kFireTotemIdle, 50_ms)),
+        new Animation(PixmapLoader::Pixmaps::FireTotem::kIdle, 50_ms)),
     disappearing_animation_(
-        new Animation(PixmapLoader::Pixmaps::kFireTotemDisappear, 50_ms)),
+        new Animation(PixmapLoader::Pixmaps::FireTotem::kDisappear, 50_ms)),
     appearing_animation_(animation_),
-    is_creating_(true) {
+    is_creating_(true),
+    test_tooltip(new Tooltip(this)) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
+  setAcceptHoverEvents(true);
   setScale(1.4);
+
+  test_tooltip->setPos(0, 50);
+  test_tooltip->setVisible(false);
+  test_tooltip->setHtml(
+      "Test tooltip line 1 <br>"
+      "Test   tooltip line 2 <br>"
+      "Test very long tooltip line with line break in the end <br>");
 }
 
 TestMob::~TestMob() {
@@ -82,4 +92,12 @@ void TestMob::ApplyDamage(Damage damage) {
 void TestMob::SetRoute(Route* route) {
   Mob::SetRoute(route);
   MoveToRouteStart();
+}
+
+void TestMob::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
+  test_tooltip->setVisible(true);
+}
+
+void TestMob::hoverLeaveEvent(QGraphicsSceneHoverEvent* event) {
+  test_tooltip->setVisible(false);
 }

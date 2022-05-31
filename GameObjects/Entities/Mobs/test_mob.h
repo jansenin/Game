@@ -2,8 +2,9 @@
 
 #include <QPixmap>
 
-#include "Basis/mob.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "Utilities/vector_f.h"
+#include "UI/tooltip.h"
 
 class TestMob : public Mob {
  public:
@@ -19,9 +20,15 @@ class TestMob : public Mob {
   void keyPressEvent(QKeyEvent* event) override;
   void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 
+  void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+  void hoverLeaveEvent(QGraphicsSceneHoverEvent* event) override;
+
   bool is_destroying_;
   bool is_creating_;
+
   Animation* idle_animation_;
   Animation* disappearing_animation_;
   Animation* appearing_animation_;
+
+  Tooltip* test_tooltip;
 };
