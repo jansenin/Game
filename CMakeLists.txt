@@ -40,8 +40,9 @@ set(UTILITIES
         Utilities/route.cpp
         Utilities/wave.cpp
         wave_manager.cpp
-        Utilities/animation.cpp)
-
+        Utilities/animation.cpp
+        Utilities/utility.cpp)
+        
 add_executable(Game
         ${RESOURCES}
         ${GAME_OBJECTS}
@@ -51,6 +52,7 @@ add_executable(Game
         Controller/controller.cpp
         game_view.cpp
         constants.cpp
-        game_scene.cpp)
+        game_scene.cpp
+        level.cpp)
 
 target_link_libraries(Game Qt::Core Qt::Gui Qt::Widgets)

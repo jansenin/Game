@@ -1,6 +1,7 @@
-#include "pixmap_loader.h"
-
 #include <utility>
+
+#include "constants.h"
+#include "pixmap_loader.h"
 
 using P = PixmapLoader::Pixmaps;
 
@@ -10,6 +11,7 @@ QPixmap* P::kTestMob;
 QPixmap* P::kTestTower;
 QPixmap* P::kTestTowerGun;
 QPixmap* P::kTestTowerSlot;
+std::vector<QPixmap*> P::kLevelMaps;
 
 QPixmap* P::kFireTotemAnimations;
 std::vector<QPixmap*> P::kFireTotemIdle;
@@ -23,7 +25,11 @@ void PixmapLoader::LoadPixmaps() {
   P::kTestTower = new QPixmap(":images/test_tower.png");
   P::kTestTowerGun = new QPixmap(":images/test_tower_gun.png");
   P::kTestTowerSlot = new QPixmap(":images/test_tower_slot.png");
-
+  for (int i = 1; i <= LevelData::kLevelsCount; ++i) {
+    P::kLevelMaps.push_back(new QPixmap(":Levels/Level"
+    + QString::number(i)
+    + "/map.png"));
+  }
   LoadFireTotemAnimations();
 }
 

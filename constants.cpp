@@ -1,15 +1,23 @@
 #include "constants.h"
 
-const qreal kSceneWidth = 1920;
-const qreal kSceneHeight = 1080;
-const QRectF kSceneRect{
-    -kSceneWidth/2,
-    -kSceneHeight/2,
-    kSceneWidth,
-    kSceneHeight};
+namespace Scene {
+const qreal kWidth = 1920;
+const qreal kHeight = 1080;
+const QRectF kRect{
+    -kWidth / 2,
+    -kHeight / 2,
+    kWidth,
+    kHeight};
+extern const qreal kMapTextureZValue = -100;
+}
+
+namespace LevelData {
+extern const int kLevelsCount = 1;
+}
 
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
+extern const QString kTestMobId = "TestMob";
 
 namespace TestTower {
 const qreal kAttackRange = 300;

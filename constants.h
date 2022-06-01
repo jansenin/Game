@@ -5,12 +5,20 @@
 #include "Utilities/time.h"
 #include <Utilities/damage.h>
 
-extern const qreal kSceneWidth;
-extern const qreal kSceneHeight;
-extern const QRectF kSceneRect;
+namespace Scene {
+extern const qreal kWidth;
+extern const qreal kHeight;
+extern const QRectF kRect;
+extern const qreal kMapTextureZValue;
+}
+
+namespace LevelData {
+extern const int kLevelsCount;
+}
 
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
+extern const QString kTestMobId;
 
 namespace TestTower {
 extern const qreal kAttackRange;

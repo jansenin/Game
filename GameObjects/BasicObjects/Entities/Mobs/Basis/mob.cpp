@@ -2,21 +2,12 @@
 
 #include <vector>
 
-std::vector<Route> routes{Route({
-  QPointF(50, 50),
-  QPointF(300, 400),
-  QPointF(-100, -50)})};  // TODO(parfen01): move in level
-
 Mob::Mob(const VectorF& coordinates,
          Animation* animation,
          int health,
          qreal speed)
     : Entity(coordinates, animation, health),
-      speed_(speed) {
-  route_ = &routes[0];
-  route_->AddEntity(this);
-  Entity::setPos(route_->GetStart());
-}
+      speed_(speed) {}
 
 Mob::Mob(const VectorF& coordinates,
          QPixmap* pixmap,
@@ -30,4 +21,18 @@ qreal Mob::GetSpeed() const {
 
 void Mob::SetSpeed(qreal speed) {
   speed_ = speed;
+}
+
+void Mob::SetRoute(Route* route) {
+  if (route == nullptr && route_ != nullptr) {
+    route_->RemoveEntity(this);
+  }
+  route_ = route;
+  if (route_ != nullptr) {
+    route_->AddEntity(this);
+  }
+}
+
+void Mob::MoveToRouteStart() {
+  Entity::setPos(route_->GetStart());
 }

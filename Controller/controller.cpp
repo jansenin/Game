@@ -12,9 +12,10 @@
 Controller* Controller::instance;
 
 Controller::Controller() :
-  scene_(new GameScene(kSceneRect)),
+  scene_(new GameScene(Scene::kRect)),
   view_(new GameView(scene_)),
-  tick_timer_(new QTimer(this)) {
+  tick_timer_(new QTimer(this)),
+  level_(new Level(1)) {
   SetupScene();
   LaunchTickTimer();
 }
@@ -27,8 +28,12 @@ GameScene* Controller::GetScene() const {
   return scene_;
 }
 
+Level* Controller::GetLevel() const {
+  return level_;
+}
+
 void Controller::SetupScene() {
-  {  // temporary code
+  /*{  // temporary code
     QPushButton* close_button = new QPushButton();
     QGraphicsProxyWidget* close_button_proxy = scene_->addWidget(close_button);
     close_button_proxy->setGeometry(QRectF(
@@ -44,6 +49,45 @@ void Controller::SetupScene() {
 
     TestTowerSlot* test_tower_slot = new TestTowerSlot(VectorF{400, 400});
     scene_->addItem(test_tower_slot);
+
+    QRectF sceneRect = scene_->sceneRect();
+    qreal x = sceneRect.x();
+    qreal y = sceneRect.y();
+    qreal width = sceneRect.width();
+    qreal height = sceneRect.height();
+
+    scene_->addLine(
+        x + width / 2,
+        y,
+        x + width / 2,
+        y + height,
+        QPen(Qt::blue));
+
+    scene_->addLine(
+        x,
+        y + 1,
+        x + width,
+        y + 1,
+        QPen(Qt::blue));
+
+    scene_->addLine(
+        x,
+        y + height / 2,
+        x + width,
+        y + height / 2,
+        QPen(Qt::blue));
+  }  // temporary code end*/
+  {  // temporary code
+    QPushButton* close_button = new QPushButton();
+    QGraphicsProxyWidget* close_button_proxy = scene_->addWidget(close_button);
+    close_button_proxy->setGeometry(QRectF(
+        scene_->sceneRect().topRight() - VectorF{100, 0},
+        scene_->sceneRect().topRight() + VectorF{0, 100}));
+
+    close_button->setText("Close");
+    QObject::connect(close_button, &QPushButton::clicked, &QApplication::exit);
+
+    level_->AddObjectsToScene(scene_);
 
     QRectF sceneRect = scene_->sceneRect();
     qreal x = sceneRect.x();
@@ -88,11 +132,13 @@ Controller* Controller::Instance() {
 }
 
 void Controller::TickAllTickables() {
+  Time delta = Time(1000 / 30);
   for (QGraphicsItem* graphics_item : scene_->items()) {
     if (Tickable* tickable = dynamic_cast<Tickable*>(graphics_item)) {
       // TODO(jansenin): make time dependency(it
       //  could have been more than 1000/30 ms)
-      tickable->Tick(Time(1000 / 30));
+      tickable->Tick(delta);
     }
   }
+  level_->Tick(delta);
 }

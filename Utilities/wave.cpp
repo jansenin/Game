@@ -1,15 +1,17 @@
 #include "wave.h"
 
+#include "Controller/controller.h"
+
 void Wave::RemoveMobFromWave(Mob* mob) {
   mobs_time_to_spawn_.erase(mob);
 }
 
 void Wave::Tick(Time delta) {
   if (IsStarted()) {
-    for (auto i : mobs_time_to_spawn_) {
+    for (auto& i : mobs_time_to_spawn_) {
       i.second -= delta;
       if (i.second.ms() <= 0) {
-        // TODO(parfen01): move mob to map before removing from wave
+        Controller::Instance()->GetScene()->addItem(i.first);
         RemoveMobFromWave(i.first);
       }
     }
