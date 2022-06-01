@@ -8,10 +8,16 @@ class AutoguidedProjectile : public Projectile {
                        QPixmap* pixmap,
                        Entity* target, qreal speed, Damage damage);
 
+  AutoguidedProjectile(const VectorF& coordinates,
+                       Animation* animation,
+                       Entity* target, qreal speed, Damage damage);
+  void SetTarget(Entity* target);
+
   void Tick(Time delta) override;
 
  protected:
   void Move(Time delta);
+  void FindNewTargetOrDie();
 
   Entity* target_;
   qreal speed_;

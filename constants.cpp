@@ -12,8 +12,8 @@ namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
 
 namespace TestTower {
-const qreal kAttackRange = 200;
-const Time kAttackCooldown = Time(1000);
+const qreal kAttackRange = 300;
+const Time kAttackCooldown = Time(100);
 }
 
 namespace TestMob {
@@ -24,7 +24,7 @@ const int kHealth = 30;
 }
 
 namespace TestProjectile {
-extern const Damage kDamage = Damage(10);
-extern const qreal kSpeed = 100;
+extern const Damage kDamage = Damage(3);
+extern const qreal kSpeed = 500;
 }
 }  // namespace Entities

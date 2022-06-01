@@ -1,6 +1,6 @@
 #pragma once
 
-#include <set>
+#include <vector>
 
 #include <QGraphicsScene>
 #include <QList>
@@ -11,6 +11,7 @@ class Mob;
 class Tower;
 class TowerSlot;
 class Projectile;
+class Entity;
 
 class GameScene : public QGraphicsScene {
  public:
@@ -18,18 +19,8 @@ class GameScene : public QGraphicsScene {
 
   GameView* view();
 
-  void removeItem(GraphicsItem* item);
-  void clear();
-  void addItem(GraphicsItem* item);
-
-  [[nodiscard]] const std::set<Mob*>& Mobs() const;
-  [[nodiscard]] const std::set<Tower*>& Towers() const;
-  [[nodiscard]] const std::set<TowerSlot*>& TowerSlots() const;
-  [[nodiscard]] const std::set<Projectile*>& Projectiles() const;
-
- private:
-  std::set<Mob*> mobs_;
-  std::set<Tower*> towers_;
-  std::set<TowerSlot*> tower_slots_;
-  std::set<Projectile*> projectiles_;
+  [[nodiscard]] std::vector<Mob*> Mobs() const;
+  [[nodiscard]] std::vector<Tower*> Towers() const;
+  [[nodiscard]] std::vector<TowerSlot*> TowerSlots() const;
+  [[nodiscard]] std::vector<Projectile*> Projectiles() const;
 };

@@ -1,4 +1,5 @@
 #include "route.h"
+
 #include <QtMath>
 
 bool Route::isEnd(Entity* entity) {

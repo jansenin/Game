@@ -14,3 +14,7 @@ void Damageable::ApplyDamage(Damage damage) {
 void Damageable::SetHealth(int health) {
   health_ = health;
 }
+
+int Damageable::GetHealth() const {
+  return health_;
+}
