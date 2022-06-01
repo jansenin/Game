@@ -10,6 +10,12 @@ Mob::Mob(const VectorF& coordinates,
       speed_(speed) {}
 
 Mob::Mob(const VectorF& coordinates,
+         Animation* animation,
+         int health,
+         qreal speed)
+    : Mob(coordinates, new Animation(pixmap), health, speed) {}
+
+Mob::Mob(const VectorF& coordinates,
          QPixmap* pixmap,
          int health,
          qreal speed)

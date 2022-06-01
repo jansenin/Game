@@ -19,7 +19,7 @@ class Time {
   Time operator-(const Time& rhs) const;
   Time operator*(int rhs) const;
   Time operator*(double rhs) const;
-
+  
   Time& operator+=(const Time& rhs);
   Time& operator-=(const Time& rhs);
   Time& operator*=(int rhs);

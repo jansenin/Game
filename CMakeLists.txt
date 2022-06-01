@@ -42,7 +42,7 @@ set(UTILITIES
         wave_manager.cpp
         Utilities/animation.cpp
         Utilities/utility.cpp)
-
+        
 add_executable(Game
         ${RESOURCES}
         ${GAME_OBJECTS}
