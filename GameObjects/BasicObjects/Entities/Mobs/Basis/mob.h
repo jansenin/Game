@@ -20,7 +20,6 @@ class Mob : public Entity {
 
   virtual void SetRoute(Route* route);
   void MoveToRouteStart();
-
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 
