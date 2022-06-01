@@ -36,3 +36,5 @@ void Mob::SetRoute(Route* route) {
 void Mob::MoveToRouteStart() {
   Entity::setPos(route_->GetStart());
 }
+
+

@@ -7,6 +7,10 @@
         <file>images/test_tower_gun.png</file>
         <file>images/test_tower_slot.png</file>
         <file>images/fire_totem.png</file>
+
+        <file>images/skeleton/walk.png</file>
+        <file>images/skeleton/death.png</file>
+
         <file>Levels/Level1/map.png</file>
         <file>Levels/Level1/level.json</file>
     </qresource>

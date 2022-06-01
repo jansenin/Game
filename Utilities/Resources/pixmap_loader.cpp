@@ -17,6 +17,8 @@ QPixmap* P::kFireTotemAnimations;
 std::vector<QPixmap*> P::kFireTotemIdle;
 std::vector<QPixmap*> P::kFireTotemDisappear;
 std::vector<QPixmap*> P::kFireTotemAppearing;
+std::vector<QPixmap*> P::kSkeletonWalk;
+std::vector<QPixmap*> P::kSkeletonDeath;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
@@ -31,6 +33,7 @@ void PixmapLoader::LoadPixmaps() {
     + "/map.png"));
   }
   LoadFireTotemAnimations();
+  LoadSkeletonAnimations();
 }
 
 std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
@@ -93,4 +96,48 @@ void PixmapLoader::LoadFireTotemAnimations() {
       appear_animation_frames_count,
       appear_animation_column * frame_width,
       appear_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadSkeletonAnimations() {
+  // walk 13
+  //death 14
+  // file size - 896x480
+  // 5 frame rows, 14 frame columns
+  const int frame_walk_width = 286 / 13;
+  const int frame_walk_height = 33;
+  const int walk_animation_frames_count = 13;
+
+  const int frame_death_width = 495 / 15;
+  const int frame_death_height = 32;
+  const int death_animation_frames_count = 14;
+
+  // row and column start from 0
+  const int walk_animation_row = 0;
+  const int walk_animation_column = 0;
+
+  const int death_animation_row = 0;
+  const int death_animation_column = 1;
+
+
+  QPixmap* walk_animation = new QPixmap(":images/skeleton/walk.png");
+  QPixmap* death_animation = new QPixmap(":images/skeleton/death.png");
+
+  P::kSkeletonWalk = CreateHorizontalFramesVector(
+      walk_animation,
+      frame_walk_width,
+      frame_walk_height,
+      walk_animation_frames_count,
+      walk_animation_column * frame_walk_width,
+      walk_animation_row  * frame_walk_height);
+
+  P::kSkeletonDeath = CreateHorizontalFramesVector(
+      death_animation,
+      frame_death_width,
+      frame_death_height,
+      death_animation_frames_count,
+      death_animation_column * frame_death_width,
+      death_animation_row  * frame_death_height);
+
+  delete walk_animation;
+  delete death_animation;
 }

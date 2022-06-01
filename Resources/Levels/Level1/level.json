@@ -76,7 +76,7 @@
           "routeIndex": 1
         },
         {
-          "mobType": "TestMob",
+          "mobType": "Skeleton",
           "count": 4,
           "startTime": 2000,
           "entryDuration": 1000,

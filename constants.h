@@ -19,6 +19,7 @@ extern const int kLevelsCount;
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
 extern const QString kTestMobId;
+extern const QString kSkeletonId;
 
 namespace TestTower {
 extern const qreal kAttackRange;
@@ -29,6 +30,12 @@ namespace TestMob {
 extern const qreal kPassiveMoveSpeed;
 extern const qreal kActiveMoveSpeed;
 extern const qreal kRotationSpeed;
+extern const int kHealth;
+}
+
+namespace Skeleton {
+extern const Time kTimeBetweenFrames;
+extern const qreal kSpeed;
 extern const int kHealth;
 }
 

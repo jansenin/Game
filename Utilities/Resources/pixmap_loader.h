@@ -24,6 +24,9 @@ class PixmapLoader {
     static std::vector<QPixmap*> kFireTotemIdle;
     static std::vector<QPixmap*> kFireTotemDisappear;
     static std::vector<QPixmap*> kFireTotemAppearing;
+
+    static std::vector<QPixmap*> kSkeletonWalk;
+    static std::vector<QPixmap*> kSkeletonDeath;
   };
 
   static void LoadPixmaps();
@@ -38,4 +41,5 @@ class PixmapLoader {
       int y);
 
   static void LoadFireTotemAnimations();
+  static void LoadSkeletonAnimations();
 };
