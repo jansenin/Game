@@ -115,10 +115,10 @@ void PixmapLoader::LoadFireTotemAnimations() {
 }
 
 void PixmapLoader::LoadSkeletonAnimations() {
-  // walk 13
-  //death 14
-  // file size - 896x480
-  // 5 frame rows, 14 frame columns
+  // walk 13 frame columns
+  // death 14 frame columns
+  // walk file size - 286x33
+  // death file size - 495x32
   const int frame_walk_width = 286 / 13;
   const int frame_walk_height = 33;
   const int walk_animation_frames_count = 13;

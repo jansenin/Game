@@ -2,17 +2,17 @@
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
-using namespace Entities::Dwarf;
+namespace D = Entities::Dwarf;
 using P = PixmapLoader::Pixmaps;
 
 Dwarf::Dwarf(const VectorF& coordinates) :
     Mob(coordinates,
         new Animation(P::kDwarfWalk,
-                      kTimeBetweenFrames),
-        kHealth,
-        kSpeed), is_destroying_(false),
+                      D::kTimeBetweenFrames),
+        D::kHealth,
+        D::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kDwarfDeath, kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kDwarfDeath, D::kTimeBetweenFrames)) {}
 
 void Dwarf::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

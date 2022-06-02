@@ -2,17 +2,17 @@
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
-using namespace Entities::Hedgehog;
+namespace H = Entities::Hedgehog;
 using P = PixmapLoader::Pixmaps;
 
 Hedgehog::Hedgehog(const VectorF& coordinates) :
     Mob(coordinates,
         new Animation(P::kHedgehogWalk,
-                      kTimeBetweenFrames),
-        kHealth,
-        kSpeed), is_destroying_(false),
+                      H::kTimeBetweenFrames),
+        H::kHealth,
+        H::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kHedgehogDeath, kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kHedgehogDeath, H::kTimeBetweenFrames)) {}
 
 void Hedgehog::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

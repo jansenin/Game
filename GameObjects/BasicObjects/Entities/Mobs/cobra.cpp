@@ -2,17 +2,17 @@
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
-using namespace Entities::Cobra;
+namespace C = Entities::Cobra;
 using P = PixmapLoader::Pixmaps;
 
 Cobra::Cobra(const VectorF& coordinates) :
     Mob(coordinates,
         new Animation(P::kCobraWalk,
-                      kTimeBetweenFrames),
-        kHealth,
-        kSpeed), is_destroying_(false),
+                      C::kTimeBetweenFrames),
+        C::kHealth,
+        C::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kCobraDeath, kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kCobraDeath, C::kTimeBetweenFrames)) {}
 
 void Cobra::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

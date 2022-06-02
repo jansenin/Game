@@ -2,17 +2,17 @@
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 
-using namespace Entities::Skeleton;
+namespace S = Entities::Skeleton;
 using P = PixmapLoader::Pixmaps;
 
 Skeleton::Skeleton(const VectorF& coordinates) :
     Mob(coordinates,
         new Animation(P::kSkeletonWalk,
-                      kTimeBetweenFrames),
-        kHealth,
-        kSpeed), is_destroying_(false),
+                      S::kTimeBetweenFrames),
+        S::kHealth,
+        S::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kSkeletonDeath, kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kSkeletonDeath, S::kTimeBetweenFrames)) {}
 
 void Skeleton::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);
