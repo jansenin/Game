@@ -50,6 +50,10 @@ void LinearMenu::SetType(LinearMenu::Type type) {
   layout_->SetType(type);
 }
 
+void LinearMenu::RecalculatePositions() {
+  layout_->RecalculatePositions();
+}
+
 void LinearMenu::paint(QPainter* painter,
                        const QStyleOptionGraphicsItem* option,
                        QWidget* widget) {

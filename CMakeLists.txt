@@ -44,7 +44,12 @@ set(UTILITIES
         Utilities/utility.cpp)
 
 set(UI
-        UI/tooltip.cpp UI/textured_box.cpp UI/textured_box.h Utilities/Resources/textured_box_pixmaps.h UI/linear_menu.cpp UI/linear_menu.h UI/linear_layout.cpp UI/linear_layout.h UI/text_button.cpp UI/text_button.h UI/padding_box.cpp UI/padding_box.h)
+        UI/tooltip.cpp
+        UI/textured_box.cpp
+        UI/linear_menu.cpp
+        UI/linear_layout.cpp
+        UI/button.cpp
+        UI/padding_box.cpp UI/pixmap_object.cpp UI/pixmap_object.h)
 
 add_executable(Game
         ${RESOURCES}

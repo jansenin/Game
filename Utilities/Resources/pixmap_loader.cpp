@@ -12,6 +12,7 @@ QPixmap* P::kTestTower;
 QPixmap* P::kTestTowerGun;
 QPixmap* P::kTestTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
+QPixmap* P::kEmpty;
 
 QPixmap* P::FireTotem::kAnimations;
 std::vector<QPixmap*> P::FireTotem::kIdle;
@@ -36,6 +37,7 @@ void PixmapLoader::LoadPixmaps() {
     P::kLevelMaps.push_back(new QPixmap(":Levels/Level" +
     QString::fromStdString(std::to_string(i)) + "/map.png"));
   }
+  P::kEmpty = new QPixmap();
 
   LoadFireTotemAnimations();
   LoadUI();

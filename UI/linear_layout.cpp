@@ -72,7 +72,9 @@ void LinearLayout::RecalculatePositions() {
   } else if (type_ == Type::Vertical) {
     qreal max_width = 0;
     for (int i = 0 ; i < items_.size() ; ++i) {
-      max_width = std::max(max_width, items_.at(i)->boundingRect().width());
+      max_width = std::max(
+          max_width,
+          items_.at(i)->boundingRect().width() * items_.at(i)->scale());
     }
     qreal y = 0;
     for (int i = 0 ; i < items_.size() ; ++i) {

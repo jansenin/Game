@@ -11,6 +11,7 @@
 
 class Controller : public QObject {
   Q_OBJECT
+
  public:
   static Controller* Instance();
 
@@ -20,7 +21,7 @@ class Controller : public QObject {
 
   void DealDamageToBase(int damage);
 
-  signals:
+ signals:
   void GameOver();
 
  public slots:

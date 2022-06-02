@@ -22,6 +22,8 @@ class LinearMenu : public TexturedBox {
   Type GetType() const;
   void SetType(Type type);
 
+  void RecalculatePositions();
+
   void paint(QPainter* painter,
              const QStyleOptionGraphicsItem* option,
              QWidget* widget) override;

@@ -1,6 +1,6 @@
 #include "constants.h"
 
-const bool kDebugMode = true;
+const bool kDebugMode = false;
 
 namespace Scene {
 const qreal kWidth = 1920;

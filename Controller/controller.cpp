@@ -9,7 +9,7 @@
 #include "GameObjects/Entities/Mobs/test_mob.h"
 #include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "constants.h"
-#include "UI/text_button.h"
+#include "UI/button.h"
 #include "UI/linear_menu.h"
 #include "UI/padding_box.h"
 #include "Utilities/Resources/pixmap_loader.h"
@@ -48,15 +48,6 @@ Level* Controller::GetLevel() const {
 
 void Controller::SetupScene() {
   {  // temporary code
-    //QPushButton* close_button = new QPushButton();
-    //QGraphicsProxyWidget* close_button_proxy = scene_->addWidget(close_button);
-    //close_button_proxy->setGeometry(QRectF(
-    //    scene_->sceneRect().topRight() - VectorF{100, 0},
-    //    scene_->sceneRect().topRight() + VectorF{0, 100}));
-    //
-    //close_button->setText("Close");
-    //QObject::connect(close_button, &QPushButton::clicked, &QApplication::exit);
-
     LinearMenu* main_menu = new LinearMenu();
     main_menu->SetTexturedBoxPixmaps(PixmapLoader::kMenu2TexturedBoxPixmaps);
     main_menu->SetSpacing(30);
@@ -73,10 +64,14 @@ void Controller::SetupScene() {
       i++;
       scene_->addItem(new TestMob({200.0 + 10 * i, 200}));
       test_button->setScale(1.5);
+      test_button->SetIcon(PixmapLoader::Pixmaps::FireTotem::kIdle.at(0));
+      test_button->SetSpacing(test_button->Spacing() + 5);
+      test_button->SetPadding(test_button->Padding() + 3);
       main_menu->setPos(
           scene_->sceneRect().topRight() -
           main_menu->boundingRect().topRight() +
           QPointF{-5, 5});
+      main_menu->RecalculatePositions();
     });
 
     LinearLayout* layout = new LinearLayout();
@@ -124,7 +119,8 @@ void Controller::SetupScene() {
       test_hor_menu->AddItem(new TextButton({0, 0}, "test 1"));
       test_hor_menu->AddItem(new TextButton({0, 0}, "test 2"));
       test_hor_menu->SetType(LinearLayout::Type::Horizontal);
-      test_hor_menu->SetTexturedBoxPixmaps(PixmapLoader::kMenu2TexturedBoxPixmaps);
+      test_hor_menu->SetTexturedBoxPixmaps(
+          PixmapLoader::kMenu2TexturedBoxPixmaps);
       test_hor_menu->SetPadding(50);
       test_hor_menu->SetSpacing(20);
       test_hor_menu->setPos(-200, 100);
@@ -133,7 +129,8 @@ void Controller::SetupScene() {
       test_ver_menu->AddItem(new TextButton({0, 0}, "test 1"));
       test_ver_menu->AddItem(new TextButton({0, 0}, "test 2"));
       test_ver_menu->SetType(LinearLayout::Type::Vertical);
-      test_ver_menu->SetTexturedBoxPixmaps(PixmapLoader::kMenu2TexturedBoxPixmaps);
+      test_ver_menu->SetTexturedBoxPixmaps(
+          PixmapLoader::kMenu2TexturedBoxPixmaps);
       test_ver_menu->SetPadding(50);
       test_ver_menu->SetSpacing(20);
       test_ver_menu->setPos(-600, 100);
@@ -159,8 +156,10 @@ void Controller::SetupScene() {
     }
 
     scene_->addItem(main_menu);
-    main_menu->setPos(scene_->sceneRect().topRight() - main_menu->boundingRect().topRight() + QPointF{-5, 5});
-
+    main_menu->setPos(
+        scene_->sceneRect().topRight() -
+        main_menu->boundingRect().topRight() +
+        QPointF{-5, 5});
   }  // temporary code end
 
   level_->AddObjectsToScene(scene_);

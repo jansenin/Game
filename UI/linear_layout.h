@@ -38,5 +38,3 @@ class LinearLayout : public QGraphicsObject {
   qreal spacing_;
   enum Type type_;
 };
-
-

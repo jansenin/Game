@@ -19,6 +19,7 @@ class PixmapLoader {
     static QPixmap* kTestTowerGun;
     static QPixmap* kTestTowerSlot;
     static std::vector<QPixmap*> kLevelMaps;
+    static QPixmap* kEmpty;
 
     // For animations test
     class FireTotem {
