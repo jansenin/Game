@@ -21,3 +21,15 @@ void VectorF::normalize() {
 VectorF VectorF::normalized() {
   return *this / length();
 }
+
+void VectorF::rotate(qreal radians) {
+  *this = this->rotated(radians);
+}
+
+VectorF VectorF::rotated(qreal radians) {
+  qreal s = sin(radians);
+  qreal c = cos(radians);
+  return VectorF(
+      x() * c - y() * s,
+      x() * s + y() * c);
+}

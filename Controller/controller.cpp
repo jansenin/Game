@@ -99,6 +99,7 @@ void Controller::SetupScene() {
     main_menu->AddItem(menu);
     main_menu->AddItem(test_button);
     main_menu->SetType(LinearLayout::Type::Vertical);
+    main_menu->setScale(0.3);
 
     //{
     //  LinearLayout* test_hor_layout = new LinearLayout();
@@ -163,7 +164,7 @@ void Controller::SetupScene() {
     scene_->addItem(main_menu);
     main_menu->setPos(
         scene_->sceneRect().topRight() -
-        main_menu->boundingRect().topRight() +
+        main_menu->boundingRect().topRight() * main_menu->scale() +
         QPointF{-5, 5});
   }  // temporary code end
 

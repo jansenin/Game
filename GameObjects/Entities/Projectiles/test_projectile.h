@@ -7,4 +7,7 @@ class TestProjectile : public AutoguidedProjectile {
   TestProjectile(const VectorF& coordinates, Entity* target);
 
   void Tick(Time delta) override;
+
+ private:
+  Time cross_cycle_time_;
 };

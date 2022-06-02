@@ -14,4 +14,7 @@ class VectorF : public QPointF {
 
   void normalize();
   VectorF normalized();
+
+  void rotate(qreal radians);
+  VectorF rotated(qreal radians);
 };
