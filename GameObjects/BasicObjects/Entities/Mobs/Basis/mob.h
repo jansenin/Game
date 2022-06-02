@@ -19,9 +19,11 @@ class Mob : public Entity {
       qreal speed = 0);
 
   virtual void SetRoute(Route* route);
-  void MoveToRouteStart();
+  virtual void MoveToRouteStart();
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
+
+  QRectF boundingRect() const override;
 
  protected:
   Route* route_{nullptr};

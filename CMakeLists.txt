@@ -29,7 +29,11 @@ set(GAME_OBJECTS
         GameObjects/BasicObjects/Entities/Projectiles/autoguided_projectile.cpp
         GameObjects/BasicObjects/Entities/Projectiles/test_projectile.cpp
         GameObjects/BasicObjects/Interface/graphics_item.cpp
-        GameObjects/BasicObjects/Entities/Projectiles/projectile.cpp)
+        GameObjects/BasicObjects/Entities/Projectiles/projectile.cpp
+        GameObjects/BasicObjects/Entities/Mobs/skeleton.cpp
+        GameObjects/BasicObjects/Entities/Mobs/cobra.cpp
+        GameObjects/BasicObjects/Entities/Mobs/hedgehog.cpp
+        GameObjects/BasicObjects/Entities/Mobs/dwarf.cpp)
 
 set(UTILITIES
         Utilities/damage.cpp

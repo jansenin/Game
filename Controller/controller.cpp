@@ -7,6 +7,10 @@
 
 #include "GameObjects/BasicObjects/Entities/Mobs/test_mob.h"
 #include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/BasicObjects/Entities/Mobs/skeleton.h"
+#include "GameObjects/BasicObjects/Entities/Mobs/hedgehog.h"
+#include "GameObjects/BasicObjects/Entities/Mobs/cobra.h"
+#include "GameObjects/BasicObjects/Entities/Mobs/dwarf.h"
 #include "constants.h"
 
 Controller* Controller::instance;

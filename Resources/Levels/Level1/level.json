@@ -2,8 +2,8 @@
   "startMoney": 100,
   "towerSlotPositions": [
     {
-      "x": -495,
-      "y": -160
+      "x": -524,
+      "y": -172
     },
     {
       "x": -140,
@@ -31,35 +31,35 @@
       "points": [
         {
           "x": -1000,
-          "y": -10
+          "y": 48
         },
         {
-          "x": -640,
-          "y": -10
+          "x": -650,
+          "y": 48
         },
         {
-          "x": -640,
-          "y": -300
+          "x": -650,
+          "y": -262
         },
         {
-          "x": -260,
-          "y": -310
+          "x": -262,
+          "y": -262
         },
         {
-          "x": -260,
-          "y": 110
-        },
-        {
-          "x": 250,
-          "y": 110
+          "x": -262,
+          "y": 162
         },
         {
           "x": 250,
-          "y": -80
+          "y": 162
+        },
+        {
+          "x": 250,
+          "y": -54
         },
         {
           "x": 1000,
-          "y": -80
+          "y": -54
         }
       ]
     }
@@ -69,23 +69,30 @@
       "startTimeRelativeToPrevWave": 0,
       "spawnEntries": [
         {
-          "mobType": "TestMob",
+          "mobType": "Cobra",
           "count": 4,
           "startTime": 0,
           "entryDuration": 1000,
           "routeIndex": 1
         },
         {
-          "mobType": "TestMob",
+          "mobType": "Dwarf",
           "count": 4,
           "startTime": 2000,
           "entryDuration": 1000,
           "routeIndex": 1
         },
         {
-          "mobType": "TestMob",
+          "mobType": "Hedgehog",
           "count": 4,
           "startTime": 4000,
+          "entryDuration": 1000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "Skeleton",
+          "count": 4,
+          "startTime": 6000,
           "entryDuration": 1000,
           "routeIndex": 1
         }

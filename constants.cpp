@@ -1,3 +1,4 @@
+#include <QString>
 #include "constants.h"
 
 namespace Scene {
@@ -17,7 +18,11 @@ extern const int kLevelsCount = 1;
 
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
-extern const QString kTestMobId = "TestMob";
+const QString kTestMobId = "TestMob";
+const QString kSkeletonId = "Skeleton";
+const QString kCobraId = "Cobra";
+const QString kHedgehogId = "Hedgehog";
+const QString kDwarfId = "Dwarf";
 
 namespace TestTower {
 const qreal kAttackRange = 300;
@@ -31,8 +36,32 @@ const qreal kRotationSpeed = 10;
 const int kHealth = 30;
 }
 
+namespace Skeleton {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 50;
+const int kHealth = 200;
+}
+
+namespace Cobra {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 200;
+const int kHealth = 40;
+}
+
+namespace Hedgehog {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 110;
+extern const int kHealth = 80;
+}
+
+namespace Dwarf {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 60;
+extern const int kHealth = 300;
+}
+
 namespace TestProjectile {
-extern const Damage kDamage = Damage(3);
-extern const qreal kSpeed = 500;
+const Damage kDamage = Damage(3);
+const qreal kSpeed = 500;
 }
 }  // namespace Entities

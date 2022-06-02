@@ -13,6 +13,8 @@ class TestMob : public Mob {
   void ApplyDamage(Damage damage) override;
   void SetRoute(Route* route) override;
 
+  QRectF boundingRect() const override;
+
   ~TestMob() override;
 
  protected:
