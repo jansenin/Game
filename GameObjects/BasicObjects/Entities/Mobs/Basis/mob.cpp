@@ -36,5 +36,9 @@ void Mob::SetRoute(Route* route) {
 void Mob::MoveToRouteStart() {
   Entity::setPos(route_->GetStart());
 }
+QRectF Mob::boundingRect() const {
+  QRectF result = Entity::boundingRect();
+  return result.translated(0, - result.height() / 2);
+}
 
 

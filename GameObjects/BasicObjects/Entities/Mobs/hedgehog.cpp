@@ -12,7 +12,9 @@ Hedgehog::Hedgehog(const VectorF& coordinates) :
         H::kHealth,
         H::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kHedgehogDeath, H::kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kHedgehogDeath, H::kTimeBetweenFrames)) {
+  setScale(2);
+}
 
 void Hedgehog::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

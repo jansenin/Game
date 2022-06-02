@@ -9,6 +9,8 @@ class Dwarf : public Mob {
   void SetRoute(Route* route) override;
   void Tick(Time delta) override;
 
+  QRectF boundingRect() const override;
+
  private:
   bool is_destroying_;
 

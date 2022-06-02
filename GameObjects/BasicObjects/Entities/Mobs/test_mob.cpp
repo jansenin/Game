@@ -83,3 +83,8 @@ void TestMob::SetRoute(Route* route) {
   Mob::SetRoute(route);
   MoveToRouteStart();
 }
+QRectF TestMob::boundingRect() const {
+  // because in animation file there is gap between totem and bottom side
+  // of frame(and it's approximately 10px)
+  return Mob::boundingRect().translated(0, 10);
+}

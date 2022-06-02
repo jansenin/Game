@@ -12,7 +12,9 @@ Dwarf::Dwarf(const VectorF& coordinates) :
         D::kHealth,
         D::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kDwarfDeath, D::kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kDwarfDeath, D::kTimeBetweenFrames)) {
+  setScale(3);
+}
 
 void Dwarf::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);
@@ -39,4 +41,8 @@ void Dwarf::Tick(Time delta) {
       route_->Move(this, speed_ * delta.seconds());
     }
   }
+}
+
+QRectF Dwarf::boundingRect() const {
+  return Mob::boundingRect().translated(0, 5);
 }

@@ -12,7 +12,9 @@ Skeleton::Skeleton(const VectorF& coordinates) :
         S::kHealth,
         S::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kSkeletonDeath, S::kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kSkeletonDeath, S::kTimeBetweenFrames)) {
+  setScale(3);
+}
 
 void Skeleton::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

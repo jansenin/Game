@@ -12,7 +12,9 @@ Cobra::Cobra(const VectorF& coordinates) :
         C::kHealth,
         C::kSpeed), is_destroying_(false),
     walk_animation_(animation_),
-    death_animation_(new Animation(P::kCobraDeath, C::kTimeBetweenFrames)) {}
+    death_animation_(new Animation(P::kCobraDeath, C::kTimeBetweenFrames)) {
+  setScale(2);
+}
 
 void Cobra::ApplyDamage(Damage damage) {
   Damageable::ApplyDamage(damage);

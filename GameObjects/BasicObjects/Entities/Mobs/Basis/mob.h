@@ -23,6 +23,8 @@ class Mob : public Entity {
   [[nodiscard]] qreal GetSpeed() const;
   void SetSpeed(qreal speed);
 
+  QRectF boundingRect() const override;
+
  protected:
   Route* route_{nullptr};
   qreal speed_;
