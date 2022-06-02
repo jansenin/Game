@@ -1,5 +1,7 @@
 #include "constants.h"
 
+const bool kDebugMode = true;
+
 namespace Scene {
 const qreal kWidth = 1920;
 const qreal kHeight = 1080;
@@ -8,7 +10,12 @@ const QRectF kRect{
     -kHeight / 2,
     kWidth,
     kHeight};
-extern const qreal kMapTextureZValue = -100;
+const qreal kMapTextureZValue = -100;
+}
+
+namespace UI {
+const qreal kDefaultZValue = 100;
+const QColor kButtonDefaultTextColor = Qt::white;
 }
 
 namespace LevelData {
@@ -17,7 +24,7 @@ extern const int kLevelsCount = 1;
 
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
-extern const QString kTestMobId = "TestMob";
+const QString kTestMobId = "TestMob";
 
 namespace TestTower {
 const qreal kAttackRange = 300;
@@ -32,7 +39,7 @@ const int kHealth = 30;
 }
 
 namespace TestProjectile {
-extern const Damage kDamage = Damage(3);
-extern const qreal kSpeed = 500;
+const Damage kDamage = Damage(3);
+const qreal kSpeed = 500;
 }
 }  // namespace Entities

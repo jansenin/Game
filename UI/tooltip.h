@@ -14,6 +14,9 @@ class Tooltip : public TexturedBox {
   void setPlainText(const QString& text);
   void setHtml(const QString& text);
 
+  void setPos(qreal ax, qreal ay);
+  void setPos(const QPointF& pos);
+
  protected:
   QGraphicsTextItem* text_item_;
 };

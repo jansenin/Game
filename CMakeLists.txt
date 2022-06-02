@@ -28,7 +28,7 @@ set(GAME_OBJECTS
         GameObjects/Entities/Towers/test_tower.cpp
         GameObjects/Entities/Projectiles/autoguided_projectile.cpp
         GameObjects/Entities/Projectiles/test_projectile.cpp
-        GameObjects/Interface/graphics_item.cpp
+        GameObjects/Interface/graphics_object.cpp
         GameObjects/Entities/Projectiles/projectile.cpp)
 
 set(UTILITIES
@@ -44,7 +44,7 @@ set(UTILITIES
         Utilities/utility.cpp)
 
 set(UI
-        UI/tooltip.cpp UI/textured_box.cpp UI/textured_box.h Utilities/Resources/textured_box_pixmaps.h)
+        UI/tooltip.cpp UI/textured_box.cpp UI/textured_box.h Utilities/Resources/textured_box_pixmaps.h UI/linear_menu.cpp UI/linear_menu.h UI/linear_layout.cpp UI/linear_layout.h UI/text_button.cpp UI/text_button.h UI/padding_box.cpp UI/padding_box.h)
 
 add_executable(Game
         ${RESOURCES}

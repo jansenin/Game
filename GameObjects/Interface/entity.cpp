@@ -8,8 +8,8 @@ Entity::Entity(
 
 Entity::Entity(const VectorF& coordinates, Animation* animation, int health)
     : Damageable(health),
-    GraphicsItem(),
-    animation_(animation) {
+      GraphicsObject(),
+      animation_(animation) {
   animation->Frame();
   setPos(coordinates);
   setFlag(ItemSendsGeometryChanges);

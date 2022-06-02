@@ -5,7 +5,7 @@
 #include <QGraphicsScene>
 #include <QList>
 
-class GraphicsItem;
+class GraphicsObject;
 class GameView;
 class Mob;
 class Tower;

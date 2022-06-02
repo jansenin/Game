@@ -1,6 +1,6 @@
 #include "game_scene.h"
 
-#include "GameObjects/Interface/graphics_item.h"
+#include "GameObjects/Interface/graphics_object.h"
 #include "game_view.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "GameObjects/Entities/Towers/tower.h"

@@ -10,15 +10,13 @@
 #include "tickable.h"
 #include "damageable.h"
 #include "Utilities/vector_f.h"
-#include "graphics_item.h"
+#include "graphics_object.h"
 #include "Utilities/animation.h"
 
 class Entity
-    : public QObject,
-      public Tickable,
+    : public Tickable,
       public Damageable,
-      public GraphicsItem {
-  Q_OBJECT
+      public GraphicsObject {
  public:
   Entity(
       const VectorF& coordinates,

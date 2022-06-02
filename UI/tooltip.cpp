@@ -5,12 +5,13 @@
 
 #include "Utilities/Resources/pixmap_loader.h"
 #include "Utilities/vector_f.h"
+#include "constants.h"
 
 Tooltip::Tooltip(QGraphicsItem* parent)
   : TexturedBox(), text_item_(new QGraphicsTextItem()) {
   textured_box_pixmaps_ = PixmapLoader::kDefaultTexturedBoxPixmaps;
-  wrapping_item_ = text_item_;
-  this->setParentItem(parent);
+  SetWrappingItem(text_item_);
+  setZValue(UI::kDefaultZValue);
 }
 
 Tooltip::Tooltip(QString text, QGraphicsItem* parent)
@@ -25,6 +26,8 @@ void Tooltip::setPlainText(const QString& text) {
 
   moveBy(initial_text_width / 2, 0);
   moveBy(- current_text_width / 2, 0);
+
+  prepareGeometryChange();
 }
 
 void Tooltip::setHtml(const QString& text) {
@@ -34,4 +37,16 @@ void Tooltip::setHtml(const QString& text) {
 
   moveBy(initial_text_width / 2, 0);
   moveBy(- current_text_width / 2, 0);
+
+  prepareGeometryChange();
+}
+
+void Tooltip::setPos(qreal ax, qreal ay) {
+  QGraphicsItem::setPos(ax, ay);
+  qreal text_width = boundingRect().width();
+  moveBy(- text_width / 2, 0);
+}
+
+void Tooltip::setPos(const QPointF& pos) {
+  setPos(pos.x(), pos.y());
 }

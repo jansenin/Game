@@ -1,14 +1,14 @@
 #pragma once
 
-#include "QGraphicsItem"
+#include "QGraphicsObject"
 
 #include "Utilities/vector_f.h"
 #include "game_scene.h"
 #include "game_view.h"
 
-class GraphicsItem : public QGraphicsItem {
+class GraphicsObject : public QGraphicsObject {
  public:
-  explicit GraphicsItem(QGraphicsItem* parent = nullptr);
+  explicit GraphicsObject(QGraphicsItem* parent = nullptr);
 
   GameScene* scene();
   GameView* view();

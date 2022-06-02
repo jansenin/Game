@@ -17,6 +17,9 @@ class TestMob : public Mob {
   ~TestMob() override;
 
  protected:
+  QVariant itemChange(GraphicsItemChange change,
+                      const QVariant& value) override;
+
   void keyPressEvent(QKeyEvent* event) override;
   void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 

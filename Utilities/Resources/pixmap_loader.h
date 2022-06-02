@@ -28,26 +28,11 @@ class PixmapLoader {
       static std::vector<QPixmap*> kDisappear;
       static std::vector<QPixmap*> kAppearing;
     };
-
-    class UI {
-     public:
-      class DefaultTexturedBox {
-       public:
-        static QPixmap* kTopLeftCorner;
-        static QPixmap* kTopRightCorner;
-        static QPixmap* kBottomLeftCorner;
-        static QPixmap* kBottomRightCorner;
-
-        static QPixmap* kLeftSide;
-        static QPixmap* kRightSide;
-        static QPixmap* kTopSide;
-        static QPixmap* kBottomSide;
-
-        static QPixmap* kInside;
-      };
-    };
   };
   static TexturedBoxPixmaps kDefaultTexturedBoxPixmaps;
+  static TexturedBoxPixmaps kMenuTexturedBoxPixmaps;
+  static TexturedBoxPixmaps kMenu2TexturedBoxPixmaps;
+  static TexturedBoxPixmaps kButtonTexturedBoxPixmaps;
 
   static void LoadPixmaps();
 
@@ -63,4 +48,7 @@ class PixmapLoader {
   static void LoadFireTotemAnimations();
   static void LoadUI();
   static void LoadDefaultTextureBox();
+  static void LoadMenuTextureBox();
+  static void LoadMenu2TextureBox();
+  static void LoadButtonTextureBox();
 };

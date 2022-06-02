@@ -20,19 +20,10 @@ std::vector<QPixmap*> P::FireTotem::kAppearing;
 
 // -----------------------------------------------------------------------------
 
-QPixmap* P::UI::DefaultTexturedBox::kTopLeftCorner;
-QPixmap* P::UI::DefaultTexturedBox::kTopRightCorner;
-QPixmap* P::UI::DefaultTexturedBox::kBottomLeftCorner;
-QPixmap* P::UI::DefaultTexturedBox::kBottomRightCorner;
-
-QPixmap* P::UI::DefaultTexturedBox::kLeftSide;
-QPixmap* P::UI::DefaultTexturedBox::kRightSide;
-QPixmap* P::UI::DefaultTexturedBox::kTopSide;
-QPixmap* P::UI::DefaultTexturedBox::kBottomSide;
-
-QPixmap* P::UI::DefaultTexturedBox::kInside;
-
 TexturedBoxPixmaps PixmapLoader::kDefaultTexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kMenuTexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kMenu2TexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kButtonTexturedBoxPixmaps;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
@@ -114,39 +105,63 @@ void PixmapLoader::LoadFireTotemAnimations() {
 
 void PixmapLoader::LoadUI() {
   LoadDefaultTextureBox();
+  LoadMenuTextureBox();
+  LoadMenu2TextureBox();
+  LoadButtonTextureBox();
 }
 
 void PixmapLoader::LoadDefaultTextureBox() {
-  using T = P::UI::DefaultTexturedBox;
-
-  T::kTopLeftCorner = new QPixmap(
-      ":GUI/Default textured box/top_left_corner.png");
-  T::kTopRightCorner = new QPixmap(
-      ":GUI/Default textured box/top_right_corner.png");
-  T::kBottomLeftCorner = new QPixmap(
-      ":GUI/Default textured box/bottom_left_corner.png");
-  T::kBottomRightCorner = new QPixmap(
-      ":GUI/Default textured box/bottom_right_corner.png");
-  T::kLeftSide = new QPixmap(
-      ":GUI/Default textured box/left_side.png");
-  T::kRightSide = new QPixmap(
-      ":GUI/Default textured box/right_side.png");
-  T::kTopSide = new QPixmap(
-      ":GUI/Default textured box/top_side.png");
-  T::kBottomSide = new QPixmap(
-      ":GUI/Default textured box/bottom_side.png");
-  T::kInside = new QPixmap(
-      ":GUI/Default textured box/inside.png");
-
   kDefaultTexturedBoxPixmaps = TexturedBoxPixmaps {
-      T::kTopLeftCorner,
-      T::kTopRightCorner,
-      T::kBottomLeftCorner,
-      T::kBottomRightCorner,
-      T::kLeftSide,
-      T::kRightSide,
-      T::kTopSide,
-      T::kBottomSide,
-      T::kInside
+      new QPixmap(":GUI/Textured boxes/Default/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/inside.png")
+  };
+}
+
+void PixmapLoader::LoadMenuTextureBox() {
+  kMenuTexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Menu/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/inside.png")
+  };
+}
+
+void PixmapLoader::LoadMenu2TextureBox() {
+  kMenu2TexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Menu2/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/inside.png")
+  };
+}
+
+void PixmapLoader::LoadButtonTextureBox() {
+  kButtonTexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Button/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/inside.png")
   };
 }

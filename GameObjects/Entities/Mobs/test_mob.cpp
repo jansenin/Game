@@ -18,6 +18,7 @@ void TestMob::Tick(Time delta) {
       route_->Move(this, speed_ * delta.seconds());
     }
   }
+  test_tooltip->setPos(scenePos() + QPointF(0, 80));
 }
 
 void TestMob::keyPressEvent(QKeyEvent* event) {
@@ -42,6 +43,13 @@ void TestMob::keyPressEvent(QKeyEvent* event) {
 
 void TestMob::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   scene()->addItem(new TestMob(pos() + VectorF{100, 100}));
+  static int tooltip_number = 0;
+  tooltip_number++;
+  test_tooltip->setHtml(
+      "Test tooltip line 1 <br>"
+      "Test   tooltip line 2 <br>"
+      "Test very long tooltip line with line break in the end" +
+      QString::number(tooltip_number));
 }
 
 TestMob::TestMob(const VectorF& coordinates)
@@ -60,12 +68,12 @@ TestMob::TestMob(const VectorF& coordinates)
         new Animation(PixmapLoader::Pixmaps::FireTotem::kDisappear, 50_ms)),
     appearing_animation_(animation_),
     is_creating_(true),
-    test_tooltip(new Tooltip(this)) {
+    test_tooltip(new Tooltip()) {
   setFlag(QGraphicsItem::ItemIsFocusable, true);
   setAcceptHoverEvents(true);
   setScale(1.4);
 
-  test_tooltip->setPos(0, 50);
+  test_tooltip->setPos(scenePos() + QPointF(0, 80));
   test_tooltip->setVisible(false);
   test_tooltip->setHtml(
       "Test tooltip line 1 <br>"
@@ -100,4 +108,12 @@ void TestMob::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
 
 void TestMob::hoverLeaveEvent(QGraphicsSceneHoverEvent* event) {
   test_tooltip->setVisible(false);
+}
+
+QVariant TestMob::itemChange(QGraphicsItem::GraphicsItemChange change,
+                             const QVariant& value) {
+  if (change == GraphicsItemChange::ItemSceneHasChanged) {
+    scene()->addItem(test_tooltip);
+  }
+  return QGraphicsItem::itemChange(change, value);
 }
