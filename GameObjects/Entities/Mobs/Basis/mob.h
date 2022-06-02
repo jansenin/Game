@@ -28,6 +28,10 @@ class Mob : public Entity {
 
   void Tick(Time delta) override;
 
+  QRectF boundingRect() const override;
+
+  virtual ~Mob();
+
  protected:
   Route* route_{nullptr};
   qreal speed_;

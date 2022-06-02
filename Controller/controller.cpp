@@ -8,6 +8,10 @@
 
 #include "GameObjects/Entities/Mobs/test_mob.h"
 #include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/Entities/Mobs/skeleton.h"
+#include "GameObjects/Entities/Mobs/hedgehog.h"
+#include "GameObjects/Entities/Mobs/cobra.h"
+#include "GameObjects/Entities/Mobs/dwarf.h"
 #include "constants.h"
 #include "UI/button.h"
 #include "UI/linear_menu.h"
@@ -96,64 +100,65 @@ void Controller::SetupScene() {
     main_menu->AddItem(test_button);
     main_menu->SetType(LinearLayout::Type::Vertical);
 
-    {
-      LinearLayout* test_hor_layout = new LinearLayout();
-      test_hor_layout->AddItem(new TextButton({0, 0}, "test 1"));
-      test_hor_layout->AddItem(new TextButton({0, 0}, "test 2"));
-      test_hor_layout->SetType(LinearLayout::Type::Horizontal);
-      test_hor_layout->SetSpacing(20);
-      test_hor_layout->setPos(200, 200);
-
-      LinearLayout* test_ver_layout = new LinearLayout();
-      test_ver_layout->AddItem(new TextButton({0, 0}, "test 1"));
-      test_ver_layout->AddItem(new TextButton({0, 0}, "test 2"));
-      test_ver_layout->SetType(LinearLayout::Type::Vertical);
-      test_ver_layout->SetSpacing(20);
-      test_ver_layout->setPos(200, 300);
-
-      scene_->addItem(test_hor_layout);
-      scene_->addItem(test_ver_layout);
-    }
-    {
-      LinearMenu* test_hor_menu = new LinearMenu();
-      test_hor_menu->AddItem(new TextButton({0, 0}, "test 1"));
-      test_hor_menu->AddItem(new TextButton({0, 0}, "test 2"));
-      test_hor_menu->SetType(LinearLayout::Type::Horizontal);
-      test_hor_menu->SetTexturedBoxPixmaps(
-          PixmapLoader::kMenu2TexturedBoxPixmaps);
-      test_hor_menu->SetPadding(50);
-      test_hor_menu->SetSpacing(20);
-      test_hor_menu->setPos(-200, 100);
-
-      LinearMenu* test_ver_menu = new LinearMenu();
-      test_ver_menu->AddItem(new TextButton({0, 0}, "test 1"));
-      test_ver_menu->AddItem(new TextButton({0, 0}, "test 2"));
-      test_ver_menu->SetType(LinearLayout::Type::Vertical);
-      test_ver_menu->SetTexturedBoxPixmaps(
-          PixmapLoader::kMenu2TexturedBoxPixmaps);
-      test_ver_menu->SetPadding(50);
-      test_ver_menu->SetSpacing(20);
-      test_ver_menu->setPos(-600, 100);
-
-      scene_->addItem(test_hor_menu);
-      scene_->addItem(test_ver_menu);
-    }
-    {
-      TextButton* text_button = new TextButton({0, 0}, "Button");
-      PaddingBox* padding_box = new PaddingBox(text_button, 20);
-      padding_box->setPos(0, 0);
-
-      scene_->addItem(padding_box);
-    }
-    {
-      TextButton* text_button = new TextButton({-300, 0}, "Button");
-
-      connect(text_button, &TextButton::Clicked, [text_button]() {
-        text_button->SetText("Button Button");
-      });
-
-      scene_->addItem(text_button);
-    }
+    //{
+    //  LinearLayout* test_hor_layout = new LinearLayout();
+    //  test_hor_layout->AddItem(new TextButton({0, 0}, "test 1"));
+    //  test_hor_layout->AddItem(new TextButton({0, 0}, "test 2"));
+    //  test_hor_layout->SetType(LinearLayout::Type::Horizontal);
+    //  test_hor_layout->SetSpacing(20);
+    //  test_hor_layout->setPos(200, 200);
+    //
+    //  LinearLayout* test_ver_layout = new LinearLayout();
+    //  test_ver_layout->AddItem(new TextButton({0, 0}, "test 1"));
+    //  test_ver_layout->AddItem(new TextButton({0, 0}, "test 2"));
+    //  test_ver_layout->SetType(LinearLayout::Type::Vertical);
+    //  test_ver_layout->SetSpacing(20);
+    //  test_ver_layout->setPos(200, 300);
+    //
+    //  scene_->addItem(test_hor_layout);
+    //  scene_->addItem(test_ver_layout);
+    //}
+    //{
+    //  LinearMenu* test_hor_menu = new LinearMenu();
+    //  test_hor_menu->AddItem(new TextButton({0, 0}, "test 1"));
+    //  test_hor_menu->AddItem(new TextButton({0, 0}, "test 2"));
+    //  test_hor_menu->SetType(LinearLayout::Type::Horizontal);
+    //  test_hor_menu->SetTexturedBoxPixmaps(
+    //      PixmapLoader::kMenu2TexturedBoxPixmaps);
+    //  test_hor_menu->SetPadding(50);
+    //  test_hor_menu->SetSpacing(20);
+    //  test_hor_menu->setPos(-200, 100);
+    //
+    //  LinearMenu* test_ver_menu = new LinearMenu();
+    //  test_ver_menu->AddItem(new TextButton({0, 0}, "test 1"));
+    //  test_ver_menu->AddItem(new TextButton({0, 0}, "test 2"));
+    //  test_ver_menu->SetType(LinearLayout::Type::Vertical);
+    //  test_ver_menu->SetTexturedBoxPixmaps(
+    //      PixmapLoader::kMenu2TexturedBoxPixmaps);
+    //  test_ver_menu->SetPadding(50);
+    //  test_ver_menu->SetSpacing(20);
+    //  test_ver_menu->setPos(-600, 100);
+    //
+    //  scene_->addItem(test_hor_menu);
+    //  scene_->addItem(test_ver_menu);
+    //}
+    //{
+    //  TextButton* text_button = new TextButton({0, 0}, "Button");
+    //  PaddingBox* padding_box = new PaddingBox(text_button, 20);
+    //  padding_box->setPos(0, 0);
+    //
+    //  scene_->addItem(padding_box);
+    //}
+    //{
+    //  TextButton* text_button = new TextButton({-300, 0}, "Button");
+    //
+    //  connect(text_button, &TextButton::Clicked, [text_button]() {
+    //    text_button->SetText(
+    //        text_button->GetTextDocument()->toPlainText() + " Button");
+    //  });
+    //
+    //  scene_->addItem(text_button);
+    //}
 
     scene_->addItem(main_menu);
     main_menu->setPos(
@@ -166,7 +171,7 @@ void Controller::SetupScene() {
 }
 
 void Controller::LaunchTickTimer() {
-  tick_timer_->setInterval(10);
+  tick_timer_->setInterval(1000 / kFPS);
   tick_timer_->start();
   connect(tick_timer_, &QTimer::timeout, this, &Controller::TickAllTickables);
 }
@@ -182,7 +187,7 @@ void Controller::TickAllTickables() {
   // because we don't want to emit GameOver more than one time
   assert(base_hp_ > 0);
 
-  Time delta = Time(10);
+  Time delta = Time(1000 / kFPS);
   for (QGraphicsItem* graphics_item : scene_->items()) {
     if (Tickable* tickable = dynamic_cast<Tickable*>(graphics_item)) {
       // TODO(jansenin): make time dependency(it
@@ -201,5 +206,5 @@ void Controller::TickAllTickables() {
 }
 
 void Controller::DealDamageToBase(int damage) {
-  damage_per_current_tick_ += damage;
+  // damage_per_current_tick_ += damage;
 }

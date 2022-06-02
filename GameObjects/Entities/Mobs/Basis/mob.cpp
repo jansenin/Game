@@ -53,3 +53,15 @@ void Mob::Tick(Time delta) {
     }
   }
 }
+
+Mob::~Mob() {
+  if (route_ != nullptr) {
+    route_->RemoveEntity(this);
+  }
+}
+
+QRectF Mob::boundingRect() const {
+  QRectF result = Entity::boundingRect();
+  result.translate(0, -result.height() / 2);
+  return result;
+}

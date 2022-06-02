@@ -13,6 +13,9 @@ Entity::Entity(const VectorF& coordinates, Animation* animation, int health)
   animation->Frame();
   setPos(coordinates);
   setFlag(ItemSendsGeometryChanges);
+  connect(this, &Entity::yChanged, [this](){
+    setZValue(pos().y());
+  });
 }
 
 QRectF Entity::boundingRect() const {
@@ -29,7 +32,7 @@ void Entity::paint(QPainter* painter,
   static QPen pen(QColor(0, 0, 255, 50));
   painter->setPen(pen);
   // painter->drawRect(boundingRect());
-  painter->drawPixmap(Entity::boundingRect().toRect(), *animation_->Frame());
+  painter->drawPixmap(boundingRect().toRect(), *animation_->Frame());
   painter->restore();
 }
 

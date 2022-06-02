@@ -85,6 +85,7 @@ TestMob::~TestMob() {
   delete idle_animation_;
   delete disappearing_animation_;
   delete appearing_animation_;
+  test_tooltip->deleteLater();
 }
 
 void TestMob::ApplyDamage(Damage damage) {

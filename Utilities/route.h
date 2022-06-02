@@ -3,6 +3,8 @@
 #include <vector>
 #include <map>
 
+#include <QPointF>
+
 #include "GameObjects/Interface/entity.h"
 #include "Utilities/vector_f.h"
 

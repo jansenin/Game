@@ -21,7 +21,6 @@ class PixmapLoader {
     static std::vector<QPixmap*> kLevelMaps;
     static QPixmap* kEmpty;
 
-    // For animations test
     class FireTotem {
      public:
       static QPixmap* kAnimations;
@@ -29,11 +28,39 @@ class PixmapLoader {
       static std::vector<QPixmap*> kDisappear;
       static std::vector<QPixmap*> kAppearing;
     };
+
+    class Skeleton {
+     public:
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
+
+    class Cobra {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
+
+    class Hedgehog {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
+
+    class Dwarf {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
   };
-  static TexturedBoxPixmaps kDefaultTexturedBoxPixmaps;
+
   static TexturedBoxPixmaps kMenuTexturedBoxPixmaps;
   static TexturedBoxPixmaps kMenu2TexturedBoxPixmaps;
   static TexturedBoxPixmaps kButtonTexturedBoxPixmaps;
+  static TexturedBoxPixmaps kDefaultTexturedBoxPixmaps;
 
   static void LoadPixmaps();
 
@@ -47,6 +74,11 @@ class PixmapLoader {
       int y);
 
   static void LoadFireTotemAnimations();
+  static void LoadSkeletonAnimations();
+  static void LoadCobraAnimations();
+  static void LoadHedgehogAnimations();
+  static void LoadDwarfAnimations();
+
   static void LoadUI();
   static void LoadDefaultTextureBox();
   static void LoadMenuTextureBox();

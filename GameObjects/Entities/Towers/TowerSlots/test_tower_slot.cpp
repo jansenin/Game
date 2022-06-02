@@ -1,7 +1,9 @@
 #include "test_tower_slot.h"
 
+#include <QGraphicsScene>
+
 #include "GameObjects/Entities/Towers/test_tower.h"
-#include <Utilities/Resources/pixmap_loader.h>
+#include "Utilities/Resources/pixmap_loader.h"
 
 TestTowerSlot::TestTowerSlot(const VectorF& coordinates) : TowerSlot(
     coordinates, PixmapLoader::Pixmaps::kTestTowerSlot) {}
