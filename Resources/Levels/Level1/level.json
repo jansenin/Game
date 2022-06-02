@@ -76,7 +76,7 @@
           "routeIndex": 1
         },
         {
-          "mobType": "Skeleton",
+          "mobType": "Dwarf",
           "count": 4,
           "startTime": 2000,
           "entryDuration": 1000,

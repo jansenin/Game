@@ -17,8 +17,21 @@ QPixmap* P::kFireTotemAnimations;
 std::vector<QPixmap*> P::kFireTotemIdle;
 std::vector<QPixmap*> P::kFireTotemDisappear;
 std::vector<QPixmap*> P::kFireTotemAppearing;
+
 std::vector<QPixmap*> P::kSkeletonWalk;
 std::vector<QPixmap*> P::kSkeletonDeath;
+
+QPixmap* P::kCobraAnimations;
+std::vector<QPixmap*> P::kCobraWalk;
+std::vector<QPixmap*> P::kCobraDeath;
+
+QPixmap* P::kHedgehogAnimations;
+std::vector<QPixmap*> P::kHedgehogWalk;
+std::vector<QPixmap*> P::kHedgehogDeath;
+
+QPixmap* P::kDwarfAnimations;
+std::vector<QPixmap*> P::kDwarfWalk;
+std::vector<QPixmap*> P::kDwarfDeath;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
@@ -34,6 +47,9 @@ void PixmapLoader::LoadPixmaps() {
   }
   LoadFireTotemAnimations();
   LoadSkeletonAnimations();
+  LoadCobraAnimations();
+  LoadHedgehogAnimations();
+  LoadDwarfAnimations();
 }
 
 std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
@@ -140,4 +156,100 @@ void PixmapLoader::LoadSkeletonAnimations() {
 
   delete walk_animation;
   delete death_animation;
+}
+
+void PixmapLoader::LoadCobraAnimations() {
+    // file size - 256x160
+    // 5 frame rows, 8 frame columns
+    const int frame_width = 256 / 8;
+    const int frame_height = 160 / 5;
+    const int death_animation_frames_count = 6;
+    const int walk_animation_frames_count = 8;
+    // row and column start from 0
+    const int death_animation_row = 4;
+    const int death_animation_column = 0;
+    const int walk_animation_row = 1;
+    const int walk_animation_column = 0;
+
+    P::kCobraAnimations = new QPixmap(":images/cobra.png");
+
+    P::kCobraWalk = CreateHorizontalFramesVector(
+        P::kCobraAnimations,
+        frame_width,
+        frame_height,
+        walk_animation_frames_count,
+        walk_animation_column * frame_width,
+        walk_animation_row * frame_height);
+
+    P::kCobraDeath = CreateHorizontalFramesVector(
+        P::kCobraAnimations,
+        frame_width,
+        frame_height,
+        death_animation_frames_count,
+        death_animation_column * frame_width,
+        death_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadHedgehogAnimations() {
+    // file size - 128x128
+    // 4 frame rows, 4 frame columns
+    const int frame_width = 128 / 4;
+    const int frame_height = 128 / 4;
+    const int death_animation_frames_count = 3;
+    const int walk_animation_frames_count = 4;
+    // row and column start from 0
+    const int death_animation_row = 3;
+    const int death_animation_column = 0;
+    const int walk_animation_row = 1;
+    const int walk_animation_column = 0;
+
+    P::kHedgehogAnimations = new QPixmap(":images/hedgehog.png");
+
+    P::kHedgehogWalk = CreateHorizontalFramesVector(
+        P::kHedgehogAnimations,
+        frame_width,
+        frame_height,
+        walk_animation_frames_count,
+        walk_animation_column * frame_width,
+        walk_animation_row * frame_height);
+
+    P::kHedgehogDeath = CreateHorizontalFramesVector(
+        P::kHedgehogAnimations,
+        frame_width,
+        frame_height,
+        death_animation_frames_count,
+        death_animation_column * frame_width,
+        death_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadDwarfAnimations() {
+  // file size - 512x256
+  // 8 frame rows, 8 frame columns
+  const int frame_width = 512 / 8;
+  const int frame_height = 256 / 8;
+  const int death_animation_frames_count = 7;
+  const int walk_animation_frames_count = 8;
+  // row and column start from 0
+  const int death_animation_row = 7;
+  const int death_animation_column = 0;
+  const int walk_animation_row = 1;
+  const int walk_animation_column = 0;
+
+  P::kDwarfAnimations = new QPixmap(":images/dwarf.png");
+
+  P::kDwarfWalk = CreateHorizontalFramesVector(
+      P::kDwarfAnimations,
+      frame_width,
+      frame_height,
+      walk_animation_frames_count,
+      walk_animation_column * frame_width,
+      walk_animation_row * frame_height);
+
+  P::kDwarfDeath = CreateHorizontalFramesVector(
+      P::kDwarfAnimations,
+      frame_width,
+      frame_height,
+      death_animation_frames_count,
+      death_animation_column * frame_width,
+      death_animation_row * frame_height);
 }

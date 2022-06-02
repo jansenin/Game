@@ -1,9 +1,10 @@
 #pragma once
 #include "Basis/mob.h"
 
-class Skeleton : public Mob {
+
+class Dwarf : public Mob {
  public:
-  explicit Skeleton(const VectorF& coordinates = {0, 0});
+  explicit Dwarf(const VectorF& coordinates = {0, 0});
   void ApplyDamage(Damage damage) override;
   void SetRoute(Route* route) override;
   void Tick(Time delta) override;
@@ -14,5 +15,4 @@ class Skeleton : public Mob {
   Animation* walk_animation_;
   Animation* death_animation_;
 };
-
 

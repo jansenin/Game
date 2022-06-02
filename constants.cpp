@@ -20,6 +20,9 @@ namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
 const QString kTestMobId = "TestMob";
 const QString kSkeletonId = "Skeleton";
+const QString kCobraId = "Cobra";
+const QString kHedgehogId = "Hedgehog";
+const QString kDwarfId = "Dwarf";
 
 namespace TestTower {
 const qreal kAttackRange = 300;
@@ -36,7 +39,25 @@ const int kHealth = 30;
 namespace Skeleton {
 const Time kTimeBetweenFrames = 50_ms;
 const qreal kSpeed = 50;
-const int kHealth = 100;
+const int kHealth = 200;
+}
+
+namespace Cobra {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 200;
+const int kHealth = 40;
+}
+
+namespace Hedgehog {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 110;
+extern const int kHealth = 80;
+}
+
+namespace Dwarf {
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kSpeed = 60;
+extern const int kHealth = 300;
 }
 
 namespace TestProjectile {
