@@ -43,22 +43,22 @@ const int kCoinAppearChance = 3;
 
 namespace MagicTower {
 const qreal kAttackRangeLevel1 = 300;
-const Time kAttackCooldownLevel1 = Time(500);
+const Time kAttackCooldownLevel1 = Time(5000);
 const qreal kAttackRangeLevel2 = 400;
-const Time kAttackCooldownLevel2 = Time(450);
+const Time kAttackCooldownLevel2 = Time(4000);
 const qreal kAttackRangeLevel3 = 600;
-const Time kAttackCooldownLevel3 = Time(400);
+const Time kAttackCooldownLevel3 = Time(3000);
 const int kMaxLevel = 3;
 const int kPrice = 110;
 }
 
 namespace CannonTower {
 const qreal kAttackRangeLevel1 = 200;
-const Time kAttackCooldownLevel1 = Time(200);
+const Time kAttackCooldownLevel1 = Time(2000);
 const qreal kAttackRangeLevel2 = 300;
-const Time kAttackCooldownLevel2 = Time(150);
+const Time kAttackCooldownLevel2 = Time(1500);
 const qreal kAttackRangeLevel3 = 500;
-const Time kAttackCooldownLevel3 = Time(100);
+const Time kAttackCooldownLevel3 = Time(1000);
 const int kMaxLevel = 3;
 const int kPrice = 70;
 }
@@ -91,15 +91,22 @@ const int kHealth = 300;
 const int kDamageToBase = 1;
 }
 
-namespace TestProjectile {
-const Damage kDamage = Damage(10);
-const qreal kSpeed = 100;
+namespace MagicProjectile {
+const Damage kDamageLevel1 = Damage(10);
+const Damage kDamageLevel2 = Damage(20);
+const Damage kDamageLevel3 = Damage(40);
+const qreal kSpeed = 50;
 const qreal kAcceleration = 1500;
-const qreal kMaxSpeed = 500;
+const qreal kMaxSpeed = 300;
 const qreal kEnemyFindDistance = 300;
-const qreal kCrossAccelerationPerPixel = 900.0 / 100.0;
-const Time kCrossAccelerationCycleDuration = 1500_ms;
-const qreal kMaxCrossAcceleration = 600;
+const Time kTimeBetweenFrames = 50_ms;
+}
+
+namespace CannonProjectile {
+const Damage kDamageLevel1 = Damage(5);
+const Damage kDamageLevel2 = Damage(10);
+const Damage kDamageLevel3 = Damage(20);
+const qreal kSpeed = 500;
 }
 }  // namespace Entities
 

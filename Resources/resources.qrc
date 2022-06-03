@@ -1,13 +1,21 @@
 <RCC>
     <qresource>
         <file>images/background.png</file>
-        <file>images/test_bullet.png</file>
         <file>images/magic_tower_level1.png</file>
         <file>images/magic_tower_level2.png</file>
         <file>images/magic_tower_level3.png</file>
         <file>images/cannon_tower_level1.png</file>
         <file>images/cannon_tower_level2.png</file>
         <file>images/cannon_tower_level3.png</file>
+        <file>images/magic_projectile_level1.png</file>
+        <file>images/magic_projectile_level2.png</file>
+        <file>images/magic_projectile_level3.png</file>
+        <file>images/magic_projectile_animations_level1.png</file>
+        <file>images/magic_projectile_animations_level2.png</file>
+        <file>images/magic_projectile_animations_level3.png</file>
+        <file>images/cannon_projectile_level1.png</file>
+        <file>images/cannon_projectile_level2.png</file>
+        <file>images/cannon_projectile_level3.png</file>
         <file>images/tower_slot.png</file>
 
 

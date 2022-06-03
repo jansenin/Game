@@ -2,6 +2,7 @@
 #include "constants.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "Controller/controller.h"
+#include "GameObjects/Entities/Projectiles/magic_projectile.h"
 
 using P = PixmapLoader::Pixmaps;
 
@@ -48,3 +49,10 @@ void MagicTower::Upgrade() {
 void MagicTower::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   Upgrade();
 }
+
+Projectile* MagicTower::SpawnProjectile(const VectorF& coordinates,
+                                        Entity* target,
+                                        int level) {
+  return new MagicProjectile(coordinates, target, level);
+}
+

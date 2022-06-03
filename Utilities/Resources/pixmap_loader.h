@@ -13,7 +13,12 @@ class PixmapLoader {
    public:
     // TODO(jansenin): maybe make this readonly
     static QPixmap* kBackground;
-    static QPixmap* kTestBullet;
+    static QPixmap* kMagicProjectileLevel1;
+    static QPixmap* kMagicProjectileLevel2;
+    static QPixmap* kMagicProjectileLevel3;
+    static QPixmap* kCannonProjectileLevel1;
+    static QPixmap* kCannonProjectileLevel2;
+    static QPixmap* kCannonProjectileLevel3;
     static QPixmap* kTowerSlot;
     static QPixmap* kMagicTowerLevel1;
     static QPixmap* kMagicTowerLevel2;
@@ -80,6 +85,15 @@ class PixmapLoader {
       static QPixmap* kAnimations;
       static std::vector<QPixmap*> kExplosion;
     };
+    class MagicProjectile {
+     public:
+      static QPixmap* kAnimationsLevel1;
+      static QPixmap* kAnimationsLevel2;
+      static QPixmap* kAnimationsLevel3;
+      static std::vector<QPixmap*> kDestroyingLevel1;
+      static std::vector<QPixmap*> kDestroyingLevel2;
+      static std::vector<QPixmap*> kDestroyingLevel3;
+    };
   };
 
   static TexturedBoxPixmaps kMenuTexturedBoxPixmaps;
@@ -107,6 +121,7 @@ class PixmapLoader {
   static void LoadBearTrapAnimations();
   static void LoadBombAnimations();
   static void LoadCoinAnimations();
+  static void LoadMagicProjectileAnimations();
 
   static void LoadUI();
   static void LoadDefaultTextureBox();

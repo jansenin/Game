@@ -24,7 +24,7 @@ set(GAME_OBJECTS
         GameObjects/Entities/Towers/tower.cpp
         GameObjects/Entities/Towers/TowerSlots/tower_slot.cpp
         GameObjects/Entities/Projectiles/autoguided_projectile.cpp
-        GameObjects/Entities/Projectiles/test_projectile.cpp
+        GameObjects/Entities/Projectiles/magic_projectile.cpp
         GameObjects/Interface/graphics_object.cpp
         GameObjects/Entities/Projectiles/projectile.cpp
         GameObjects/Entities/Mobs/skeleton.cpp
@@ -38,7 +38,7 @@ set(GAME_OBJECTS
         GameObjects/Entities/Traps/bomb.cpp
         GameObjects/coin.cpp
         GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp
-        GameObjects/Entities/Projectiles/linear_test_projectile.cpp)
+        GameObjects/Entities/Projectiles/cannon_projectile.cpp)
 
 set(UTILITIES
         Utilities/damage.cpp
