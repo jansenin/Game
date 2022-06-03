@@ -25,7 +25,8 @@ class Tower : public Entity {
         int health = 0);
 
   virtual void Upgrade();
-  virtual Projectile* SpawnProjectile(const VectorF& coordinates, Entity* target, int level);
+  virtual Projectile* SpawnProjectile(
+      const VectorF& coordinates, Entity* target, int level);
 
   void Tick(Time delta) override;
 
