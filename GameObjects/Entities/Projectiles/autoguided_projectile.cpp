@@ -19,11 +19,11 @@ AutoguidedProjectile::AutoguidedProjectile(
     : Projectile(coordinates, animation),
     target_(target),
     speed_(
-        VectorF(target->scenePos() - scenePos()).normalized() * start_speed),
+      VectorF(target->scenePos() - scenePos()).normalized() * start_speed),
     max_speed_(max_speed),
     acceleration_(acceleration),
     enemy_find_distance_(enemy_find_distance),
-    damage_(damage) {
+    damage_(damage), is_destroying_(false) {
   connect(target_, &Entity::destroyed, this,
           &AutoguidedProjectile::FindNewTargetOrDie);
 }
@@ -63,7 +63,7 @@ void AutoguidedProjectile::Tick(Time delta) {
 
   if (target_->collidesWithItem(this)) {
     target_->ApplyDamage(damage_);
-    deleteLater();
+    is_destroying_ = true;
   }
 }
 

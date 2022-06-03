@@ -98,14 +98,21 @@ extern const int kHealth;
 extern const int kDamageToBase;
 }
 
-namespace TestProjectile {
-extern const Damage kDamage;
+namespace MagicProjectile {
+extern const Damage kDamageLevel1;
+extern const Damage kDamageLevel2;
+extern const Damage kDamageLevel3;
 extern const qreal kSpeed;
 extern const qreal kAcceleration;
 extern const qreal kMaxSpeed;
 extern const qreal kEnemyFindDistance;
-extern const qreal kCrossAccelerationPerPixel;
-extern const Time kCrossAccelerationCycleDuration;
-extern const qreal kMaxCrossAcceleration;
+extern const Time kTimeBetweenFrames;
+}
+
+namespace CannonProjectile {
+extern const Damage kDamageLevel1;
+extern const Damage kDamageLevel2;
+extern const Damage kDamageLevel3;
+extern const qreal kSpeed;
 }
 }  // namespace Entities

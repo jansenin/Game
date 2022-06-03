@@ -6,7 +6,12 @@
 using P = PixmapLoader::Pixmaps;
 
 QPixmap* P::kBackground;
-QPixmap* P::kTestBullet;
+QPixmap* P::kMagicProjectileLevel1;
+QPixmap* P::kMagicProjectileLevel2;
+QPixmap* P::kMagicProjectileLevel3;
+QPixmap* P::kCannonProjectileLevel1;
+QPixmap* P::kCannonProjectileLevel2;
+QPixmap* P::kCannonProjectileLevel3;
 QPixmap* P::kMagicTowerLevel1;
 QPixmap* P::kMagicTowerLevel2;
 QPixmap* P::kMagicTowerLevel3;
@@ -37,7 +42,6 @@ std::vector<QPixmap*> P::kBearTrapRepairing;
 std::vector<QPixmap*> P::kCoinIdle;
 QPixmap* P::kCoinAnimations;
 
-
 QPixmap* P::FireTotem::kAnimations;
 std::vector<QPixmap*> P::FireTotem::kIdle;
 std::vector<QPixmap*> P::FireTotem::kDisappear;
@@ -57,9 +61,16 @@ std::vector<QPixmap*> P::Hedgehog::kDeath;
 QPixmap* P::Dwarf::kAnimations;
 std::vector<QPixmap*> P::Dwarf::kWalk;
 std::vector<QPixmap*> P::Dwarf::kDeath;
+
 QPixmap* P::Explosion::kAnimations;
 std::vector<QPixmap*> P::Explosion::kExplosion;
 
+QPixmap* P::MagicProjectile::kAnimationsLevel1;
+QPixmap* P::MagicProjectile::kAnimationsLevel2;
+QPixmap* P::MagicProjectile::kAnimationsLevel3;
+std::vector<QPixmap*> P::MagicProjectile::kDestroyingLevel1;
+std::vector<QPixmap*> P::MagicProjectile::kDestroyingLevel2;
+std::vector<QPixmap*> P::MagicProjectile::kDestroyingLevel3;
 // -----------------------------------------------------------------------------
 
 TexturedBoxPixmaps PixmapLoader::kDefaultTexturedBoxPixmaps;
@@ -69,7 +80,18 @@ TexturedBoxPixmaps PixmapLoader::kButtonTexturedBoxPixmaps;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
-  P::kTestBullet = new QPixmap(":images/test_bullet.png");
+  P::kMagicProjectileLevel1 =
+      new QPixmap(":images/magic_projectile_level1.png");
+  P::kMagicProjectileLevel2 =
+      new QPixmap(":images/magic_projectile_level2.png");
+  P::kMagicProjectileLevel3 =
+      new QPixmap(":images/magic_projectile_level3.png");
+  P::kCannonProjectileLevel1 =
+      new QPixmap(":images/cannon_projectile_level1.png");
+  P::kCannonProjectileLevel2 =
+      new QPixmap(":images/cannon_projectile_level2.png");
+  P::kCannonProjectileLevel3 =
+      new QPixmap(":images/cannon_projectile_level3.png");
   P::kBearTrap = new QPixmap(":images/bear_trap.png");
   P::kTowerSlot = new QPixmap(":images/tower_slot.png");
   P::kMagicTowerLevel1 = new QPixmap(":images/magic_tower_level1.png");
@@ -80,8 +102,8 @@ void PixmapLoader::LoadPixmaps() {
   P::kCannonTowerLevel3 = new QPixmap(":images/cannon_tower_level3.png");
   for (int i = 1; i <= LevelData::kLevelsCount; ++i) {
     P::kLevelMaps.push_back(new QPixmap(":Levels/Level"
-    + QString::number(i)
-    + "/map.png"));
+                                            + QString::number(i)
+                                            + "/map.png"));
   }
   P::kEmpty = new QPixmap();
 
@@ -95,6 +117,7 @@ void PixmapLoader::LoadPixmaps() {
   LoadDwarfAnimations();
   LoadExplosionAnimation();
   LoadUI();
+  LoadMagicProjectileAnimations();
 }
 
 std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
@@ -106,7 +129,7 @@ std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
     int y) {
   std::vector<QPixmap*> result;
 
-  for (int i = 0 ; i < frames_count ; ++i) {
+  for (int i = 0; i < frames_count; ++i) {
     int x = i * frame_width + start_x;
     QPixmap* frame = new QPixmap(std::move(source->copy(
         QRect(x, y, frame_width, frame_height))));
@@ -179,7 +202,6 @@ void PixmapLoader::LoadSkeletonAnimations() {
   const int death_animation_row = 0;
   const int death_animation_column = 1;
 
-
   QPixmap* walk_animation = new QPixmap(":images/skeleton/walk.png");
   QPixmap* death_animation = new QPixmap(":images/skeleton/death.png");
 
@@ -189,7 +211,7 @@ void PixmapLoader::LoadSkeletonAnimations() {
       frame_walk_height,
       walk_animation_frames_count,
       walk_animation_column * frame_walk_width,
-      walk_animation_row  * frame_walk_height);
+      walk_animation_row * frame_walk_height);
 
   P::Skeleton::kDeath = CreateHorizontalFramesVector(
       death_animation,
@@ -197,7 +219,7 @@ void PixmapLoader::LoadSkeletonAnimations() {
       frame_death_height,
       death_animation_frames_count,
       death_animation_column * frame_death_width,
-      death_animation_row  * frame_death_height);
+      death_animation_row * frame_death_height);
 
   delete walk_animation;
   delete death_animation;
@@ -328,7 +350,7 @@ void PixmapLoader::LoadUI() {
 }
 
 void PixmapLoader::LoadDefaultTextureBox() {
-  kDefaultTexturedBoxPixmaps = TexturedBoxPixmaps {
+  kDefaultTexturedBoxPixmaps = TexturedBoxPixmaps{
       new QPixmap(":GUI/Textured boxes/Default/top_left_corner.png"),
       new QPixmap(":GUI/Textured boxes/Default/top_right_corner.png"),
       new QPixmap(":GUI/Textured boxes/Default/bottom_left_corner.png"),
@@ -342,7 +364,7 @@ void PixmapLoader::LoadDefaultTextureBox() {
 }
 
 void PixmapLoader::LoadMenuTextureBox() {
-  kMenuTexturedBoxPixmaps = TexturedBoxPixmaps {
+  kMenuTexturedBoxPixmaps = TexturedBoxPixmaps{
       new QPixmap(":GUI/Textured boxes/Menu/top_left_corner.png"),
       new QPixmap(":GUI/Textured boxes/Menu/top_right_corner.png"),
       new QPixmap(":GUI/Textured boxes/Menu/bottom_left_corner.png"),
@@ -356,7 +378,7 @@ void PixmapLoader::LoadMenuTextureBox() {
 }
 
 void PixmapLoader::LoadMenu2TextureBox() {
-  kMenu2TexturedBoxPixmaps = TexturedBoxPixmaps {
+  kMenu2TexturedBoxPixmaps = TexturedBoxPixmaps{
       new QPixmap(":GUI/Textured boxes/Menu2/top_left_corner.png"),
       new QPixmap(":GUI/Textured boxes/Menu2/top_right_corner.png"),
       new QPixmap(":GUI/Textured boxes/Menu2/bottom_left_corner.png"),
@@ -370,7 +392,7 @@ void PixmapLoader::LoadMenu2TextureBox() {
 }
 
 void PixmapLoader::LoadButtonTextureBox() {
-  kButtonTexturedBoxPixmaps = TexturedBoxPixmaps {
+  kButtonTexturedBoxPixmaps = TexturedBoxPixmaps{
       new QPixmap(":GUI/Textured boxes/Button/top_left_corner.png"),
       new QPixmap(":GUI/Textured boxes/Button/top_right_corner.png"),
       new QPixmap(":GUI/Textured boxes/Button/bottom_left_corner.png"),
@@ -481,4 +503,66 @@ void PixmapLoader::LoadCoinAnimations() {
       idle_animation_frames_count,
       idle_animation_column * frame_width,
       idle_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadMagicProjectileAnimations() {
+  // file size - 48x32
+  // 2 frame rows, 3 frame columns
+  const int frame_width_level1 = 48 / 3;
+  const int frame_height_level1 = 32 / 2;
+  const int destroying_animation_frames_count_level1 = 3;
+  // row and column start from 0
+  const int destroying_animation_row_level1 = 1;
+  const int destroying_animation_column_level1 = 0;
+
+  P::MagicProjectile::kAnimationsLevel1 =
+      new QPixmap(":images/magic_projectile_animations_level1.png");
+
+  P::MagicProjectile::kDestroyingLevel1 = CreateHorizontalFramesVector(
+      P::MagicProjectile::kAnimationsLevel1,
+      frame_width_level1,
+      frame_height_level1,
+      destroying_animation_frames_count_level1,
+      destroying_animation_column_level1 * frame_width_level1,
+      destroying_animation_row_level1 * frame_height_level1);
+
+  // file size - 48x32
+  // 2 frame rows, 3 frame columns
+  const int frame_width_level2 = 48 / 3;
+  const int frame_height_level2 = 32 / 2;
+  const int destroying_animation_frames_count_level2 = 3;
+  // row and column start from 0
+  const int destroying_animation_row_level2 = 1;
+  const int destroying_animation_column_level2 = 0;
+
+  P::MagicProjectile::kAnimationsLevel2 =
+      new QPixmap(":images/magic_projectile_animations_level2.png");
+
+  P::MagicProjectile::kDestroyingLevel2 = CreateHorizontalFramesVector(
+      P::MagicProjectile::kAnimationsLevel2,
+      frame_width_level2,
+      frame_height_level2,
+      destroying_animation_frames_count_level2,
+      destroying_animation_column_level2 * frame_width_level2,
+      destroying_animation_row_level2 * frame_height_level2);
+
+  // file size - 48x32
+  // 2 frame rows, 3 frame columns
+  const int frame_width_level3 = 48 / 3;
+  const int frame_height_level3 = 32 / 2;
+  const int destroying_animation_frames_count_level3 = 3;
+  // row and column start from 0
+  const int destroying_animation_row_level3 = 1;
+  const int destroying_animation_column_level3 = 0;
+
+  P::MagicProjectile::kAnimationsLevel3 =
+      new QPixmap(":images/magic_projectile_animations_level3.png");
+
+  P::MagicProjectile::kDestroyingLevel3 = CreateHorizontalFramesVector(
+      P::MagicProjectile::kAnimationsLevel3,
+      frame_width_level3,
+      frame_height_level3,
+      destroying_animation_frames_count_level3,
+      destroying_animation_column_level3 * frame_width_level3,
+      destroying_animation_row_level3 * frame_height_level3);
 }

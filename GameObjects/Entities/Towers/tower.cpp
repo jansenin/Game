@@ -1,9 +1,9 @@
 #include <QtMath>
 
 #include "tower.h"
-#include "GameObjects/Entities/Projectiles/test_projectile.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "Utilities/Resources/pixmap_loader.h"
+#include "GameObjects/Entities/Projectiles/projectile.h"
 #include "constants.h"
 
 QPolygonF CreateAttackArea(qreal range) {
@@ -57,8 +57,8 @@ void Tower::Tick(Time delta) {
         if (mob->GetHealth() <= 0) {
           continue;
         }
-        scene()->addItem(new TestProjectile(
-            scenePos() - QPointF(0, 20), mob));
+        scene()->addItem(SpawnProjectile(
+            scenePos() - QPointF(0, 20), mob, current_level_));
         attack_timer_.Start(cooldown_);
         break;
       }
@@ -67,3 +67,7 @@ void Tower::Tick(Time delta) {
 }
 
 void Tower::Upgrade() {}
+
+Projectile* Tower::SpawnProjectile(const VectorF& coordinates, Entity* target, int level) {
+  return nullptr;
+}

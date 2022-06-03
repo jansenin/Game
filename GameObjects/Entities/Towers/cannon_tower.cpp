@@ -1,6 +1,7 @@
 #include "cannon_tower.h"
 #include "constants.h"
 #include "Utilities/Resources/pixmap_loader.h"
+#include "GameObjects/Entities/Projectiles/cannon_projectile.h"
 
 using P = PixmapLoader::Pixmaps;
 
@@ -37,5 +38,10 @@ void CannonTower::Upgrade() {
 
 void CannonTower::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   Upgrade();
+}
+Projectile* CannonTower::SpawnProjectile(const VectorF& coordinates,
+                                         Entity* target,
+                                         int level) {
+  return new CannonProjectile(coordinates, target, level);
 }
 

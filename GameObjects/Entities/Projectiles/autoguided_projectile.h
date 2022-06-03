@@ -32,6 +32,7 @@ class AutoguidedProjectile : public Projectile {
 
   VectorF VectorFromThisToTarget();
 
+  bool is_destroying_;
   Entity* target_;
   VectorF speed_;
   Damage damage_;
