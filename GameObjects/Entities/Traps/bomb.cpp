@@ -2,6 +2,7 @@
 #include "Utilities/Resources/pixmap_loader.h"
 
 #include "constants.h"
+#include "Controller/controller.h"
 
 #include <iostream>
 #include <game_scene.h>
@@ -55,6 +56,10 @@ void Bomb::paint(QPainter* painter,
 }
 
 void Bomb::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+  if (!Controller::Instance()->HaveEnoughMoney(Costs::kBombExplosionCost)) {
+    return;
+  }
+  Controller::Instance()->LoseMoney(Costs::kBombExplosionCost);
   if (event->button() != Qt::LeftButton) {
     return;
   }

@@ -1,6 +1,7 @@
 #include "coin.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
+#include "Controller/controller.h"
 
 #include <iostream>
 #include <game_scene.h>
@@ -39,7 +40,7 @@ void Coin::paint(QPainter* painter,
 }
 
 void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-  scene()->IncCoinsCount();
+  Controller::Instance()->AddMoney(Costs::kCoinCost);
   update();
   SetRoute();
   delete this;
@@ -47,7 +48,6 @@ void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
 Coin::~Coin() {
   delete idle_animation_;
-// scene()->DecCoinsCount();
 }
 
 void Coin::SetRoute() {

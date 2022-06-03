@@ -14,6 +14,10 @@ namespace Costs {
 extern const int kCoinCost;
 extern const int kCannonTowerCost;
 extern const int kMagicTowerCost;
+extern const int kTowerLevel2Upgrade;
+extern const int kTowerLevel3Upgrade;
+extern const int kBearTrapRepairingCost;
+extern const int kBombExplosionCost;
 }
 
 namespace Scene {

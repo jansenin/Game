@@ -114,4 +114,8 @@ namespace Costs {
 const int kCoinCost = 50;
 const int kCannonTowerCost = 500;
 const int kMagicTowerCost = 500;
+const int kTowerLevel2Upgrade = 200;
+const int kTowerLevel3Upgrade = 300;
+const int kBearTrapRepairingCost = 50;
+const int kBombExplosionCost = 200;
 }
