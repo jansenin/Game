@@ -119,9 +119,7 @@ void Controller::AddMoney(int money) {
 }
 
 void Controller::LoseMoney(int money) {
-  if (balance_ >= money) {
     balance_ -= money;
-  }
 }
 
 int Controller::GetBalance() {
