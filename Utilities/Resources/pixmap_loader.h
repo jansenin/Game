@@ -5,6 +5,7 @@
 #include <QPixmap>
 
 #include "Utilities/animation.h"
+#include "Utilities/Resources/textured_box_pixmaps.h"
 
 class PixmapLoader {
  public:
@@ -18,28 +19,48 @@ class PixmapLoader {
     static QPixmap* kTestTowerGun;
     static QPixmap* kTestTowerSlot;
     static std::vector<QPixmap*> kLevelMaps;
+    static QPixmap* kEmpty;
 
-    // For animations test
-    static QPixmap* kFireTotemAnimations;
-    static std::vector<QPixmap*> kFireTotemIdle;
-    static std::vector<QPixmap*> kFireTotemDisappear;
-    static std::vector<QPixmap*> kFireTotemAppearing;
+    class FireTotem {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kIdle;
+      static std::vector<QPixmap*> kDisappear;
+      static std::vector<QPixmap*> kAppearing;
+    };
 
-    static std::vector<QPixmap*> kSkeletonWalk;
-    static std::vector<QPixmap*> kSkeletonDeath;
+    class Skeleton {
+     public:
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
 
-    static QPixmap* kCobraAnimations;
-    static std::vector<QPixmap*> kCobraWalk;
-    static std::vector<QPixmap*> kCobraDeath;
+    class Cobra {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
 
-    static QPixmap* kHedgehogAnimations;
-    static std::vector<QPixmap*> kHedgehogWalk;
-    static std::vector<QPixmap*> kHedgehogDeath;
+    class Hedgehog {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
 
-    static QPixmap* kDwarfAnimations;
-    static std::vector<QPixmap*> kDwarfWalk;
-    static std::vector<QPixmap*> kDwarfDeath;
+    class Dwarf {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kWalk;
+      static std::vector<QPixmap*> kDeath;
+    };
   };
+
+  static TexturedBoxPixmaps kMenuTexturedBoxPixmaps;
+  static TexturedBoxPixmaps kMenu2TexturedBoxPixmaps;
+  static TexturedBoxPixmaps kButtonTexturedBoxPixmaps;
+  static TexturedBoxPixmaps kDefaultTexturedBoxPixmaps;
 
   static void LoadPixmaps();
 
@@ -57,4 +78,10 @@ class PixmapLoader {
   static void LoadCobraAnimations();
   static void LoadHedgehogAnimations();
   static void LoadDwarfAnimations();
+
+  static void LoadUI();
+  static void LoadDefaultTextureBox();
+  static void LoadMenuTextureBox();
+  static void LoadMenu2TextureBox();
+  static void LoadButtonTextureBox();
 };

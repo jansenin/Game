@@ -1,15 +1,24 @@
 #pragma once
 
 #include <QRectF>
+#include <QColor>
 
 #include "Utilities/time.h"
 #include <Utilities/damage.h>
+
+extern const bool kDebugMode;
+extern const int kFPS;
 
 namespace Scene {
 extern const qreal kWidth;
 extern const qreal kHeight;
 extern const QRectF kRect;
 extern const qreal kMapTextureZValue;
+}
+
+namespace UI {
+extern const qreal kDefaultZValue;
+extern const QColor kButtonDefaultTextColor;
 }
 
 namespace LevelData {
@@ -40,24 +49,28 @@ namespace Skeleton {
 extern const Time kTimeBetweenFrames;
 extern const qreal kSpeed;
 extern const int kHealth;
+extern const int kDamageToBase;
 }
 
 namespace Cobra {
 extern const Time kTimeBetweenFrames;
 extern const qreal kSpeed;
 extern const int kHealth;
+extern const int kDamageToBase;
 }
 
 namespace Hedgehog {
 extern const Time kTimeBetweenFrames;
 extern const qreal kSpeed;
 extern const int kHealth;
+extern const int kDamageToBase;
 }
 
 namespace Dwarf {
 extern const Time kTimeBetweenFrames;
 extern const qreal kSpeed;
 extern const int kHealth;
+extern const int kDamageToBase;
 }
 
 namespace TestProjectile {

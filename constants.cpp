@@ -1,6 +1,9 @@
 #include <QString>
 #include "constants.h"
 
+const bool kDebugMode = false;
+const int kFPS = 60;
+
 namespace Scene {
 const qreal kWidth = 1920;
 const qreal kHeight = 1080;
@@ -9,7 +12,12 @@ const QRectF kRect{
     -kHeight / 2,
     kWidth,
     kHeight};
-extern const qreal kMapTextureZValue = -100;
+const qreal kMapTextureZValue = -10000;
+}
+
+namespace UI {
+const qreal kDefaultZValue = 10000;
+const QColor kButtonDefaultTextColor = Qt::white;
 }
 
 namespace LevelData {
@@ -34,30 +42,35 @@ const qreal kPassiveMoveSpeed = 5;
 const qreal kActiveMoveSpeed = 100;
 const qreal kRotationSpeed = 10;
 const int kHealth = 30;
+const int kDamageToBase = 1;
 }
 
 namespace Skeleton {
 const Time kTimeBetweenFrames = 50_ms;
 const qreal kSpeed = 50;
 const int kHealth = 200;
+const int kDamageToBase = 1;
 }
 
 namespace Cobra {
 const Time kTimeBetweenFrames = 50_ms;
 const qreal kSpeed = 200;
 const int kHealth = 40;
+const int kDamageToBase = 1;
 }
 
 namespace Hedgehog {
 const Time kTimeBetweenFrames = 50_ms;
 const qreal kSpeed = 110;
-extern const int kHealth = 80;
+const int kHealth = 80;
+const int kDamageToBase = 1;
 }
 
 namespace Dwarf {
 const Time kTimeBetweenFrames = 50_ms;
 const qreal kSpeed = 60;
-extern const int kHealth = 300;
+const int kHealth = 300;
+const int kDamageToBase = 1;
 }
 
 namespace TestProjectile {

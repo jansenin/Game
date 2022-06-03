@@ -6,8 +6,8 @@
 #include <QJsonDocument>
 
 #include "Utilities/vector_f.h"
-#include "GameObjects/BasicObjects/Entities/Mobs/Basis/mob.h"
-#include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/tower_slot.h"
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/Entities/Towers/TowerSlots/tower_slot.h"
 #include "Utilities/route.h"
 #include "Utilities/wave.h"
 
@@ -26,7 +26,7 @@ class Level {
  private:
   class SpawnEntry {
    public:
-    explicit SpawnEntry(const QJsonObject& spawn_root_object);
+    explicit SpawnEntry(QJsonObject* spawn_root_object);
 
     [[nodiscard]] Time GetEntryEndTime() const;
     void AddMobsToWave(

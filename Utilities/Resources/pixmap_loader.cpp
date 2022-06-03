@@ -12,26 +12,34 @@ QPixmap* P::kTestTower;
 QPixmap* P::kTestTowerGun;
 QPixmap* P::kTestTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
+QPixmap* P::kEmpty;
 
-QPixmap* P::kFireTotemAnimations;
-std::vector<QPixmap*> P::kFireTotemIdle;
-std::vector<QPixmap*> P::kFireTotemDisappear;
-std::vector<QPixmap*> P::kFireTotemAppearing;
+QPixmap* P::FireTotem::kAnimations;
+std::vector<QPixmap*> P::FireTotem::kIdle;
+std::vector<QPixmap*> P::FireTotem::kDisappear;
+std::vector<QPixmap*> P::FireTotem::kAppearing;
 
-std::vector<QPixmap*> P::kSkeletonWalk;
-std::vector<QPixmap*> P::kSkeletonDeath;
+std::vector<QPixmap*> P::Skeleton::kWalk;
+std::vector<QPixmap*> P::Skeleton::kDeath;
 
-QPixmap* P::kCobraAnimations;
-std::vector<QPixmap*> P::kCobraWalk;
-std::vector<QPixmap*> P::kCobraDeath;
+QPixmap* P::Cobra::kAnimations;
+std::vector<QPixmap*> P::Cobra::kWalk;
+std::vector<QPixmap*> P::Cobra::kDeath;
 
-QPixmap* P::kHedgehogAnimations;
-std::vector<QPixmap*> P::kHedgehogWalk;
-std::vector<QPixmap*> P::kHedgehogDeath;
+QPixmap* P::Hedgehog::kAnimations;
+std::vector<QPixmap*> P::Hedgehog::kWalk;
+std::vector<QPixmap*> P::Hedgehog::kDeath;
 
-QPixmap* P::kDwarfAnimations;
-std::vector<QPixmap*> P::kDwarfWalk;
-std::vector<QPixmap*> P::kDwarfDeath;
+QPixmap* P::Dwarf::kAnimations;
+std::vector<QPixmap*> P::Dwarf::kWalk;
+std::vector<QPixmap*> P::Dwarf::kDeath;
+
+// -----------------------------------------------------------------------------
+
+TexturedBoxPixmaps PixmapLoader::kDefaultTexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kMenuTexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kMenu2TexturedBoxPixmaps;
+TexturedBoxPixmaps PixmapLoader::kButtonTexturedBoxPixmaps;
 
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
@@ -45,11 +53,14 @@ void PixmapLoader::LoadPixmaps() {
     + QString::number(i)
     + "/map.png"));
   }
+  P::kEmpty = new QPixmap();
+
   LoadFireTotemAnimations();
   LoadSkeletonAnimations();
   LoadCobraAnimations();
   LoadHedgehogAnimations();
   LoadDwarfAnimations();
+  LoadUI();
 }
 
 std::vector<QPixmap*> PixmapLoader::CreateHorizontalFramesVector(
@@ -87,26 +98,26 @@ void PixmapLoader::LoadFireTotemAnimations() {
   const int appear_animation_row = 0;
   const int appear_animation_column = 0;
 
-  P::kFireTotemAnimations = new QPixmap(":images/fire_totem.png");
+  P::FireTotem::kAnimations = new QPixmap(":images/fire_totem.png");
 
-  P::kFireTotemIdle = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kIdle = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       idle_animation_frames_count,
       idle_animation_column * frame_width,
       idle_animation_row * frame_height);
 
-  P::kFireTotemDisappear = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kDisappear = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       disappear_animation_frames_count,
       disappear_animation_column * frame_width,
       disappear_animation_row * frame_height);
 
-  P::kFireTotemAppearing = CreateHorizontalFramesVector(
-      P::kFireTotemAnimations,
+  P::FireTotem::kAppearing = CreateHorizontalFramesVector(
+      P::FireTotem::kAnimations,
       frame_width,
       frame_height,
       appear_animation_frames_count,
@@ -138,7 +149,7 @@ void PixmapLoader::LoadSkeletonAnimations() {
   QPixmap* walk_animation = new QPixmap(":images/skeleton/walk.png");
   QPixmap* death_animation = new QPixmap(":images/skeleton/death.png");
 
-  P::kSkeletonWalk = CreateHorizontalFramesVector(
+  P::Skeleton::kWalk = CreateHorizontalFramesVector(
       walk_animation,
       frame_walk_width,
       frame_walk_height,
@@ -146,7 +157,7 @@ void PixmapLoader::LoadSkeletonAnimations() {
       walk_animation_column * frame_walk_width,
       walk_animation_row  * frame_walk_height);
 
-  P::kSkeletonDeath = CreateHorizontalFramesVector(
+  P::Skeleton::kDeath = CreateHorizontalFramesVector(
       death_animation,
       frame_death_width,
       frame_death_height,
@@ -159,67 +170,67 @@ void PixmapLoader::LoadSkeletonAnimations() {
 }
 
 void PixmapLoader::LoadCobraAnimations() {
-    // file size - 256x160
-    // 5 frame rows, 8 frame columns
-    const int frame_width = 256 / 8;
-    const int frame_height = 160 / 5;
-    const int death_animation_frames_count = 6;
-    const int walk_animation_frames_count = 8;
-    // row and column start from 0
-    const int death_animation_row = 4;
-    const int death_animation_column = 0;
-    const int walk_animation_row = 1;
-    const int walk_animation_column = 0;
+  // file size - 256x160
+  // 5 frame rows, 8 frame columns
+  const int frame_width = 256 / 8;
+  const int frame_height = 160 / 5;
+  const int death_animation_frames_count = 6;
+  const int walk_animation_frames_count = 8;
+  // row and column start from 0
+  const int death_animation_row = 4;
+  const int death_animation_column = 0;
+  const int walk_animation_row = 1;
+  const int walk_animation_column = 0;
 
-    P::kCobraAnimations = new QPixmap(":images/cobra.png");
+  P::Cobra::kAnimations = new QPixmap(":images/cobra.png");
 
-    P::kCobraWalk = CreateHorizontalFramesVector(
-        P::kCobraAnimations,
-        frame_width,
-        frame_height,
-        walk_animation_frames_count,
-        walk_animation_column * frame_width,
-        walk_animation_row * frame_height);
+  P::Cobra::kWalk = CreateHorizontalFramesVector(
+      P::Cobra::kAnimations,
+      frame_width,
+      frame_height,
+      walk_animation_frames_count,
+      walk_animation_column * frame_width,
+      walk_animation_row * frame_height);
 
-    P::kCobraDeath = CreateHorizontalFramesVector(
-        P::kCobraAnimations,
-        frame_width,
-        frame_height,
-        death_animation_frames_count,
-        death_animation_column * frame_width,
-        death_animation_row * frame_height);
+  P::Cobra::kDeath = CreateHorizontalFramesVector(
+      P::Cobra::kAnimations,
+      frame_width,
+      frame_height,
+      death_animation_frames_count,
+      death_animation_column * frame_width,
+      death_animation_row * frame_height);
 }
 
 void PixmapLoader::LoadHedgehogAnimations() {
-    // file size - 128x128
-    // 4 frame rows, 4 frame columns
-    const int frame_width = 128 / 4;
-    const int frame_height = 128 / 4;
-    const int death_animation_frames_count = 3;
-    const int walk_animation_frames_count = 4;
-    // row and column start from 0
-    const int death_animation_row = 3;
-    const int death_animation_column = 0;
-    const int walk_animation_row = 1;
-    const int walk_animation_column = 0;
+  // file size - 128x128
+  // 4 frame rows, 4 frame columns
+  const int frame_width = 128 / 4;
+  const int frame_height = 128 / 4;
+  const int death_animation_frames_count = 3;
+  const int walk_animation_frames_count = 4;
+  // row and column start from 0
+  const int death_animation_row = 3;
+  const int death_animation_column = 0;
+  const int walk_animation_row = 1;
+  const int walk_animation_column = 0;
 
-    P::kHedgehogAnimations = new QPixmap(":images/hedgehog.png");
+  P::Hedgehog::kAnimations = new QPixmap(":images/hedgehog.png");
 
-    P::kHedgehogWalk = CreateHorizontalFramesVector(
-        P::kHedgehogAnimations,
-        frame_width,
-        frame_height,
-        walk_animation_frames_count,
-        walk_animation_column * frame_width,
-        walk_animation_row * frame_height);
+  P::Hedgehog::kWalk = CreateHorizontalFramesVector(
+      P::Hedgehog::kAnimations,
+      frame_width,
+      frame_height,
+      walk_animation_frames_count,
+      walk_animation_column * frame_width,
+      walk_animation_row * frame_height);
 
-    P::kHedgehogDeath = CreateHorizontalFramesVector(
-        P::kHedgehogAnimations,
-        frame_width,
-        frame_height,
-        death_animation_frames_count,
-        death_animation_column * frame_width,
-        death_animation_row * frame_height);
+  P::Hedgehog::kDeath = CreateHorizontalFramesVector(
+      P::Hedgehog::kAnimations,
+      frame_width,
+      frame_height,
+      death_animation_frames_count,
+      death_animation_column * frame_width,
+      death_animation_row * frame_height);
 }
 
 void PixmapLoader::LoadDwarfAnimations() {
@@ -235,21 +246,84 @@ void PixmapLoader::LoadDwarfAnimations() {
   const int walk_animation_row = 1;
   const int walk_animation_column = 0;
 
-  P::kDwarfAnimations = new QPixmap(":images/dwarf.png");
+  P::Dwarf::kAnimations = new QPixmap(":images/dwarf.png");
 
-  P::kDwarfWalk = CreateHorizontalFramesVector(
-      P::kDwarfAnimations,
+  P::Dwarf::kWalk = CreateHorizontalFramesVector(
+      P::Dwarf::kAnimations,
       frame_width,
       frame_height,
       walk_animation_frames_count,
       walk_animation_column * frame_width,
       walk_animation_row * frame_height);
 
-  P::kDwarfDeath = CreateHorizontalFramesVector(
-      P::kDwarfAnimations,
+  P::Dwarf::kDeath = CreateHorizontalFramesVector(
+      P::Dwarf::kAnimations,
       frame_width,
       frame_height,
       death_animation_frames_count,
       death_animation_column * frame_width,
       death_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadUI() {
+  LoadDefaultTextureBox();
+  LoadMenuTextureBox();
+  LoadMenu2TextureBox();
+  LoadButtonTextureBox();
+}
+
+void PixmapLoader::LoadDefaultTextureBox() {
+  kDefaultTexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Default/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Default/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Default/inside.png")
+  };
+}
+
+void PixmapLoader::LoadMenuTextureBox() {
+  kMenuTexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Menu/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu/inside.png")
+  };
+}
+
+void PixmapLoader::LoadMenu2TextureBox() {
+  kMenu2TexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Menu2/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Menu2/inside.png")
+  };
+}
+
+void PixmapLoader::LoadButtonTextureBox() {
+  kButtonTexturedBoxPixmaps = TexturedBoxPixmaps {
+      new QPixmap(":GUI/Textured boxes/Button/top_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/top_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_left_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_right_corner.png"),
+      new QPixmap(":GUI/Textured boxes/Button/left_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/right_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/top_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/bottom_side.png"),
+      new QPixmap(":GUI/Textured boxes/Button/inside.png")
+  };
 }

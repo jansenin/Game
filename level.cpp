@@ -8,7 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "GameObjects/BasicObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "Utilities/utility.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
@@ -74,9 +74,10 @@ Level::Level(int level_number) : level_number_(level_number) {
     std::map<Mob*, Time> mobs;
     for (auto json_spawn_entry : spawn_entries) {
       QJsonObject object = json_spawn_entry.toObject();
-      SpawnEntry spawn_entry(object);
-      wave_duration = Time(
-          std::max(spawn_entry.GetEntryEndTime().ms(), wave_duration.ms()));
+      SpawnEntry spawn_entry(&object);
+      wave_duration = Time(std::max(
+          spawn_entry.GetEntryEndTime().ms(),
+          wave_duration.ms()));
       spawn_entry.AddMobsToWave(&mobs, routes_);
     }
     previous_wave_end_time += wave_duration;
@@ -132,12 +133,12 @@ int Level::GetStartMoney() const {
   return startMoney_;
 }
 
-Level::SpawnEntry::SpawnEntry(const QJsonObject& spawn_root_object)
-  : start_time_(Time(spawn_root_object.value("startTime").toInt())),
-    mob_type_(spawn_root_object.value("mobType").toString()),
-    count_(spawn_root_object.value("count").toInt()),
-    entry_duration_(Time(spawn_root_object.value("entryDuration").toInt())),
-    route_index_(spawn_root_object.value("routeIndex").toInt())
+Level::SpawnEntry::SpawnEntry(QJsonObject* spawn_root_object)
+  : start_time_(Time(spawn_root_object->value("startTime").toInt())),
+    mob_type_(spawn_root_object->value("mobType").toString()),
+    count_(spawn_root_object->value("count").toInt()),
+    entry_duration_(Time(spawn_root_object->value("entryDuration").toInt())),
+    route_index_(spawn_root_object->value("routeIndex").toInt())
   {}
 
 void Level::SpawnEntry::AddMobsToWave(

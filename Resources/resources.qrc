@@ -6,6 +6,9 @@
         <file>images/test_tower.png</file>
         <file>images/test_tower_gun.png</file>
         <file>images/test_tower_slot.png</file>
+
+
+
         <file>images/fire_totem.png</file>
 
         <file>images/skeleton/walk.png</file>
@@ -19,5 +22,47 @@
 
         <file>Levels/Level1/map.png</file>
         <file>Levels/Level1/level.json</file>
+
+
+
+        <file>GUI/Textured boxes/Default/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Default/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Default/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Default/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Default/left_side.png</file>
+        <file>GUI/Textured boxes/Default/right_side.png</file>
+        <file>GUI/Textured boxes/Default/top_side.png</file>
+        <file>GUI/Textured boxes/Default/bottom_side.png</file>
+        <file>GUI/Textured boxes/Default/inside.png</file>
+
+        <file>GUI/Textured boxes/Menu/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu/left_side.png</file>
+        <file>GUI/Textured boxes/Menu/right_side.png</file>
+        <file>GUI/Textured boxes/Menu/top_side.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_side.png</file>
+        <file>GUI/Textured boxes/Menu/inside.png</file>
+
+        <file>GUI/Textured boxes/Menu2/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/left_side.png</file>
+        <file>GUI/Textured boxes/Menu2/right_side.png</file>
+        <file>GUI/Textured boxes/Menu2/top_side.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_side.png</file>
+        <file>GUI/Textured boxes/Menu2/inside.png</file>
+
+        <file>GUI/Textured boxes/Button/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Button/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Button/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Button/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Button/left_side.png</file>
+        <file>GUI/Textured boxes/Button/right_side.png</file>
+        <file>GUI/Textured boxes/Button/top_side.png</file>
+        <file>GUI/Textured boxes/Button/bottom_side.png</file>
+        <file>GUI/Textured boxes/Button/inside.png</file>
     </qresource>
 </RCC>
