@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <game_scene.h>
+#include <vector>
 
 QRectF BearTrap::boundingRect() const {
   return QRectF(QPointF(-15, -15), QSize(30, 30));
@@ -43,8 +44,9 @@ void BearTrap::Tick(Time delta) {
   }
   Entity::Tick(delta);
   std::vector<Mob*> mobs = scene()->Mobs();
-  for (auto mob: mobs) {
-    if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect()) && !is_broken_) {
+  for (auto mob : mobs) {
+    if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect())
+        && !is_broken_) {
       mob->ApplyDamage(Damage(mob->GetHealth()));
       animation_ = attacking_animation_;
       is_broken_ = true;

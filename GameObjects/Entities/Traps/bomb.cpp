@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <game_scene.h>
+#include <vector>
 
 QRectF Bomb::boundingRect() const {
   return QRectF(QPointF(-15, -15), QSize(30, 30));
@@ -37,7 +38,7 @@ void Bomb::Tick(Time delta) {
   Entity::Tick(delta);
   if (activated_ && animation_->WasEndedDuringPreviousUpdate()) {
     std::vector<Mob*> mobs = scene()->Mobs();
-    for (auto mob: mobs) {
+    for (auto mob : mobs) {
       if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect())) {
         mob->ApplyDamage(Damage(mob->GetHealth()));
         animation_ = explosion_animation_;

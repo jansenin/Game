@@ -34,7 +34,7 @@ Level::Level(int level_number) : level_number_(level_number) {
 
   QJsonArray tower_slot_positions = root.value("towerSlotPositions").toArray();
   tower_slots_.reserve(tower_slot_positions.size());
-  for (auto tower_slot_position: tower_slot_positions) {
+  for (auto tower_slot_position : tower_slot_positions) {
     int tower_slot_x;
     int tower_slot_y;
     QJsonObject tower_slot_pos_object = tower_slot_position.toObject();
@@ -46,7 +46,7 @@ Level::Level(int level_number) : level_number_(level_number) {
   }
   {
     bear_traps_.push_back(new BearTrap(VectorF(150, 150),
-                                       PixmapLoader::Pixmaps::kTowerSlot));  // test
+                                       PixmapLoader::Pixmaps::kTowerSlot));
   }
   {
     bombs_.push_back(new Bomb(VectorF(0, 150),
@@ -55,11 +55,11 @@ Level::Level(int level_number) : level_number_(level_number) {
 
   QJsonArray routes = root.value("routes").toArray();
   routes_.reserve(routes.size());
-  for (auto route: routes) {
+  for (auto route : routes) {
     QJsonArray points = route.toObject().value("points").toArray();
     std::vector<VectorF> points_for_route;
     points_for_route.reserve(points.size());
-    for (auto point: points) {
+    for (auto point : points) {
       QJsonObject point_object = point.toObject();
       int x = point_object.value("x").toInt();
       int y = point_object.value("y").toInt();
@@ -72,7 +72,7 @@ Level::Level(int level_number) : level_number_(level_number) {
   waves_.reserve(waves_.size());
 
   Time previous_wave_end_time(0);
-  for (auto json_wave: waves) {
+  for (auto json_wave : waves) {
     QJsonObject wave_object = json_wave.toObject();
     Time current_wave_start_time = previous_wave_end_time +
         Time(wave_object.value("startTimeRelativeToPrevWave").toInt());
@@ -80,7 +80,7 @@ Level::Level(int level_number) : level_number_(level_number) {
     QJsonArray spawn_entries = wave_object.value("spawnEntries").toArray();
     Time wave_duration(0);
     std::map<Mob*, Time> mobs;
-    for (auto json_spawn_entry: spawn_entries) {
+    for (auto json_spawn_entry : spawn_entries) {
       QJsonObject object = json_spawn_entry.toObject();
       SpawnEntry spawn_entry(&object);
       wave_duration = Time(std::max(
@@ -114,19 +114,19 @@ void Level::AddObjectsToScene(GameScene* scene) {
   map_pixmap_item->setPos(pixmap_rect.topLeft());
   map_pixmap_item->setTransform(transform);
 
-  for (auto tower_slot: tower_slots_) {
+  for (auto tower_slot : tower_slots_) {
     scene->addItem(tower_slot);
   }
-  for (auto bear_trap: bear_traps_) {
+  for (auto bear_trap : bear_traps_) {
     scene->addItem(bear_trap);
   }
-  for (auto bomb: bombs_) {
+  for (auto bomb : bombs_) {
     scene->addItem(bomb);
   }
 }
 
 void Level::Tick(Time delta) {
-  for (auto wave: waves_) {
+  for (auto wave : waves_) {
     wave->Tick(delta);
   }
 }

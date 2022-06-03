@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "GameObjects/Interface/entity.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 
 class Bomb : public Entity {

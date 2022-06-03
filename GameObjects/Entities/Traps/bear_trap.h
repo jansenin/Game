@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "GameObjects/Interface/entity.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 
 class BearTrap : public Entity {

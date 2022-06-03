@@ -1,8 +1,6 @@
 #pragma once
 
-//#include "GameObjects/Interface/entity.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
-//#include "Utilities/route.h"
 
 class Coin : public Entity {
  public:

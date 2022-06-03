@@ -1,10 +1,10 @@
 #include "coin.h"
 #include "Utilities/Resources/pixmap_loader.h"
-//#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "constants.h"
 
 #include <iostream>
 #include <game_scene.h>
+#include <vector>
 
 Coin::Coin(const VectorF& coordinates, QPixmap* pixmap)
     : Coin(coordinates, new Animation(
@@ -43,8 +43,6 @@ void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   update();
   SetRoute();
   delete this;
-  // add money
-
 }
 
 Coin::~Coin() {
