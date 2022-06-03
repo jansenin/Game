@@ -26,6 +26,8 @@
         <file>Levels/Level1/map.png</file>
         <file>Levels/Level1/level.json</file>
 
+        <file>images/explosion.png</file>
+
 
 
         <file>GUI/Textured boxes/Default/top_left_corner.png</file>

@@ -11,6 +11,7 @@
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
 #include "GameObjects/Entities/Mobs/dwarf.h"
+#include "GameObjects/explosion.h"
 #include "constants.h"
 #include "UI/button.h"
 #include "UI/linear_menu.h"

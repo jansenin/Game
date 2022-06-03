@@ -24,6 +24,8 @@ set(GAME_OBJECTS
         GameObjects/Entities/Mobs/test_mob.cpp
         GameObjects/Entities/Towers/tower.cpp
         GameObjects/Entities/Towers/TowerSlots/tower_slot.cpp
+        GameObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
+        GameObjects/Entities/Towers/test_tower.cpp
         GameObjects/Entities/Projectiles/autoguided_projectile.cpp
         GameObjects/Entities/Projectiles/test_projectile.cpp
         GameObjects/Interface/graphics_object.cpp
@@ -33,7 +35,10 @@ set(GAME_OBJECTS
         GameObjects/Entities/Mobs/hedgehog.cpp
         GameObjects/Entities/Mobs/dwarf.cpp
         GameObjects/Entities/Towers/magic_tower.cpp
-        GameObjects/Entities/Towers/cannon_tower.cpp)
+        GameObjects/Entities/Towers/cannon_tower.cpp
+        GameObjects/explosion.cpp
+        GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp
+        GameObjects/Entities/Projectiles/linear_test_projectile.cpp)
 
 set(UTILITIES
         Utilities/damage.cpp
@@ -53,7 +58,9 @@ set(UI
         UI/linear_menu.cpp
         UI/linear_layout.cpp
         UI/button.cpp
-        UI/padding_box.cpp UI/pixmap_object.cpp UI/pixmap_object.h)
+        UI/padding_box.cpp
+        UI/pixmap_object.cpp
+        UI/pixmap_object.h)
 
 add_executable(Game
         ${RESOURCES}

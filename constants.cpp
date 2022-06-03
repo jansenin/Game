@@ -24,6 +24,13 @@ namespace LevelData {
 extern const int kLevelsCount = 1;
 }
 
+namespace Explosions {
+const qreal kDefaultRadius = 70.0;
+const Damage kDefaultDamage = Damage(50);
+const Time kTimeBetweenFrames = 50_ms;
+const qreal kZValue = 2000;
+}
+
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
 const QString kTestMobId = "TestMob";
@@ -52,14 +59,6 @@ const qreal kAttackRangeLevel3 = 500;
 const Time kAttackCooldownLevel3 = Time(100);
 const int kMaxLevel = 3;
 const int kPrice = 70;
-}
-
-namespace TestMob {
-const qreal kPassiveMoveSpeed = 5;
-const qreal kActiveMoveSpeed = 100;
-const qreal kRotationSpeed = 10;
-const int kHealth = 30;
-const int kDamageToBase = 1;
 }
 
 namespace Skeleton {
@@ -91,7 +90,13 @@ const int kDamageToBase = 1;
 }
 
 namespace TestProjectile {
-const Damage kDamage = Damage(3);
-const qreal kSpeed = 500;
+const Damage kDamage = Damage(10);
+const qreal kSpeed = 100;
+const qreal kAcceleration = 1500;
+const qreal kMaxSpeed = 500;
+const qreal kEnemyFindDistance = 300;
+const qreal kCrossAccelerationPerPixel = 900.0 / 100.0;
+const Time kCrossAccelerationCycleDuration = 1500_ms;
+const qreal kMaxCrossAcceleration = 600;
 }
 }  // namespace Entities

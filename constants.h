@@ -25,6 +25,13 @@ namespace LevelData {
 extern const int kLevelsCount;
 }
 
+namespace Explosions {
+extern const qreal kDefaultRadius;
+extern const Damage kDefaultDamage;
+extern const Time kTimeBetweenFrames;
+extern const qreal kZValue;
+}
+
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
 extern const QString kTestMobId;
@@ -93,5 +100,11 @@ extern const int kDamageToBase;
 namespace TestProjectile {
 extern const Damage kDamage;
 extern const qreal kSpeed;
+extern const qreal kAcceleration;
+extern const qreal kMaxSpeed;
+extern const qreal kEnemyFindDistance;
+extern const qreal kCrossAccelerationPerPixel;
+extern const Time kCrossAccelerationCycleDuration;
+extern const qreal kMaxCrossAcceleration;
 }
 }  // namespace Entities
