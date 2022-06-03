@@ -16,7 +16,6 @@ CannonTower::CannonTower(const VectorF& coordinates) :
 
 void CannonTower::Upgrade() {
   Tower::Upgrade();
-
   ++Tower::current_level_;
   if (current_level_ == 2) {
     Tower::cooldown_ = Entities::CannonTower::kAttackCooldownLevel2;
@@ -39,3 +38,4 @@ void CannonTower::Upgrade() {
 void CannonTower::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   Upgrade();
 }
+

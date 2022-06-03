@@ -17,6 +17,27 @@ QPixmap* P::kTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
 QPixmap* P::kEmpty;
 
+QPixmap* P::kBombIdleFrame;
+QPixmap* P::kBomb0;
+QPixmap* P::kBomb1;
+QPixmap* P::kBomb2;
+QPixmap* P::kBomb3;
+QPixmap* P::kBomb4;
+QPixmap* P::kBomb5;
+std::vector<QPixmap*> P::kBombExplosion;
+std::vector<QPixmap*> P::kBombIdle;
+
+QPixmap* P::kBearTrap;
+QPixmap* P::kBearTrapAnimations;
+std::vector<QPixmap*> P::kBearTrapIdle;
+std::vector<QPixmap*> P::kBearTrapAttacking;
+std::vector<QPixmap*> P::kBearTrapBroken;
+std::vector<QPixmap*> P::kBearTrapRepairing;
+
+std::vector<QPixmap*> P::kCoinIdle;
+QPixmap* P::kCoinAnimations;
+
+
 QPixmap* P::FireTotem::kAnimations;
 std::vector<QPixmap*> P::FireTotem::kIdle;
 std::vector<QPixmap*> P::FireTotem::kDisappear;
@@ -49,6 +70,7 @@ TexturedBoxPixmaps PixmapLoader::kButtonTexturedBoxPixmaps;
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
   P::kTestBullet = new QPixmap(":images/test_bullet.png");
+  P::kBearTrap = new QPixmap(":images/bear_trap.png");
   P::kTowerSlot = new QPixmap(":images/tower_slot.png");
   P::kMagicTowerLevel1 = new QPixmap(":images/magic_tower_level1.png");
   P::kMagicTowerLevel2 = new QPixmap(":images/magic_tower_level2.png");
@@ -63,6 +85,9 @@ void PixmapLoader::LoadPixmaps() {
   }
   P::kEmpty = new QPixmap();
 
+  LoadBearTrapAnimations();
+  LoadBombAnimations();
+  LoadCoinAnimations();
   LoadFireTotemAnimations();
   LoadSkeletonAnimations();
   LoadCobraAnimations();
@@ -356,4 +381,104 @@ void PixmapLoader::LoadButtonTextureBox() {
       new QPixmap(":GUI/Textured boxes/Button/bottom_side.png"),
       new QPixmap(":GUI/Textured boxes/Button/inside.png")
   };
+}
+
+void PixmapLoader::LoadBearTrapAnimations() {
+  // file size - 128x32
+  // 1 frame row, 4 frame columns
+  const int frame_width = 128 / 4;
+  const int frame_height = 32;
+  const int idle_animation_frames_count = 1;
+  const int attack_animation_frames_count = 3;
+  const int broken_animation_frames_count = 1;
+  const int repairing_animation_frames_count = 1;
+  // row and column start from 0
+  const int idle_animation_row = 0;
+  const int idle_animation_column = 0;
+  const int attack_animation_row = 0;
+  const int attack_animation_column = 1;
+  const int broken_animation_row = 0;
+  const int broken_animation_column = 3;
+  const int repairing_animation_row = 0;
+  const int repairing_animation_column = 0;
+
+  P::kBearTrapAnimations = new QPixmap(":images/bear_trap.png");
+
+  P::kBearTrapIdle = CreateHorizontalFramesVector(
+      P::kBearTrapAnimations,
+      frame_width,
+      frame_height,
+      idle_animation_frames_count,
+      idle_animation_column * frame_width,
+      idle_animation_row * frame_height);
+
+  P::kBearTrapBroken = CreateHorizontalFramesVector(
+      P::kBearTrapAnimations,
+      frame_width,
+      frame_height,
+      broken_animation_frames_count,
+      broken_animation_column * frame_width,
+      broken_animation_row * frame_height);
+
+  P::kBearTrapAttacking = CreateHorizontalFramesVector(
+      P::kBearTrapAnimations,
+      frame_width,
+      frame_height,
+      attack_animation_frames_count,
+      attack_animation_column * frame_width,
+      attack_animation_row * frame_height);
+
+  P::kBearTrapAttacking = CreateHorizontalFramesVector(
+      P::kBearTrapAnimations,
+      frame_width,
+      frame_height,
+      attack_animation_frames_count,
+      attack_animation_column * frame_width,
+      attack_animation_row * frame_height);
+
+  P::kBearTrapRepairing = CreateHorizontalFramesVector(
+      P::kBearTrapAnimations,
+      frame_width,
+      frame_height,
+      repairing_animation_frames_count,
+      repairing_animation_column * frame_width,
+      repairing_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadBombAnimations() {
+  P::kBombIdleFrame = new QPixmap(":images/bomb0.png");
+  P::kBomb0 = new QPixmap(":images/bomb0.png");
+  P::kBomb1 = new QPixmap(":images/bomb1.png");
+  P::kBomb2 = new QPixmap(":images/bomb2.png");
+  P::kBomb3 = new QPixmap(":images/bomb3.png");
+  P::kBomb4 = new QPixmap(":images/bomb4.png");
+  P::kBomb5 = new QPixmap(":images/bomb5.png");
+  P::kBombExplosion.push_back(P::kBomb0);
+  P::kBombExplosion.push_back(P::kBomb1);
+  P::kBombExplosion.push_back(P::kBomb2);
+  P::kBombExplosion.push_back(P::kBomb3);
+  P::kBombExplosion.push_back(P::kBomb4);
+  P::kBombExplosion.push_back(P::kBomb5);
+  P::kBombIdle.push_back(P::kBombIdleFrame);
+}
+
+void PixmapLoader::LoadCoinAnimations() {
+  // file size - 224x16
+  // 1 frame rows, 14 frame columns
+  const int frame_width = 224 / 14;
+  const int frame_height = 16;
+  const int idle_animation_frames_count = 14;
+  // row and column start from 0
+  const int idle_animation_row = 0;
+  const int idle_animation_column = 0;
+
+  P::kCoinAnimations = new QPixmap(":images/coin.png");
+
+  P::kCoinIdle = CreateHorizontalFramesVector(
+      P::kCoinAnimations,
+      frame_width,
+      frame_height,
+      idle_animation_frames_count,
+      idle_animation_column * frame_width,
+      idle_animation_row * frame_height);
 }

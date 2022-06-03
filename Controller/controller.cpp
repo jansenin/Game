@@ -5,6 +5,7 @@
 #include <QApplication>
 #include <QTimer>
 #include <QTextDocument>
+#include <iostream>
 
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
@@ -107,8 +108,25 @@ void Controller::TickAllTickables() {
     base_hp_ = 0;
     emit GameOver();
   }
+  RegulateMoney();
+  std::cout << balance_ << '\n';
 }
 
 void Controller::DealDamageToBase(int damage) {
   // damage_per_current_tick_ += damage;
+}
+
+void Controller::RegulateMoney() {
+  if (scene_->GetCoinsCount() > coins_count_) {
+    balance_ += Costs::kCoinCost;
+  }
+  coins_count_ = scene_->GetCoinsCount();
+  if (scene_->GetCannonTowersCount() > cannon_tower_count_) {
+    balance_ -= Costs::kCannonTowerCost;
+  }
+  cannon_tower_count_ = scene_->GetCannonTowersCount();
+  if (scene_->GetMagicTowersCount() > magic_tower_count_) {
+    balance_ -= Costs::kMagicTowerCost;
+  }
+  magic_tower_count_ = scene_->GetMagicTowersCount();
 }

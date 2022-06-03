@@ -10,7 +10,8 @@ MagicTower::MagicTower(const VectorF& coordinates) :
           Entities::MagicTower::kAttackCooldownLevel1,
           Entities::MagicTower::kAttackRangeLevel1,
           Entities::MagicTower::kMaxLevel,
-          Entities::MagicTower::kPrice) {}
+          Entities::MagicTower::kPrice) {
+}
 
 void MagicTower::Upgrade() {
   Tower::Upgrade();

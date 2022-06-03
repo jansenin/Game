@@ -8,6 +8,13 @@
 
 extern const bool kDebugMode;
 extern const int kFPS;
+extern const int kStartBalance;
+
+namespace Costs {
+extern const int kCoinCost;
+extern const int kCannonTowerCost;
+extern const int kMagicTowerCost;
+}
 
 namespace Scene {
 extern const qreal kWidth;
@@ -39,6 +46,7 @@ extern const QString kSkeletonId;
 extern const QString kCobraId;
 extern const QString kHedgehogId;
 extern const QString kDwarfId;
+extern const int kCoinAppearChance;
 
 namespace MagicTower {
 extern const qreal kAttackRangeLevel1;
