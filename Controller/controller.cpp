@@ -12,6 +12,7 @@
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
 #include "GameObjects/Entities/Mobs/dwarf.h"
+#include "GameObjects/explosion.h"
 #include "constants.h"
 #include "UI/button.h"
 #include "UI/linear_menu.h"
@@ -69,13 +70,14 @@ void Controller::SetupScene() {
       scene_->addItem(new TestMob({200.0 + 10 * i, 200}));
       test_button->setScale(1.5);
       test_button->SetIcon(PixmapLoader::Pixmaps::FireTotem::kIdle.at(0));
-      test_button->SetSpacing(test_button->Spacing() + 5);
-      test_button->SetPadding(test_button->Padding() + 3);
+      test_button->SetSpacing(test_button->Spacing() + 1);
+      test_button->SetPadding(test_button->Padding() + 1);
       main_menu->setPos(
           scene_->sceneRect().topRight() -
-          main_menu->boundingRect().topRight() +
+          main_menu->boundingRect().topRight()  * main_menu->scale() +
           QPointF{-5, 5});
       main_menu->RecalculatePositions();
+      scene_->addItem(new Explosion(VectorF(-100, 162)));
     });
 
     LinearLayout* layout = new LinearLayout();

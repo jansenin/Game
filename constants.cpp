@@ -24,6 +24,12 @@ namespace LevelData {
 extern const int kLevelsCount = 1;
 }
 
+namespace Explosions {
+const qreal kDefaultRadius = 50.0;
+const Damage kDefaultDamage = Damage(50);
+const Time kTimeBetweenFrames = 50_ms;
+}
+
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
 const QString kTestMobId = "TestMob";
