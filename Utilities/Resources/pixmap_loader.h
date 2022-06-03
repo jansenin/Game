@@ -14,10 +14,13 @@ class PixmapLoader {
     // TODO(jansenin): maybe make this readonly
     static QPixmap* kBackground;
     static QPixmap* kTestBullet;
-    static QPixmap* kTestMob;
-    static QPixmap* kTestTower;
-    static QPixmap* kTestTowerGun;
-    static QPixmap* kTestTowerSlot;
+    static QPixmap* kTowerSlot;
+    static QPixmap* kMagicTowerLevel1;
+    static QPixmap* kMagicTowerLevel2;
+    static QPixmap* kMagicTowerLevel3;
+    static QPixmap* kCannonTowerLevel1;
+    static QPixmap* kCannonTowerLevel2;
+    static QPixmap* kCannonTowerLevel3;
     static std::vector<QPixmap*> kLevelMaps;
     static QPixmap* kEmpty;
 

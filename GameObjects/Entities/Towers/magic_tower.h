@@ -2,11 +2,12 @@
 #include "tower.h"
 #include <QGraphicsSceneMouseEvent>
 
-class CannonTower : public Tower {
+class MagicTower : public Tower {
  public:
-  explicit CannonTower(const VectorF& coordinates);
+  explicit MagicTower(const VectorF& coordinates);
   void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 
  private:
   void Upgrade() override;
 };
+

@@ -33,9 +33,26 @@ extern const QString kCobraId;
 extern const QString kHedgehogId;
 extern const QString kDwarfId;
 
-namespace TestTower {
-extern const qreal kAttackRange;
-extern const Time kAttackCooldown;
+namespace MagicTower {
+extern const qreal kAttackRangeLevel1;
+extern const Time kAttackCooldownLevel1;
+extern const qreal kAttackRangeLevel2;
+extern const Time kAttackCooldownLevel2;
+extern const qreal kAttackRangeLevel3;
+extern const Time kAttackCooldownLevel3;
+extern const int kMaxLevel;
+extern const int kPrice;
+}
+
+namespace CannonTower {
+extern const qreal kAttackRangeLevel1;
+extern const Time kAttackCooldownLevel1;
+extern const qreal kAttackRangeLevel2;
+extern const Time kAttackCooldownLevel2;
+extern const qreal kAttackRangeLevel3;
+extern const Time kAttackCooldownLevel3;
+extern const int kMaxLevel;
+extern const int kPrice;
 }
 
 namespace TestMob {

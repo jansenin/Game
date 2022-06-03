@@ -32,9 +32,26 @@ const QString kCobraId = "Cobra";
 const QString kHedgehogId = "Hedgehog";
 const QString kDwarfId = "Dwarf";
 
-namespace TestTower {
-const qreal kAttackRange = 300;
-const Time kAttackCooldown = Time(100);
+namespace MagicTower {
+const qreal kAttackRangeLevel1 = 300;
+const Time kAttackCooldownLevel1 = Time(500);
+const qreal kAttackRangeLevel2 = 400;
+const Time kAttackCooldownLevel2 = Time(450);
+const qreal kAttackRangeLevel3 = 600;
+const Time kAttackCooldownLevel3 = Time(400);
+const int kMaxLevel = 3;
+const int kPrice = 110;
+}
+
+namespace CannonTower {
+const qreal kAttackRangeLevel1 = 200;
+const Time kAttackCooldownLevel1 = Time(200);
+const qreal kAttackRangeLevel2 = 300;
+const Time kAttackCooldownLevel2 = Time(150);
+const qreal kAttackRangeLevel3 = 500;
+const Time kAttackCooldownLevel3 = Time(100);
+const int kMaxLevel = 3;
+const int kPrice = 70;
 }
 
 namespace TestMob {

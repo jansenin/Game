@@ -16,21 +16,27 @@ QPolygonF CreateAttackArea(qreal range) {
   return QPolygonF(points);
 }
 
-Tower::Tower(const VectorF& coordinates, QPixmap* pixmap, Time cooldown, qreal range, int health)
+Tower::Tower(const VectorF& coordinates, QPixmap* pixmap, Time cooldown, qreal range, int max_level, int price, int health)
     : Entity(coordinates, new Animation(pixmap), health),
       attack_timer_(Time(0)),
       range_(range),
       cooldown_(cooldown),
+      current_level_(1),
+      max_level_(max_level),
+      price_(price),
       local_attack_area_(CreateAttackArea(range_)) {
     // TODO(jansenin): change it when coordinates are changed
     scene_attack_area_ = local_attack_area_.translated(scenePos());
 }
 
-Tower::Tower(const VectorF& coordinates, Animation* animation, Time cooldown, qreal range, int health)
+Tower::Tower(const VectorF& coordinates, Animation* animation, Time cooldown, qreal range, int max_level, int price, int health)
     : Entity(coordinates, animation, health),
       attack_timer_(Time(0)),
       range_(range),
       cooldown_(cooldown),
+      current_level_(1),
+      max_level_(max_level),
+      price_(price),
       local_attack_area_(CreateAttackArea(range_)) {
   // TODO(jansenin): change it when coordinates are changed
   scene_attack_area_ = local_attack_area_.translated(scenePos());
@@ -55,4 +61,8 @@ void Tower::Tick(Time delta) {
       }
     }
   }
+}
+
+void Tower::Upgrade() {
+
 }
