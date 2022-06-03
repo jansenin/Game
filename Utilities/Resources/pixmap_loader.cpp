@@ -45,7 +45,7 @@ void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
   P::kTestBullet = new QPixmap(":images/test_bullet.png");
   P::kTestMob = new QPixmap(":images/test_mob.png");
-  P::kTestTower = new QPixmap(":images/test_tower.png");
+  P::kTestTower = new QPixmap(":images/magic_tower.png");
   P::kTestTowerGun = new QPixmap(":images/test_tower_gun.png");
   P::kTestTowerSlot = new QPixmap(":images/test_tower_slot.png");
   for (int i = 1; i <= LevelData::kLevelsCount; ++i) {

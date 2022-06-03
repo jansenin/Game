@@ -5,13 +5,16 @@
 
 class TowerSlot : public Entity {
  public:
-  TowerSlot(const VectorF& coordinates, QPixmap* pixmap);
-  TowerSlot(const VectorF& coordinates, Animation* animation);
+  TowerSlot(const VectorF& coordinates);
 
   [[nodiscard]] bool IsTakenUp() const;
   void TakeUpArea(Tower* tower);
   void ClearArea();
   void Tick(Time time) override;
+  void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
+  void paint(QPainter* painter,
+             const QStyleOptionGraphicsItem* option,
+             QWidget* widget) override;
 
  protected:
   Tower* tower_;

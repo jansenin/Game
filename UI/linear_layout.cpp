@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include <QPainter>
+#include <QDebug>
 
 #include "constants.h"
 
@@ -22,6 +23,7 @@ void LinearLayout::OnItemDestroyed(QObject* item) {
   assert(object != nullptr);
   RemoveItem(object);
 }
+
 
 void LinearLayout::AddItem(QGraphicsObject* item) {
   prepareGeometryChange();

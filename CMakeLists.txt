@@ -6,7 +6,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 #set(CMAKE_AUTOUIC ON)
 
-find_package(Qt6 COMPONENTS
+find_package(Qt5 COMPONENTS
         Core
         Gui
         Widgets
@@ -33,7 +33,7 @@ set(GAME_OBJECTS
         GameObjects/Entities/Mobs/skeleton.cpp
         GameObjects/Entities/Mobs/cobra.cpp
         GameObjects/Entities/Mobs/hedgehog.cpp
-        GameObjects/Entities/Mobs/dwarf.cpp)
+        GameObjects/Entities/Mobs/dwarf.cpp GameObjects/Entities/Towers/cannon_tower.cpp GameObjects/Entities/Towers/cannon_tower.h)
 
 set(UTILITIES
         Utilities/damage.cpp
