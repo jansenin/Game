@@ -4,6 +4,7 @@
 #include "GameObjects/Entities/Towers/cannon_tower.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
+#include "Controller/controller.h"
 #include <QGraphicsScene>
 
 bool TowerSlot::IsTakenUp() const {
@@ -33,6 +34,9 @@ void TowerSlot::Tick(Time time) {
 }
 
 void TowerSlot::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+  if (!Controller::Instance()->HaveEnoughMoney(Costs::kMagicTowerCost)) {
+    return;
+  }
   if (event->button() == Qt::MouseButton::LeftButton) {
     if (!IsTakenUp()) {
       MagicTower* tower = new MagicTower(scenePos());
