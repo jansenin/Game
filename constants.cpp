@@ -34,6 +34,7 @@ const qreal kZValue = 2000;
 
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
+const Time kGrowingSpeed = Time(500);
 const QString kSkeletonId = "Skeleton";
 const QString kCobraId = "Cobra";
 const QString kHedgehogId = "Hedgehog";

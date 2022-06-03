@@ -17,7 +17,6 @@ void TowerSlot::TakeUpArea(Tower* tower) {
 
 void TowerSlot::ClearArea() {
   tower_ = nullptr;
-//  scene()->DecCannonTowersCount();
 }
 
 TowerSlot::TowerSlot(const VectorF& coordinates)

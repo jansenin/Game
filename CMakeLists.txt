@@ -36,7 +36,7 @@ set(GAME_OBJECTS
         GameObjects/explosion.cpp
         GameObjects/Entities/Traps/bear_trap.cpp
         GameObjects/Entities/Traps/bomb.cpp
-        GameObjects/Interface/coin.cpp
+        GameObjects/coin.cpp
         GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp
         GameObjects/Entities/Projectiles/linear_test_projectile.cpp)
 
@@ -50,7 +50,8 @@ set(UTILITIES
         Utilities/wave.cpp
         wave_manager.cpp
         Utilities/animation.cpp
-        Utilities/utility.cpp)
+        Utilities/utility.cpp
+        Utilities/randomaizer.cpp)
 
 set(UI
         UI/tooltip.cpp

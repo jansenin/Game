@@ -24,6 +24,7 @@ class Level {
   [[nodiscard]] const std::vector<Wave*>& GetWaves();
   [[nodiscard]] int GetLevelNumber() const;
   [[nodiscard]] int GetStartMoney() const;
+  bool IsTimeForGrow();
 
  private:
   class SpawnEntry {
@@ -48,6 +49,7 @@ class Level {
   std::vector<TowerSlot*> tower_slots_{};
   std::vector<Route*> routes_{};
   std::vector<Wave*> waves_{};
+  std::vector<Time> timers_for_grow_{};
   int level_number_;
   int startMoney_;
 };

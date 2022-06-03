@@ -41,6 +41,7 @@ extern const qreal kZValue;
 
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
+extern const Time kGrowingSpeed;
 extern const QString kSkeletonId;
 extern const QString kCobraId;
 extern const QString kHedgehogId;

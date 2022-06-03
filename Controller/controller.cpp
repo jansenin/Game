@@ -7,6 +7,7 @@
 #include <QTextDocument>
 #include <iostream>
 
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
@@ -92,6 +93,13 @@ void Controller::TickAllTickables() {
       tickable->Tick(delta);
     }
   }
+  if (level_->IsTimeForGrow()) {
+  for (QGraphicsItem* graphics_item : scene_->items()) {
+      if (Mob* mob = dynamic_cast<Mob*>(graphics_item)) {
+        mob->TimeToGrow();
+      }
+    }
+  }
   level_->Tick(delta);
 
   base_hp_ -= damage_per_current_tick_;
@@ -101,7 +109,6 @@ void Controller::TickAllTickables() {
     emit GameOver();
   }
   RegulateMoney();
-  std::cout << balance_ << '\n';
 }
 
 void Controller::DealDamageToBase(int damage) {
