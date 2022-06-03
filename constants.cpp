@@ -1,7 +1,7 @@
 #include <QString>
 #include "constants.h"
 
-const bool kDebugMode = true;
+const bool kDebugMode = false;
 const int kFPS = 60;
 
 namespace Scene {
@@ -76,7 +76,7 @@ const int kDamageToBase = 1;
 namespace TestProjectile {
 const Damage kDamage = Damage(10);
 const qreal kSpeed = 100;
-const qreal kAcceleration = 1000;
+const qreal kAcceleration = 1500;
 const qreal kMaxSpeed = 500;
 const qreal kEnemyFindDistance = 300;
 const qreal kCrossAccelerationPerPixel = 900.0 / 100.0;
