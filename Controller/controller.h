@@ -52,5 +52,4 @@ class Controller : public QObject {
 
   int base_hp_;
   int damage_per_current_tick_;
-
 };
