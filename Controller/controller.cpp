@@ -109,7 +109,6 @@ void Controller::TickAllTickables() {
     emit GameOver();
   }
   RegulateMoney();
-  std::cout << balance_ << '\n';
 }
 
 void Controller::DealDamageToBase(int damage) {

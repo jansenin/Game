@@ -3,7 +3,7 @@
 #include <vector>
 #include "Controller/controller.h"
 #include "Utilities/randomaizer.h"
-#include "GameObjects/Interface/coin.h"
+#include "GameObjects/coin.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
 

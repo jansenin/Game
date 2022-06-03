@@ -5,7 +5,7 @@
 #include <QGraphicsView>
 
 #include "GameObjects/Interface/entity.h"
-#include "GameObjects/Interface/coin.h"
+#include "GameObjects/coin.h"
 #include "game_view.h"
 #include "game_scene.h"
 #include "level.h"
