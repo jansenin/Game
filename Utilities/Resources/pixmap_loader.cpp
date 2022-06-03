@@ -33,7 +33,6 @@ std::vector<QPixmap*> P::Hedgehog::kDeath;
 QPixmap* P::Dwarf::kAnimations;
 std::vector<QPixmap*> P::Dwarf::kWalk;
 std::vector<QPixmap*> P::Dwarf::kDeath;
-
 QPixmap* P::Explosion::kAnimations;
 std::vector<QPixmap*> P::Explosion::kExplosion;
 

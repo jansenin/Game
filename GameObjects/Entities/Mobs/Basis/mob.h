@@ -30,7 +30,7 @@ class Mob : public Entity {
 
   QRectF boundingRect() const override;
 
-  virtual ~Mob();
+  ~Mob() override;
 
  protected:
   Route* route_{nullptr};

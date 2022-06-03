@@ -41,7 +41,7 @@ const QString kDwarfId = "Dwarf";
 
 namespace TestTower {
 const qreal kAttackRange = 300;
-const Time kAttackCooldown = Time(100);
+const Time kAttackCooldown = Time(500);
 }
 
 namespace TestMob {
@@ -81,7 +81,13 @@ const int kDamageToBase = 1;
 }
 
 namespace TestProjectile {
-const Damage kDamage = Damage(3);
-const qreal kSpeed = 500;
+const Damage kDamage = Damage(10);
+const qreal kSpeed = 100;
+const qreal kAcceleration = 1500;
+const qreal kMaxSpeed = 500;
+const qreal kEnemyFindDistance = 300;
+const qreal kCrossAccelerationPerPixel = 900.0 / 100.0;
+const Time kCrossAccelerationCycleDuration = 1500_ms;
+const qreal kMaxCrossAcceleration = 600;
 }
 }  // namespace Entities
