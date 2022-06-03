@@ -8,7 +8,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
+#include "GameObjects/Entities/Towers/TowerSlots/tower_slot.h"
 #include "Utilities/utility.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
@@ -42,13 +42,13 @@ Level::Level(int level_number) : level_number_(level_number) {
     tower_slot_y = tower_slot_pos_object.value("y").toInt();
 
     tower_slots_.push_back(
-        new TestTowerSlot(VectorF(tower_slot_x, tower_slot_y)));
+        new TowerSlot(VectorF(tower_slot_x, tower_slot_y)));
   }
   {
-    bear_traps_.push_back(new BearTrap(VectorF(150, 150), PixmapLoader::Pixmaps::kTestTowerSlot)); // check
+    bear_traps_.push_back(new BearTrap(VectorF(150, 150), PixmapLoader::Pixmaps::kTowerSlot)); // check
   }
   {
-    bombs_.push_back(new Bomb(VectorF(0, 150), PixmapLoader::Pixmaps::kTestTowerSlot)); // test
+    bombs_.push_back(new Bomb(VectorF(0, 150), PixmapLoader::Pixmaps::kTowerSlot)); // test
   }
 
   QJsonArray routes = root.value("routes").toArray();

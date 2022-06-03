@@ -56,3 +56,43 @@ std::vector<Projectile*> GameScene::Projectiles() const {
   return result;
 }
 
+void GameScene::IncCoinsCount() {
+  ++coins_count_;
+}
+
+void GameScene::DecCoinsCount() {
+  if (coins_count_ > 0) {
+    --coins_count_;
+  }
+}
+
+void GameScene::IncCannonTowersCount() {
+  ++cannon_tower_count_;
+}
+
+void GameScene::DecCannonTowersCount() {
+  if (cannon_tower_count_ > 0) {
+    -- cannon_tower_count_;
+  }
+}
+
+int GameScene::GetCoinsCount() {
+  return coins_count_;
+}
+
+int GameScene::GetCannonTowersCount() {
+  return cannon_tower_count_;
+}
+
+void GameScene::IncMagicTowersCount() {
+  ++magic_tower_count_;
+}
+
+void GameScene::DecMagicTowersCount() {
+  --magic_tower_count_;
+}
+
+int GameScene::GetMagicTowersCount() {
+  return magic_tower_count_;
+}
+

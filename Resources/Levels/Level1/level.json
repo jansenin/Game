@@ -84,40 +84,28 @@
           "mobType": "Cobra",
           "count": 4,
           "startTime": 0,
-          "entryDuration": 1000,
-          "routeIndex": 1
-        },
-        {
-          "mobType": "Dwarf",
-          "count": 4,
-          "startTime": 2000,
-          "entryDuration": 1500,
+          "entryDuration": 2000,
           "routeIndex": 1
         },
         {
           "mobType": "Hedgehog",
           "count": 4,
-          "startTime": 4500,
-          "entryDuration": 1000,
+          "startTime": 3000,
+          "entryDuration": 2000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "Dwarf",
+          "count": 4,
+          "startTime": 6000,
+          "entryDuration": 4000,
           "routeIndex": 1
         },
         {
           "mobType": "Skeleton",
           "count": 4,
-          "startTime": 6500,
-          "entryDuration": 1500,
-          "routeIndex": 1
-        }
-      ]
-    },
-    {
-      "startTimeRelativeToPrevWave": 5000,
-      "spawnEntries": [
-        {
-          "mobType": "TestMob",
-          "count": 300,
-          "startTime": 0,
-          "entryDuration": 100000,
+          "startTime": 11000,
+          "entryDuration": 2000,
           "routeIndex": 1
         }
       ]

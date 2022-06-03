@@ -1,6 +1,6 @@
 #include "bomb.h"
 #include "Utilities/Resources/pixmap_loader.h"
-#include "GameObjects/Entities/Mobs/test_mob.h"
+
 #include "constants.h"
 
 

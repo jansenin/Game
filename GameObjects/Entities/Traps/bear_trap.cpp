@@ -1,6 +1,6 @@
 #include "bear_trap.h"
 #include "Utilities/Resources/pixmap_loader.h"
-#include "GameObjects/Entities/Mobs/test_mob.h"
+//#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "constants.h"
 
 

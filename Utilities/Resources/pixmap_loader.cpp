@@ -7,10 +7,13 @@ using P = PixmapLoader::Pixmaps;
 
 QPixmap* P::kBackground;
 QPixmap* P::kTestBullet;
-QPixmap* P::kTestMob;
-QPixmap* P::kTestTower;
-QPixmap* P::kTestTowerGun;
-QPixmap* P::kTestTowerSlot;
+QPixmap* P::kMagicTowerLevel1;
+QPixmap* P::kMagicTowerLevel2;
+QPixmap* P::kMagicTowerLevel3;
+QPixmap* P::kCannonTowerLevel1;
+QPixmap* P::kCannonTowerLevel2;
+QPixmap* P::kCannonTowerLevel3;
+QPixmap* P::kTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
 QPixmap* P::kEmpty;
 
@@ -67,11 +70,14 @@ TexturedBoxPixmaps PixmapLoader::kButtonTexturedBoxPixmaps;
 void PixmapLoader::LoadPixmaps() {
   P::kBackground = new QPixmap(":images/background.png");
   P::kTestBullet = new QPixmap(":images/test_bullet.png");
-  P::kTestMob = new QPixmap(":images/test_mob.png");
-  P::kTestTower = new QPixmap(":images/test_tower.png");
-  P::kTestTowerGun = new QPixmap(":images/test_tower_gun.png");
   P::kBearTrap = new QPixmap(":images/bear_trap.png");
-  P::kTestTowerSlot = new QPixmap(":images/test_tower_slot.png");
+  P::kTowerSlot = new QPixmap(":images/tower_slot.png");
+  P::kMagicTowerLevel1 = new QPixmap(":images/magic_tower_level1.png");
+  P::kMagicTowerLevel2 = new QPixmap(":images/magic_tower_level2.png");
+  P::kMagicTowerLevel3 = new QPixmap(":images/magic_tower_level3.png");
+  P::kCannonTowerLevel1 = new QPixmap(":images/cannon_tower_level1.png");
+  P::kCannonTowerLevel2 = new QPixmap(":images/cannon_tower_level2.png");
+  P::kCannonTowerLevel3 = new QPixmap(":images/cannon_tower_level3.png");
   for (int i = 1; i <= LevelData::kLevelsCount; ++i) {
     P::kLevelMaps.push_back(new QPixmap(":Levels/Level"
     + QString::number(i)

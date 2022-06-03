@@ -3,6 +3,9 @@
 #include <vector>
 
 #include "Controller/controller.h"
+#include "GameObjects/Interface/coin.h"
+#include "Utilities/Resources/pixmap_loader.h"
+#include "constants.h"
 
 Mob::Mob(const VectorF& coordinates,
          Animation* animation,
@@ -57,6 +60,9 @@ void Mob::Tick(Time delta) {
 Mob::~Mob() {
   if (route_ != nullptr) {
     route_->RemoveEntity(this);
+  }
+  if (rand() % Entities::kCoinAppearChance == 1) {
+    scene()->addItem(new Coin(VectorF(pos().x(), pos().y()), PixmapLoader::Pixmaps::kCoinAnimations));
   }
 }
 

@@ -5,6 +5,8 @@
 #include <QGraphicsItem>
 #include <QGraphicsObject>
 
+
+
 // positions items one after another, centered by y
 class LinearLayout : public QGraphicsObject {
  public:

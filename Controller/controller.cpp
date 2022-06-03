@@ -5,9 +5,8 @@
 #include <QApplication>
 #include <QTimer>
 #include <QTextDocument>
+#include <iostream>
 
-#include "GameObjects/Entities/Mobs/test_mob.h"
-#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
@@ -32,7 +31,7 @@ Controller::Controller() :
   LaunchTickTimer();
 
   connect(this, &Controller::GameOver, [this]() {
-    scene_->addItem(new TestMob({100, 100}));
+    scene_->addItem(new Dwarf({100, 100}));
     // it's needed, but it also blocks close button
     // view_->setInteractive(false);
     tick_timer_->stop();
@@ -59,8 +58,8 @@ void Controller::SetupScene() {
     quit_button->GetTextDocument()->setDefaultFont(quit_button_font);
     quit_button->setPos(
         scene_->sceneRect().topRight()
-        - quit_button->boundingRect().topRight()
-        - VectorF(5, -5));
+            - quit_button->boundingRect().topRight()
+            - VectorF(5, -5));
     connect(quit_button, &TextButton::Clicked, [](){ QApplication::exit(); });
     scene_->addItem(quit_button);
   }  // temporary code end
@@ -101,8 +100,25 @@ void Controller::TickAllTickables() {
     base_hp_ = 0;
     emit GameOver();
   }
+  RegulateMoney();
+  std::cout << balance_ << '\n';
 }
 
 void Controller::DealDamageToBase(int damage) {
   // damage_per_current_tick_ += damage;
+}
+
+void Controller::RegulateMoney() {
+  if (scene_->GetCoinsCount() > coins_count_) {
+    balance_ += Costs::kCoinCost;
+  }
+  coins_count_ = scene_->GetCoinsCount();
+  if (scene_->GetCannonTowersCount() > cannon_tower_count_) {
+    balance_ -= Costs::kCannonTowerCost;
+  }
+  cannon_tower_count_ = scene_->GetCannonTowersCount();
+  if (scene_->GetMagicTowersCount() > magic_tower_count_) {
+    balance_ -= Costs::kMagicTowerCost;
+  }
+  magic_tower_count_ = scene_->GetMagicTowersCount();
 }

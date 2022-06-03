@@ -1,6 +1,6 @@
 #include "coin.h"
 #include "Utilities/Resources/pixmap_loader.h"
-#include "GameObjects/Entities/Mobs/test_mob.h"
+//#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "constants.h"
 
 
@@ -34,8 +34,10 @@ void Coin::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWid
 }
 
 void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-//  delete this;
+  scene()->IncCoinsCount();
+  update();
   SetRoute();
+  delete this;
   // add money
 
 }
@@ -43,14 +45,14 @@ void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
 Coin::~Coin() {
   delete idle_animation_;
+//  scene()->DecCoinsCount();
 }
 
 void Coin::SetRoute() {
   std::vector<VectorF> points;
-  points.emplace_back(pos().x(), pos().y());
-  points.emplace_back(500, 500);
+  points.emplace_back(this->pos().x(), this->pos().y());
+  points.emplace_back(50, 50);
   collecting_route_ = new Route(points);
   collecting_route_->AddEntity(this);
 }
-
 

@@ -8,6 +8,13 @@
 
 extern const bool kDebugMode;
 extern const int kFPS;
+extern const int kStartBalance;
+
+namespace Costs {
+extern const int kCoinCost;
+extern const int kCannonTowerCost;
+extern const int kMagicTowerCost;
+}
 
 namespace Scene {
 extern const qreal kWidth;
@@ -34,23 +41,32 @@ extern const qreal kZValue;
 
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
-extern const QString kTestMobId;
 extern const QString kSkeletonId;
 extern const QString kCobraId;
 extern const QString kHedgehogId;
 extern const QString kDwarfId;
 extern const int kCoinAppearChance;
 
-namespace TestTower {
-extern const qreal kAttackRange;
-extern const Time kAttackCooldown;
+namespace MagicTower {
+extern const qreal kAttackRangeLevel1;
+extern const Time kAttackCooldownLevel1;
+extern const qreal kAttackRangeLevel2;
+extern const Time kAttackCooldownLevel2;
+extern const qreal kAttackRangeLevel3;
+extern const Time kAttackCooldownLevel3;
+extern const int kMaxLevel;
+extern const int kPrice;
 }
 
-namespace TestMob {
-extern const qreal kPassiveMoveSpeed;
-extern const qreal kActiveMoveSpeed;
-extern const qreal kRotationSpeed;
-extern const int kHealth;
+namespace CannonTower {
+extern const qreal kAttackRangeLevel1;
+extern const Time kAttackCooldownLevel1;
+extern const qreal kAttackRangeLevel2;
+extern const Time kAttackCooldownLevel2;
+extern const qreal kAttackRangeLevel3;
+extern const Time kAttackCooldownLevel3;
+extern const int kMaxLevel;
+extern const int kPrice;
 }
 
 namespace Skeleton {
