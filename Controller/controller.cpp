@@ -108,24 +108,30 @@ void Controller::TickAllTickables() {
     base_hp_ = 0;
     emit GameOver();
   }
-  RegulateMoney();
 }
 
 void Controller::DealDamageToBase(int damage) {
   // damage_per_current_tick_ += damage;
 }
 
-void Controller::RegulateMoney() {
-  if (scene_->GetCoinsCount() > coins_count_) {
-    balance_ += Costs::kCoinCost;
-  }
-  coins_count_ = scene_->GetCoinsCount();
-  if (scene_->GetCannonTowersCount() > cannon_tower_count_) {
-    balance_ -= Costs::kCannonTowerCost;
-  }
-  cannon_tower_count_ = scene_->GetCannonTowersCount();
-  if (scene_->GetMagicTowersCount() > magic_tower_count_) {
-    balance_ -= Costs::kMagicTowerCost;
-  }
-  magic_tower_count_ = scene_->GetMagicTowersCount();
+void Controller::AddMoney(int money) {
+  balance_ += money;
 }
+
+void Controller::LoseMoney(int money) {
+  if (balance_ >= money) {
+    balance_ -= money;
+  }
+}
+
+int Controller::GetBalance() {
+  return balance_;
+}
+
+bool Controller::HaveEnoughMoney(int money) {
+  if (money > balance_) {
+    return false;
+  }
+  return true;
+}
+

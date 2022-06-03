@@ -1,6 +1,7 @@
 #include "magic_tower.h"
 #include "constants.h"
 #include "Utilities/Resources/pixmap_loader.h"
+#include "Controller/controller.h"
 
 using P = PixmapLoader::Pixmaps;
 
@@ -11,6 +12,7 @@ MagicTower::MagicTower(const VectorF& coordinates) :
           Entities::MagicTower::kAttackRangeLevel1,
           Entities::MagicTower::kMaxLevel,
           Entities::MagicTower::kPrice) {
+  Controller::Instance()->LoseMoney(Costs::kMagicTowerCost);
 }
 
 void MagicTower::Upgrade() {
@@ -18,6 +20,10 @@ void MagicTower::Upgrade() {
 
   ++Tower::current_level_;
   if (current_level_ == 2) {
+    if (!Controller::Instance()->HaveEnoughMoney(Costs::kTowerLevel2Upgrade)) {
+      return;
+    }
+    Controller::Instance()->LoseMoney(Costs::kTowerLevel2Upgrade);
     Tower::cooldown_ = Entities::MagicTower::kAttackCooldownLevel2;
     Tower::range_ = Entities::MagicTower::kAttackRangeLevel2;
     delete Tower::animation_;
@@ -26,6 +32,10 @@ void MagicTower::Upgrade() {
     return;
   }
   if (current_level_ == 3) {
+    if (!Controller::Instance()->HaveEnoughMoney(Costs::kTowerLevel3Upgrade)) {
+      return;
+    }
+    Controller::Instance()->LoseMoney(Costs::kTowerLevel3Upgrade);
     Tower::cooldown_ = Entities::MagicTower::kAttackCooldownLevel3;
     Tower::range_ = Entities::MagicTower::kAttackRangeLevel3;
     delete Tower::animation_;

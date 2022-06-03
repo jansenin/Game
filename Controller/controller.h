@@ -23,6 +23,11 @@ class Controller : public QObject {
 
   void DealDamageToBase(int damage);
 
+  void AddMoney(int money);
+  void LoseMoney(int money);
+  int GetBalance();
+  bool HaveEnoughMoney(int money);
+
  signals:
   void GameOver();
 
@@ -48,7 +53,4 @@ class Controller : public QObject {
   int base_hp_;
   int damage_per_current_tick_;
 
-  int coins_count_ = 0;
-  int cannon_tower_count_ = 0;
-  int magic_tower_count_ = 0;
 };

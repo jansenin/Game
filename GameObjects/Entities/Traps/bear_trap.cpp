@@ -1,6 +1,7 @@
 #include "bear_trap.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
+#include "Controller/controller.h"
 
 #include <iostream>
 #include <game_scene.h>
@@ -61,6 +62,9 @@ void BearTrap::paint(QPainter* painter,
 }
 
 void BearTrap::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+  if (!Controller::Instance()->HaveEnoughMoney(Costs::kBearTrapRepairingCost)) {
+    return;
+  }
   if (event->button() != Qt::LeftButton) {
     return;
   }
@@ -70,6 +74,7 @@ void BearTrap::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 void BearTrap::RepairTrap() {
   is_broken_ = false;
   animation_ = repairing_animation_;
+  Controller::Instance()->LoseMoney(Costs::kBearTrapRepairingCost);
   update();
 }
 
