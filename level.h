@@ -10,6 +10,8 @@
 #include "GameObjects/Entities/Towers/TowerSlots/tower_slot.h"
 #include "Utilities/route.h"
 #include "Utilities/wave.h"
+#include "GameObjects/Entities/Traps/bear_trap.h"
+#include "GameObjects/Entities/Traps/bomb.h"
 
 class Level {
  public:
@@ -41,6 +43,8 @@ class Level {
     int route_index_;
   };
 
+  std::vector<BearTrap*> bear_traps_{};
+  std::vector<Bomb*> bombs_{};
   std::vector<TowerSlot*> tower_slots_{};
   std::vector<Route*> routes_{};
   std::vector<Wave*> waves_{};

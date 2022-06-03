@@ -12,10 +12,12 @@ bool TowerSlot::IsTakenUp() const {
 
 void TowerSlot::TakeUpArea(Tower* tower) {
   tower_ = tower;
+  scene()->IncMagicTowersCount();
 }
 
 void TowerSlot::ClearArea() {
   tower_ = nullptr;
+//  scene()->DecCannonTowersCount();
 }
 
 TowerSlot::TowerSlot(const VectorF& coordinates)

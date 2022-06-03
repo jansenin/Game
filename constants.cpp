@@ -3,6 +3,7 @@
 
 const bool kDebugMode = false;
 const int kFPS = 60;
+const int kStartBalance = 1000;
 
 namespace Scene {
 const qreal kWidth = 1920;
@@ -33,11 +34,11 @@ const qreal kZValue = 2000;
 
 namespace Entities {
 const int kCircleAttackAreaApproximationPointsCount = 10;
-const QString kTestMobId = "TestMob";
 const QString kSkeletonId = "Skeleton";
 const QString kCobraId = "Cobra";
 const QString kHedgehogId = "Hedgehog";
 const QString kDwarfId = "Dwarf";
+const int kCoinAppearChance = 3;
 
 namespace MagicTower {
 const qreal kAttackRangeLevel1 = 300;
@@ -100,3 +101,9 @@ const Time kCrossAccelerationCycleDuration = 1500_ms;
 const qreal kMaxCrossAcceleration = 600;
 }
 }  // namespace Entities
+
+namespace Costs {
+const int kCoinCost = 50;
+const int kCannonTowerCost = 500;
+const int kMagicTowerCost = 500;
+}

@@ -5,9 +5,11 @@
 #include <QGraphicsView>
 
 #include "GameObjects/Interface/entity.h"
+#include "GameObjects/Interface/coin.h"
 #include "game_view.h"
 #include "game_scene.h"
 #include "level.h"
+#include "constants.h"
 
 class Controller : public QObject {
   Q_OBJECT
@@ -35,11 +37,18 @@ class Controller : public QObject {
   void SetupScene();
   void LaunchTickTimer();
 
+  void RegulateMoney();
+
   GameScene* scene_;
   GameView* view_;
   QTimer* tick_timer_;
   Level* level_;
+  int balance_ = kStartBalance;
 
   int base_hp_;
   int damage_per_current_tick_;
+
+  int coins_count_ = 0;
+  int cannon_tower_count_ = 0;
+  int magic_tower_count_ = 0;
 };

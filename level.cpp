@@ -15,7 +15,7 @@
 
 Level::Level(int level_number) : level_number_(level_number) {
   QFile file(":Levels/Level" +
-  QString::fromStdString(std::to_string(level_number)) + "/level.json");
+      QString::fromStdString(std::to_string(level_number)) + "/level.json");
 
   if (!file.open(QIODevice::ReadOnly)) {
     throw std::invalid_argument("There is no such level");
@@ -43,6 +43,14 @@ Level::Level(int level_number) : level_number_(level_number) {
 
     tower_slots_.push_back(
         new TowerSlot(VectorF(tower_slot_x, tower_slot_y)));
+  }
+  {
+    bear_traps_.push_back(new BearTrap(VectorF(150, 150),
+                                       PixmapLoader::Pixmaps::kTowerSlot));
+  }
+  {
+    bombs_.push_back(new Bomb(VectorF(0, 150),
+                              PixmapLoader::Pixmaps::kTowerSlot));  // test
   }
 
   QJsonArray routes = root.value("routes").toArray();
@@ -109,6 +117,12 @@ void Level::AddObjectsToScene(GameScene* scene) {
   for (auto tower_slot : tower_slots_) {
     scene->addItem(tower_slot);
   }
+  for (auto bear_trap : bear_traps_) {
+    scene->addItem(bear_trap);
+  }
+  for (auto bomb : bombs_) {
+    scene->addItem(bomb);
+  }
 }
 
 void Level::Tick(Time delta) {
@@ -134,12 +148,11 @@ int Level::GetStartMoney() const {
 }
 
 Level::SpawnEntry::SpawnEntry(QJsonObject* spawn_root_object)
-  : start_time_(Time(spawn_root_object->value("startTime").toInt())),
-    mob_type_(spawn_root_object->value("mobType").toString()),
-    count_(spawn_root_object->value("count").toInt()),
-    entry_duration_(Time(spawn_root_object->value("entryDuration").toInt())),
-    route_index_(spawn_root_object->value("routeIndex").toInt())
-  {}
+    : start_time_(Time(spawn_root_object->value("startTime").toInt())),
+      mob_type_(spawn_root_object->value("mobType").toString()),
+      count_(spawn_root_object->value("count").toInt()),
+      entry_duration_(Time(spawn_root_object->value("entryDuration").toInt())),
+      route_index_(spawn_root_object->value("routeIndex").toInt()) {}
 
 void Level::SpawnEntry::AddMobsToWave(
     std::map<Mob*, Time>* mobs,
