@@ -29,6 +29,7 @@ namespace Explosions {
 extern const qreal kDefaultRadius;
 extern const Damage kDefaultDamage;
 extern const Time kTimeBetweenFrames;
+extern const qreal kZValue;
 }
 
 namespace Entities {

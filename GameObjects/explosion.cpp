@@ -11,6 +11,7 @@ Explosion::Explosion(const VectorF& coordinates, qreal radius, Damage damage)
         PixmapLoader::Pixmaps::Explosion::kExplosion,
         Explosions::kTimeBetweenFrames)) {
   setPos(coordinates);
+  setZValue(Explosions::kZValue);
 }
 
 QRectF Explosion::boundingRect() const {

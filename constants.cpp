@@ -25,9 +25,10 @@ extern const int kLevelsCount = 1;
 }
 
 namespace Explosions {
-const qreal kDefaultRadius = 50.0;
+const qreal kDefaultRadius = 70.0;
 const Damage kDefaultDamage = Damage(50);
 const Time kTimeBetweenFrames = 50_ms;
+const qreal kZValue = 2000;
 }
 
 namespace Entities {
