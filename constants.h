@@ -25,6 +25,13 @@ namespace LevelData {
 extern const int kLevelsCount;
 }
 
+namespace Explosions {
+extern const qreal kDefaultRadius;
+extern const Damage kDefaultDamage;
+extern const Time kTimeBetweenFrames;
+extern const qreal kZValue;
+}
+
 namespace Entities {
 extern const int kCircleAttackAreaApproximationPointsCount;
 extern const QString kTestMobId;

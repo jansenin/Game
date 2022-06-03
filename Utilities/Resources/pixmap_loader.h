@@ -34,26 +34,28 @@ class PixmapLoader {
       static std::vector<QPixmap*> kWalk;
       static std::vector<QPixmap*> kDeath;
     };
-
     class Cobra {
      public:
       static QPixmap* kAnimations;
       static std::vector<QPixmap*> kWalk;
       static std::vector<QPixmap*> kDeath;
     };
-
     class Hedgehog {
      public:
       static QPixmap* kAnimations;
       static std::vector<QPixmap*> kWalk;
       static std::vector<QPixmap*> kDeath;
     };
-
     class Dwarf {
      public:
       static QPixmap* kAnimations;
       static std::vector<QPixmap*> kWalk;
       static std::vector<QPixmap*> kDeath;
+    };
+    class Explosion {
+     public:
+      static QPixmap* kAnimations;
+      static std::vector<QPixmap*> kExplosion;
     };
   };
 
@@ -78,6 +80,7 @@ class PixmapLoader {
   static void LoadCobraAnimations();
   static void LoadHedgehogAnimations();
   static void LoadDwarfAnimations();
+  static void LoadExplosionAnimation();
 
   static void LoadUI();
   static void LoadDefaultTextureBox();

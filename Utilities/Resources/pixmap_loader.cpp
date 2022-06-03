@@ -33,6 +33,8 @@ std::vector<QPixmap*> P::Hedgehog::kDeath;
 QPixmap* P::Dwarf::kAnimations;
 std::vector<QPixmap*> P::Dwarf::kWalk;
 std::vector<QPixmap*> P::Dwarf::kDeath;
+QPixmap* P::Explosion::kAnimations;
+std::vector<QPixmap*> P::Explosion::kExplosion;
 
 // -----------------------------------------------------------------------------
 
@@ -60,6 +62,7 @@ void PixmapLoader::LoadPixmaps() {
   LoadCobraAnimations();
   LoadHedgehogAnimations();
   LoadDwarfAnimations();
+  LoadExplosionAnimation();
   LoadUI();
 }
 
@@ -263,6 +266,27 @@ void PixmapLoader::LoadDwarfAnimations() {
       death_animation_frames_count,
       death_animation_column * frame_width,
       death_animation_row * frame_height);
+}
+
+void PixmapLoader::LoadExplosionAnimation() {
+  // file size - 384x48
+  // 1 frame rows, 8 frame columns
+  const int animation_frames_count = 8;
+  const int frame_width = 384 / animation_frames_count;
+  const int frame_height = 48 / 1;
+  // row and column start from 0
+  const int animation_row = 0;
+  const int animation_column = 0;
+
+  P::Explosion::kAnimations = new QPixmap(":images/explosion.png");
+
+  P::Explosion::kExplosion = CreateHorizontalFramesVector(
+      P::Explosion::kAnimations,
+      frame_width,
+      frame_height,
+      animation_frames_count,
+      animation_column * frame_width,
+      animation_row * frame_height);
 }
 
 void PixmapLoader::LoadUI() {

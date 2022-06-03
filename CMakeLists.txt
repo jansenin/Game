@@ -33,7 +33,10 @@ set(GAME_OBJECTS
         GameObjects/Entities/Mobs/skeleton.cpp
         GameObjects/Entities/Mobs/cobra.cpp
         GameObjects/Entities/Mobs/hedgehog.cpp
-        GameObjects/Entities/Mobs/dwarf.cpp GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp GameObjects/Entities/Projectiles/linear_autoguided_projectile.h GameObjects/Entities/Projectiles/linear_test_projectile.cpp GameObjects/Entities/Projectiles/linear_test_projectile.h)
+        GameObjects/Entities/Mobs/dwarf.cpp
+        GameObjects/explosion.cpp
+        GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp
+        GameObjects/Entities/Projectiles/linear_test_projectile.cpp)
 
 set(UTILITIES
         Utilities/damage.cpp
@@ -53,7 +56,9 @@ set(UI
         UI/linear_menu.cpp
         UI/linear_layout.cpp
         UI/button.cpp
-        UI/padding_box.cpp UI/pixmap_object.cpp UI/pixmap_object.h)
+        UI/padding_box.cpp
+        UI/pixmap_object.cpp
+        UI/pixmap_object.h)
 
 add_executable(Game
         ${RESOURCES}

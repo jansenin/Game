@@ -34,8 +34,8 @@ class AutoguidedProjectile : public Projectile {
 
   Entity* target_;
   VectorF speed_;
+  Damage damage_;
   qreal max_speed_;
   qreal acceleration_;
   qreal enemy_find_distance_;
-  Damage damage_;
 };
