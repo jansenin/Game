@@ -21,6 +21,7 @@ void MagicTower::Upgrade() {
     Tower::range_ = Entities::MagicTower::kAttackRangeLevel2;
     delete Tower::animation_;
     Tower::animation_ = new Animation(P::kMagicTowerLevel2);
+    update();
     return;
   }
   if (current_level_ == 3) {
@@ -28,6 +29,7 @@ void MagicTower::Upgrade() {
     Tower::range_ = Entities::MagicTower::kAttackRangeLevel3;
     delete Tower::animation_;
     Tower::animation_ = new Animation(P::kMagicTowerLevel3);
+    update();
     return;
   }
 }

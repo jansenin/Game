@@ -19,6 +19,7 @@ class Mob : public Entity {
       int health,
       int damage_to_base,
       qreal speed);
+  void TimeToGrow();
 
   virtual void SetRoute(Route* route);
   void MoveToRouteStart();
@@ -37,4 +38,6 @@ class Mob : public Entity {
   qreal speed_;
   bool dealed_damage_to_base_;
   int damage_to_base_;
+  Time growing_time_;
+  qreal growing_step_;
 };

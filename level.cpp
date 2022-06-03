@@ -84,6 +84,11 @@ Level::Level(int level_number) : level_number_(level_number) {
     Wave* wave = new Wave(current_wave_start_time, std::move(mobs));
     waves_.push_back(wave);
   }
+  QJsonArray timers_for_grow_array = root.value("GrowTimes").toArray();
+  timers_for_grow_.reserve(timers_for_grow_array.size());
+  for (auto i : timers_for_grow_array) {
+    timers_for_grow_.emplace_back(i.toInt());
+  }
 }
 
 void Level::AddObjectsToScene(GameScene* scene) {
@@ -115,6 +120,9 @@ void Level::Tick(Time delta) {
   for (auto wave : waves_) {
     wave->Tick(delta);
   }
+  if (!timers_for_grow_.empty()) {
+    timers_for_grow_[0] -= delta;
+  }
 }
 
 const std::vector<Route*>& Level::GetRoutes() const {
@@ -131,6 +139,14 @@ int Level::GetLevelNumber() const {
 
 int Level::GetStartMoney() const {
   return startMoney_;
+}
+
+bool Level::IsTimeForGrow() {
+  if (!timers_for_grow_.empty() && timers_for_grow_[0].ms() <= 0) {
+    timers_for_grow_.erase(timers_for_grow_.begin());
+    return true;
+  }
+  return false;
 }
 
 Level::SpawnEntry::SpawnEntry(QJsonObject* spawn_root_object)

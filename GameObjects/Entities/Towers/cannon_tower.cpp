@@ -23,6 +23,7 @@ void CannonTower::Upgrade() {
     Tower::range_ = Entities::CannonTower::kAttackRangeLevel2;
     delete Tower::animation_;
     Tower::animation_ = new Animation(P::kCannonTowerLevel2);
+    update();
     return;
   }
   if (current_level_ == 3) {
@@ -30,6 +31,7 @@ void CannonTower::Upgrade() {
     Tower::range_ = Entities::CannonTower::kAttackRangeLevel3;
     delete Tower::animation_;
     Tower::animation_ = new Animation(P::kCannonTowerLevel3);
+    update();
     return;
   }
 }

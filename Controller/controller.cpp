@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QTextDocument>
 
+#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
@@ -89,6 +90,13 @@ void Controller::TickAllTickables() {
       // TODO(jansenin): make time dependency(it
       //  could have been more than 1000/30 ms)
       tickable->Tick(delta);
+    }
+  }
+  if (level_->IsTimeForGrow()) {
+  for (QGraphicsItem* graphics_item : scene_->items()) {
+      if (Mob* mob = dynamic_cast<Mob*>(graphics_item)) {
+        mob->TimeToGrow();
+      }
     }
   }
   level_->Tick(delta);

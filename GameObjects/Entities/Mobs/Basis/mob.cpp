@@ -1,8 +1,9 @@
 #include "mob.h"
 
 #include <vector>
-
 #include "Controller/controller.h"
+#include "Utilities/randomaizer.h"
+#include "constants.h"
 
 Mob::Mob(const VectorF& coordinates,
          Animation* animation,
@@ -11,6 +12,8 @@ Mob::Mob(const VectorF& coordinates,
          qreal speed)
     : Entity(coordinates, animation, health),
       speed_(speed),
+      growing_time_(Time(0)),
+      growing_step_(0),
       dealed_damage_to_base_(false),
       damage_to_base_(damage_to_base) {}
 
@@ -19,7 +22,12 @@ Mob::Mob(const VectorF& coordinates,
          int health,
          int damage_to_base,
          qreal speed)
-    : Mob(coordinates, new Animation(pixmap), health, damage_to_base, speed) {}
+         : Entity(coordinates, new Animation(pixmap), health),
+             speed_(speed),
+             growing_time_(Time(0)),
+             growing_step_(0),
+             dealed_damage_to_base_(false),
+             damage_to_base_(damage_to_base) {}
 
 qreal Mob::GetSpeed() const {
   return speed_;
@@ -52,6 +60,11 @@ void Mob::Tick(Time delta) {
       Controller::Instance()->DealDamageToBase(damage_to_base_);
     }
   }
+  if (growing_time_.ms() > 0) {
+    setScale(scale() + growing_step_ * delta.ms());
+    growing_time_ -= delta;
+  }
+  update();
 }
 
 Mob::~Mob() {
@@ -64,4 +77,39 @@ QRectF Mob::boundingRect() const {
   QRectF result = Entity::boundingRect();
   result.translate(0, -result.height() / 2);
   return result;
+}
+
+void Mob::TimeToGrow() {
+  int grow_chance = std::abs(Randomaizer::Random()) % 6;
+  qreal grow_index = 0;
+  switch (grow_chance) {
+    case 0 : {
+      grow_index = 1.0;
+      break;
+    }
+    case 1 : {
+      grow_index = 1.0;
+      break;
+    }
+    case 2 : {
+      grow_index = 1.0;
+      break;
+    }
+    case 3 : {
+      grow_index = 1.1;
+      break;
+    }
+    case 4 : {
+      grow_index = 1.3;
+      break;
+    }
+    case 5 : {
+      grow_index = 1.5;
+      break;
+    }
+  }
+  health_ = static_cast<int>(grow_index * static_cast<qreal>(health_));
+  growing_step_ = (grow_index * scale() - scale()) /
+      Entities::kGrowingSpeed.ms();
+  growing_time_ = Entities::kGrowingSpeed;
 }
