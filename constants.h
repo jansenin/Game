@@ -39,6 +39,7 @@ extern const QString kSkeletonId;
 extern const QString kCobraId;
 extern const QString kHedgehogId;
 extern const QString kDwarfId;
+extern const int kCoinAppearChance;
 
 namespace TestTower {
 extern const qreal kAttackRange;

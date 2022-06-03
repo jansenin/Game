@@ -35,6 +35,9 @@ set(GAME_OBJECTS
         GameObjects/Entities/Mobs/hedgehog.cpp
         GameObjects/Entities/Mobs/dwarf.cpp
         GameObjects/explosion.cpp
+        GameObjects/Entities/Traps/bear_trap.cpp
+        GameObjects/Entities/Traps/bomb.cpp
+        GameObjects/Interface/coin.cpp
         GameObjects/Entities/Projectiles/linear_autoguided_projectile.cpp
         GameObjects/Entities/Projectiles/linear_test_projectile.cpp)
 

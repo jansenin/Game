@@ -21,6 +21,26 @@ class PixmapLoader {
     static std::vector<QPixmap*> kLevelMaps;
     static QPixmap* kEmpty;
 
+    static QPixmap* kBearTrap;
+    static QPixmap* kBearTrapAnimations;
+    static std::vector<QPixmap*> kBearTrapIdle;
+    static std::vector<QPixmap*> kBearTrapAttacking;
+    static std::vector<QPixmap*> kBearTrapBroken;
+    static std::vector<QPixmap*> kBearTrapRepairing;
+
+    static std::vector<QPixmap*> kCoinIdle;
+    static QPixmap* kCoinAnimations;
+
+    static QPixmap* kBomb0;
+    static QPixmap* kBomb1;
+    static QPixmap* kBomb2;
+    static QPixmap* kBomb3;
+    static QPixmap* kBomb4;
+    static QPixmap* kBomb5;
+    static std::vector<QPixmap*> kBombExplosion;
+    static std::vector<QPixmap*> kBombIdle;
+    static QPixmap* kBombIdleFrame;
+
     class FireTotem {
      public:
       static QPixmap* kAnimations;
@@ -81,6 +101,9 @@ class PixmapLoader {
   static void LoadHedgehogAnimations();
   static void LoadDwarfAnimations();
   static void LoadExplosionAnimation();
+  static void LoadBearTrapAnimations();
+  static void LoadBombAnimations();
+  static void LoadCoinAnimations();
 
   static void LoadUI();
   static void LoadDefaultTextureBox();

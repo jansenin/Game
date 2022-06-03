@@ -38,6 +38,7 @@ const QString kSkeletonId = "Skeleton";
 const QString kCobraId = "Cobra";
 const QString kHedgehogId = "Hedgehog";
 const QString kDwarfId = "Dwarf";
+const int kCoinAppearChance = 3;
 
 namespace TestTower {
 const qreal kAttackRange = 300;

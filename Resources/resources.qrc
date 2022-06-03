@@ -25,7 +25,14 @@
 
         <file>images/explosion.png</file>
 
-
+        <file>images/bear_trap.png</file>
+        <file>images/bomb0.png</file>
+        <file>images/bomb1.png</file>
+        <file>images/bomb2.png</file>
+        <file>images/bomb3.png</file>
+        <file>images/bomb4.png</file>
+        <file>images/bomb5.png</file>
+        <file>images/coin.png</file>
 
         <file>GUI/Textured boxes/Default/top_left_corner.png</file>
         <file>GUI/Textured boxes/Default/top_right_corner.png</file>

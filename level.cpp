@@ -44,6 +44,12 @@ Level::Level(int level_number) : level_number_(level_number) {
     tower_slots_.push_back(
         new TestTowerSlot(VectorF(tower_slot_x, tower_slot_y)));
   }
+  {
+    bear_traps_.push_back(new BearTrap(VectorF(150, 150), PixmapLoader::Pixmaps::kTestTowerSlot)); // check
+  }
+  {
+    bombs_.push_back(new Bomb(VectorF(0, 150), PixmapLoader::Pixmaps::kTestTowerSlot)); // test
+  }
 
   QJsonArray routes = root.value("routes").toArray();
   routes_.reserve(routes.size());
@@ -108,6 +114,12 @@ void Level::AddObjectsToScene(GameScene* scene) {
 
   for (auto tower_slot : tower_slots_) {
     scene->addItem(tower_slot);
+  }
+  for (auto bear_trap : bear_traps_) {
+    scene->addItem(bear_trap);
+  }
+  for (auto bomb : bombs_) {
+    scene->addItem(bomb);
   }
 }
 
