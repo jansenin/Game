@@ -16,7 +16,8 @@ QPolygonF CreateAttackArea(qreal range) {
   return QPolygonF(points);
 }
 
-Tower::Tower(const VectorF& coordinates, QPixmap* pixmap, Time cooldown, qreal range, int max_level, int price, int health)
+Tower::Tower(const VectorF& coordinates, QPixmap* pixmap, Time cooldown,
+             qreal range, int max_level, int price, int health)
     : Entity(coordinates, new Animation(pixmap), health),
       attack_timer_(Time(0)),
       range_(range),
@@ -29,7 +30,8 @@ Tower::Tower(const VectorF& coordinates, QPixmap* pixmap, Time cooldown, qreal r
     scene_attack_area_ = local_attack_area_.translated(scenePos());
 }
 
-Tower::Tower(const VectorF& coordinates, Animation* animation, Time cooldown, qreal range, int max_level, int price, int health)
+Tower::Tower(const VectorF& coordinates, Animation* animation,
+             Time cooldown, qreal range, int max_level, int price, int health)
     : Entity(coordinates, animation, health),
       attack_timer_(Time(0)),
       range_(range),
@@ -50,12 +52,13 @@ void Tower::Tick(Time delta) {
   if (attack_timer_.IsExpired()) {
     QList<QGraphicsItem*> items_in_attack_area =
         scene()->items(scene_attack_area_);
-    for (QGraphicsItem* item: items_in_attack_area) {
+    for (QGraphicsItem* item : items_in_attack_area) {
       if (Mob* mob = dynamic_cast<Mob*>(item)) {
         if (mob->GetHealth() <= 0) {
           continue;
         }
-        scene()->addItem(new TestProjectile(scenePos() - QPointF(0, 20), mob));
+        scene()->addItem(new TestProjectile(
+            scenePos() - QPointF(0, 20), mob));
         attack_timer_.Start(cooldown_);
         break;
       }
@@ -63,6 +66,4 @@ void Tower::Tick(Time delta) {
   }
 }
 
-void Tower::Upgrade() {
-
-}
+void Tower::Upgrade() {}

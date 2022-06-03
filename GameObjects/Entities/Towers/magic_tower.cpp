@@ -4,14 +4,13 @@
 
 using P = PixmapLoader::Pixmaps;
 
-MagicTower::MagicTower(const VectorF& coordinates) : Tower(coordinates,
-                                                           P::kMagicTowerLevel1,
-                                                           Entities::MagicTower::kAttackCooldownLevel1,
-                                                           Entities::MagicTower::kAttackRangeLevel1,
-                                                           Entities::MagicTower::kMaxLevel,
-                                                           Entities::MagicTower::kPrice) {
-
-}
+MagicTower::MagicTower(const VectorF& coordinates) :
+    Tower(coordinates,
+          P::kMagicTowerLevel1,
+          Entities::MagicTower::kAttackCooldownLevel1,
+          Entities::MagicTower::kAttackRangeLevel1,
+          Entities::MagicTower::kMaxLevel,
+          Entities::MagicTower::kPrice) {}
 
 void MagicTower::Upgrade() {
   Tower::Upgrade();

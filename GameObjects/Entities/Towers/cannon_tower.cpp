@@ -4,12 +4,13 @@
 
 using P = PixmapLoader::Pixmaps;
 
-CannonTower::CannonTower(const VectorF& coordinates) : Tower(coordinates,
-                                                           P::kCannonTowerLevel1,
-                                                           Entities::CannonTower::kAttackCooldownLevel1,
-                                                           Entities::CannonTower::kAttackRangeLevel1,
-                                                           Entities::CannonTower::kMaxLevel,
-                                                           Entities::CannonTower::kPrice) {
+CannonTower::CannonTower(const VectorF& coordinates) :
+    Tower(coordinates,
+          P::kCannonTowerLevel1,
+          Entities::CannonTower::kAttackCooldownLevel1,
+          Entities::CannonTower::kAttackRangeLevel1,
+          Entities::CannonTower::kMaxLevel,
+          Entities::CannonTower::kPrice) {
   setScale(2);
 }
 

@@ -5,7 +5,7 @@
 
 class TowerSlot : public Entity {
  public:
-  TowerSlot(const VectorF& coordinates);
+  explicit TowerSlot(const VectorF& coordinates);
 
   [[nodiscard]] bool IsTakenUp() const;
   void TakeUpArea(Tower* tower);
