@@ -1,7 +1,5 @@
 #include <QString>
 
-#include "GameObjects/Entities/Mobs/test_mob.h"
-#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
@@ -10,9 +8,6 @@
 #include "utility.h"
 
 Mob* CreateMobFromType(QString type) {
-  if (type == Entities::kTestMobId) {
-    return new TestMob();
-  }
   if (type == Entities::kSkeletonId) {
     return new Skeleton();
   }

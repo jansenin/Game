@@ -6,8 +6,6 @@
 #include <QTimer>
 #include <QTextDocument>
 
-#include "GameObjects/Entities/Mobs/test_mob.h"
-#include "GameObjects/Entities/Towers/TowerSlots/test_tower_slot.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
@@ -32,7 +30,7 @@ Controller::Controller() :
   LaunchTickTimer();
 
   connect(this, &Controller::GameOver, [this]() {
-    scene_->addItem(new TestMob({100, 100}));
+    scene_->addItem(new Dwarf({100, 100}));
     // it's needed, but it also blocks close button
     // view_->setInteractive(false);
     tick_timer_->stop();
@@ -59,8 +57,8 @@ void Controller::SetupScene() {
     quit_button->GetTextDocument()->setDefaultFont(quit_button_font);
     quit_button->setPos(
         scene_->sceneRect().topRight()
-        - quit_button->boundingRect().topRight()
-        - VectorF(5, -5));
+            - quit_button->boundingRect().topRight()
+            - VectorF(5, -5));
     connect(quit_button, &TextButton::Clicked, [](){ QApplication::exit(); });
     scene_->addItem(quit_button);
   }  // temporary code end

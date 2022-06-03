@@ -39,17 +39,26 @@ const QString kCobraId = "Cobra";
 const QString kHedgehogId = "Hedgehog";
 const QString kDwarfId = "Dwarf";
 
-namespace TestTower {
-const qreal kAttackRange = 300;
-const Time kAttackCooldown = Time(500);
+namespace MagicTower {
+const qreal kAttackRangeLevel1 = 300;
+const Time kAttackCooldownLevel1 = Time(500);
+const qreal kAttackRangeLevel2 = 400;
+const Time kAttackCooldownLevel2 = Time(450);
+const qreal kAttackRangeLevel3 = 600;
+const Time kAttackCooldownLevel3 = Time(400);
+const int kMaxLevel = 3;
+const int kPrice = 110;
 }
 
-namespace TestMob {
-const qreal kPassiveMoveSpeed = 5;
-const qreal kActiveMoveSpeed = 100;
-const qreal kRotationSpeed = 10;
-const int kHealth = 30;
-const int kDamageToBase = 1;
+namespace CannonTower {
+const qreal kAttackRangeLevel1 = 200;
+const Time kAttackCooldownLevel1 = Time(200);
+const qreal kAttackRangeLevel2 = 300;
+const Time kAttackCooldownLevel2 = Time(150);
+const qreal kAttackRangeLevel3 = 500;
+const Time kAttackCooldownLevel3 = Time(100);
+const int kMaxLevel = 3;
+const int kPrice = 70;
 }
 
 namespace Skeleton {
