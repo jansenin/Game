@@ -6,7 +6,6 @@
 #include <QTimer>
 #include <QTextDocument>
 
-#include "GameObjects/Entities/Mobs/test_mob.h"
 #include "GameObjects/Entities/Mobs/skeleton.h"
 #include "GameObjects/Entities/Mobs/hedgehog.h"
 #include "GameObjects/Entities/Mobs/cobra.h"
@@ -31,7 +30,7 @@ Controller::Controller() :
   LaunchTickTimer();
 
   connect(this, &Controller::GameOver, [this]() {
-    scene_->addItem(new TestMob({100, 100}));
+    scene_->addItem(new Dwarf({100, 100}));
     // it's needed, but it also blocks close button
     // view_->setInteractive(false);
     tick_timer_->stop();

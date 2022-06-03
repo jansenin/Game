@@ -21,11 +21,8 @@ set(GAME_OBJECTS
         GameObjects/Interface/damageable.cpp
         GameObjects/Interface/entity.cpp
         GameObjects/Entities/Mobs/Basis/mob.cpp
-        GameObjects/Entities/Mobs/test_mob.cpp
         GameObjects/Entities/Towers/tower.cpp
         GameObjects/Entities/Towers/TowerSlots/tower_slot.cpp
-        GameObjects/Entities/Towers/TowerSlots/test_tower_slot.cpp
-        GameObjects/Entities/Towers/test_tower.cpp
         GameObjects/Entities/Projectiles/autoguided_projectile.cpp
         GameObjects/Entities/Projectiles/test_projectile.cpp
         GameObjects/Interface/graphics_object.cpp

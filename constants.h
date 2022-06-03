@@ -62,13 +62,6 @@ extern const int kMaxLevel;
 extern const int kPrice;
 }
 
-namespace TestMob {
-extern const qreal kPassiveMoveSpeed;
-extern const qreal kActiveMoveSpeed;
-extern const qreal kRotationSpeed;
-extern const int kHealth;
-}
-
 namespace Skeleton {
 extern const Time kTimeBetweenFrames;
 extern const qreal kSpeed;
