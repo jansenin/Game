@@ -76,5 +76,11 @@ extern const int kDamageToBase;
 namespace TestProjectile {
 extern const Damage kDamage;
 extern const qreal kSpeed;
+extern const qreal kAcceleration;
+extern const qreal kMaxSpeed;
+extern const qreal kEnemyFindDistance;
+extern const qreal kCrossAccelerationPerPixel;
+extern const Time kCrossAccelerationCycleDuration;
+extern const qreal kMaxCrossAcceleration;
 }
 }  // namespace Entities

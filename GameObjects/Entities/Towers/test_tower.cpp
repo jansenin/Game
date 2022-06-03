@@ -3,6 +3,7 @@
 #include <QtMath>
 
 #include "GameObjects/Entities/Projectiles/test_projectile.h"
+#include "GameObjects/Entities/Projectiles/linear_test_projectile.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "Utilities/Resources/pixmap_loader.h"
 #include "constants.h"
@@ -41,7 +42,7 @@ void TestTower::Tick(Time delta) {
         if (mob->GetHealth() <= 0) {
           continue;
         }
-        scene()->addItem(new TestProjectile(scenePos(), mob));
+        scene()->addItem(new LinearTestProjectile(scenePos(), mob));
         attack_timer_.Start(Entities::TestTower::kAttackCooldown);
         break;
       }

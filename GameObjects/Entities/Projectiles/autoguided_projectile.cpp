@@ -1,29 +1,51 @@
+#include "autoguided_projectile.h"
+
+#include <algorithm>
+
 #include <QGraphicsScene>
 
-#include "autoguided_projectile.h"
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
+#include "constants.h"
 
 AutoguidedProjectile::AutoguidedProjectile(
     const VectorF& coordinates,
     Animation* animation,
     Entity* target,
-    qreal speed,
+    qreal start_speed,
+    qreal max_speed,
+    qreal acceleration,
+    qreal enemy_find_distance,
     Damage damage)
     : Projectile(coordinates, animation),
-    target_(target), speed_(speed), damage_(damage) {
+    target_(target),
+    speed_(
+        VectorF(target->scenePos() - scenePos()).normalized() * start_speed),
+    max_speed_(max_speed),
+    acceleration_(acceleration),
+    enemy_find_distance_(enemy_find_distance),
+    damage_(damage) {
   connect(target_, &Entity::destroyed, this,
           &AutoguidedProjectile::FindNewTargetOrDie);
 }
-
 
 AutoguidedProjectile::AutoguidedProjectile(
     const VectorF& coordinates,
     QPixmap* pixmap,
     Entity* target,
-    qreal speed,
+    qreal start_speed,
+    qreal max_speed,
+    qreal acceleration,
+    qreal enemy_find_distance,
     Damage damage)
     : AutoguidedProjectile(
-        coordinates, new Animation(pixmap), target, speed, damage) {}
+        coordinates,
+        new Animation(pixmap),
+        target,
+        start_speed,
+        max_speed,
+        acceleration,
+        enemy_find_distance,
+        damage) {}
 
 void AutoguidedProjectile::Tick(Time delta) {
   Projectile::Tick(delta);
@@ -49,11 +71,16 @@ void AutoguidedProjectile::Move(Time delta) {
   if (target_ == nullptr) {
     return;
   }
-  VectorF target_point = target_->scenePos();
-  VectorF delta_pos = target_point - scenePos();
-  VectorF velocity = delta_pos.normalized() * speed_;
 
-  MoveBy(velocity * delta.seconds());
+  VectorF delta_velocity =
+      VectorFromThisToTarget().normalized() * acceleration_ * delta.seconds();
+
+  speed_ += delta_velocity;
+
+  qreal speed_scalar = speed_.length();
+  speed_ = speed_.normalized() * std::min(max_speed_, speed_scalar);
+
+  MoveBy(speed_ * delta.seconds());
 }
 
 void AutoguidedProjectile::FindNewTargetOrDie() {
@@ -63,8 +90,12 @@ void AutoguidedProjectile::FindNewTargetOrDie() {
   } else {
     auto old_target = target_;
     for (auto new_target : scene()->Mobs()) {
+      VectorF this_to_target_vector =
+          VectorF(new_target->scenePos() - scenePos());
+
       if (new_target != target_ &&
-          VectorF(new_target->scenePos() - scenePos()).length() < 100) {
+          this_to_target_vector.length() < enemy_find_distance_ &&
+          new_target->GetHealth() > 0) {
         SetTarget(new_target);
         break;
       }
@@ -91,4 +122,8 @@ void AutoguidedProjectile::SetTarget(Entity* target) {
         this,
         &AutoguidedProjectile::FindNewTargetOrDie);
   }
+}
+
+VectorF AutoguidedProjectile::VectorFromThisToTarget() {
+  return target_->scenePos() - scenePos();
 }

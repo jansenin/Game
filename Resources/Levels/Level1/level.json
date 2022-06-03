@@ -91,21 +91,21 @@
           "mobType": "Dwarf",
           "count": 4,
           "startTime": 2000,
-          "entryDuration": 1000,
+          "entryDuration": 1500,
           "routeIndex": 1
         },
         {
           "mobType": "Hedgehog",
           "count": 4,
-          "startTime": 4000,
+          "startTime": 4500,
           "entryDuration": 1000,
           "routeIndex": 1
         },
         {
           "mobType": "Skeleton",
           "count": 4,
-          "startTime": 6000,
-          "entryDuration": 1000,
+          "startTime": 6500,
+          "entryDuration": 1500,
           "routeIndex": 1
         }
       ]
@@ -115,10 +115,10 @@
       "spawnEntries": [
         {
           "mobType": "TestMob",
-          "count": 30,
+          "count": 300,
           "startTime": 0,
-          "entryDuration": 2000,
-          "routeIndex": 0
+          "entryDuration": 100000,
+          "routeIndex": 1
         }
       ]
     }
