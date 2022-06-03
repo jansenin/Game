@@ -62,7 +62,8 @@ Mob::~Mob() {
     route_->RemoveEntity(this);
   }
   if (rand() % Entities::kCoinAppearChance == 1) {
-    scene()->addItem(new Coin(VectorF(pos().x(), pos().y()), PixmapLoader::Pixmaps::kCoinAnimations));
+    scene()->addItem(new Coin(VectorF(pos().x(), pos().y()),
+                              PixmapLoader::Pixmaps::kCoinAnimations));
   }
 }
 

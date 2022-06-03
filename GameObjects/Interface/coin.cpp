@@ -3,13 +3,16 @@
 //#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "constants.h"
 
-
 #include <iostream>
 #include <game_scene.h>
 
 Coin::Coin(const VectorF& coordinates, QPixmap* pixmap)
-    : Coin(coordinates, new Animation(PixmapLoader::Pixmaps::kCoinIdle, 50_ms)) {
-  idle_animation_ = new Animation(PixmapLoader::Pixmaps::kCoinIdle, 50_ms);
+    : Coin(coordinates, new Animation(
+    PixmapLoader::Pixmaps::kCoinIdle,
+    50_ms)) {
+  idle_animation_ = new Animation(
+      PixmapLoader::Pixmaps::kCoinIdle,
+      50_ms);
   collecting_route_ = nullptr;
   speed_ = 300;
   setFlag(QGraphicsItem::ItemIsFocusable, true);
@@ -29,7 +32,9 @@ void Coin::Tick(Time delta) {
   Entity::Tick(delta);
 }
 
-void Coin::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+void Coin::paint(QPainter* painter,
+                 const QStyleOptionGraphicsItem* option,
+                 QWidget* widget) {
   Entity::paint(painter, option, widget);
 }
 
@@ -42,10 +47,9 @@ void Coin::mousePressEvent(QGraphicsSceneMouseEvent* event) {
 
 }
 
-
 Coin::~Coin() {
   delete idle_animation_;
-//  scene()->DecCoinsCount();
+// scene()->DecCoinsCount();
 }
 
 void Coin::SetRoute() {

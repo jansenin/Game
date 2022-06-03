@@ -18,7 +18,7 @@ GameView* GameScene::view() {
 
 std::vector<Mob*> GameScene::Mobs() const {
   std::vector<Mob*> result;
-  for (auto item : items()) {
+  for (auto item: items()) {
     if (auto mob = dynamic_cast<Mob*>(item)) {
       result.push_back(mob);
     }
@@ -28,7 +28,7 @@ std::vector<Mob*> GameScene::Mobs() const {
 
 std::vector<Tower*> GameScene::Towers() const {
   std::vector<Tower*> result;
-  for (auto item : items()) {
+  for (auto item: items()) {
     if (auto tower = dynamic_cast<Tower*>(item)) {
       result.push_back(tower);
     }
@@ -38,7 +38,7 @@ std::vector<Tower*> GameScene::Towers() const {
 
 std::vector<TowerSlot*> GameScene::TowerSlots() const {
   std::vector<TowerSlot*> result;
-  for (auto item : items()) {
+  for (auto item: items()) {
     if (auto tower_slot = dynamic_cast<TowerSlot*>(item)) {
       result.push_back(tower_slot);
     }
@@ -48,7 +48,7 @@ std::vector<TowerSlot*> GameScene::TowerSlots() const {
 
 std::vector<Projectile*> GameScene::Projectiles() const {
   std::vector<Projectile*> result;
-  for (auto item : items()) {
+  for (auto item: items()) {
     if (auto projectile = dynamic_cast<Projectile*>(item)) {
       result.push_back(projectile);
     }
@@ -72,7 +72,7 @@ void GameScene::IncCannonTowersCount() {
 
 void GameScene::DecCannonTowersCount() {
   if (cannon_tower_count_ > 0) {
-    -- cannon_tower_count_;
+    --cannon_tower_count_;
   }
 }
 

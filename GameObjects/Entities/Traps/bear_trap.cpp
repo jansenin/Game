@@ -1,22 +1,31 @@
 #include "bear_trap.h"
 #include "Utilities/Resources/pixmap_loader.h"
-//#include "GameObjects/Entities/Mobs/Basis/mob.h"
 #include "constants.h"
-
 
 #include <iostream>
 #include <game_scene.h>
 
 QRectF BearTrap::boundingRect() const {
-  return QRectF(QPointF(-15,-15), QSize(30, 30));
+  return QRectF(QPointF(-15, -15), QSize(30, 30));
 }
 
 BearTrap::BearTrap(const VectorF& coordinates, QPixmap* pixmap)
-    : BearTrap(coordinates, new Animation(PixmapLoader::Pixmaps::kBearTrapIdle, 50_ms)) {
-  attacking_animation_ = new Animation(PixmapLoader::Pixmaps::kBearTrapAttacking, 50_ms);;
-  idle_animation_ = new Animation(PixmapLoader::Pixmaps::kBearTrapIdle, 50_ms);
-  broken_animation_ = new Animation(PixmapLoader::Pixmaps::kBearTrapBroken, 50_ms);
-  repairing_animation_ = new Animation(PixmapLoader::Pixmaps::kBearTrapBroken, 50_ms);
+    : BearTrap(coordinates,
+               new Animation(
+                   PixmapLoader::Pixmaps::kBearTrapIdle,
+                   50_ms)) {
+  attacking_animation_ = new Animation(
+      PixmapLoader::Pixmaps::kBearTrapAttacking,
+      50_ms);;
+  idle_animation_ = new Animation(
+      PixmapLoader::Pixmaps::kBearTrapIdle,
+      50_ms);
+  broken_animation_ = new Animation(
+      PixmapLoader::Pixmaps::kBearTrapBroken,
+      50_ms);
+  repairing_animation_ = new Animation(
+      PixmapLoader::Pixmaps::kBearTrapBroken,
+      50_ms);
   setFlag(QGraphicsItem::ItemIsFocusable, true);
   setScale(2.5);
 }
@@ -34,7 +43,7 @@ void BearTrap::Tick(Time delta) {
   }
   Entity::Tick(delta);
   std::vector<Mob*> mobs = scene()->Mobs();
-  for (auto mob : mobs) {
+  for (auto mob: mobs) {
     if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect()) && !is_broken_) {
       mob->ApplyDamage(Damage(mob->GetHealth()));
       animation_ = attacking_animation_;
@@ -43,7 +52,9 @@ void BearTrap::Tick(Time delta) {
   }
 }
 
-void BearTrap::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+void BearTrap::paint(QPainter* painter,
+                     const QStyleOptionGraphicsItem* option,
+                     QWidget* widget) {
   Entity::paint(painter, option, widget);
 }
 
