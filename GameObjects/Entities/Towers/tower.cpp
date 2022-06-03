@@ -68,6 +68,7 @@ void Tower::Tick(Time delta) {
 
 void Tower::Upgrade() {}
 
-Projectile* Tower::SpawnProjectile(const VectorF& coordinates, Entity* target, int level) {
+Projectile* Tower::SpawnProjectile(
+    const VectorF& coordinates, Entity* target, int level) {
   return nullptr;
 }
