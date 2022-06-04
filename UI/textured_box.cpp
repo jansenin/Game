@@ -9,15 +9,14 @@ TexturedBox::TexturedBox(
     QGraphicsItem* wrapping_item,
     TexturedBoxPixmaps textured_box_pixmaps)
     : textured_box_pixmaps_(textured_box_pixmaps),
-      wrapping_item_(wrapping_item) {
-  wrapping_item->setParentItem(this);
-  wrapping_item->setPos(
-      textured_box_pixmaps_.left_side->width(),
-      textured_box_pixmaps_.top_side->height());
+      wrapping_item_(wrapping_item),
+      origin_point_(OriginPoint::kTopLeft) {
+  SetWrappingItem(wrapping_item_);
   setZValue(UI::kDefaultZValue);
 }
 
-TexturedBox::TexturedBox() {
+TexturedBox::TexturedBox()
+  : origin_point_(OriginPoint::kTopLeft) {
   setZValue(UI::kDefaultZValue);
 }
 
@@ -29,7 +28,8 @@ void TexturedBox::paint(QPainter* painter,
   QRectF bounding_rect = boundingRect();
   QRectF inner_rect = wrapping_item_->boundingRect().translated(
       pixmaps.left_side->width(),
-      pixmaps.top_side->height());
+      pixmaps.top_side->height())
+          .translated(bounding_rect.topLeft());
 
   QRectF left_side_rect = {
       bounding_rect.x(),
@@ -124,6 +124,54 @@ QRectF TexturedBox::boundingRect() const {
   return QRectF(
       unscaled_result.center() - half_size,
       unscaled_result.center() + half_size);
+
+  QRectF result = QRectF(
+      unscaled_result.center() - half_size,
+      unscaled_result.center() + half_size);
+
+  return ConvertRectConsideringOriginPoint(result);
+}
+
+QRectF TexturedBox::ConvertRectConsideringOriginPoint(QRectF rect) const {
+  assert(rect.top() == 0);
+  assert(rect.left() == 0);
+
+  switch (origin_point_) {
+  case OriginPoint::kTopLeft:
+      return rect;
+
+      break;
+    case OriginPoint::kTopRight:
+      rect.translate(-rect.width(), 0);
+      return rect;
+
+      break;
+    case OriginPoint::kBottomLeft:
+      rect.translate(0, -rect.height());
+      return rect;
+
+      break;
+    case OriginPoint::kBottomRight:
+      rect.translate(-rect.width(), -rect.height());
+      return rect;
+
+      break;
+    default:
+      assert(false);
+      throw std::exception();
+      break;
+  }
+}
+
+void TexturedBox::RecalculateInnerPos() {
+  VectorF wrapping_item_pos = VectorF(
+  textured_box_pixmaps_.left_side->width(),
+  textured_box_pixmaps_.top_side->height());
+
+  VectorF origin_point_pos_fix2 = boundingRect().topLeft();
+
+  wrapping_item_pos += origin_point_pos_fix2;
+  wrapping_item_->setPos(wrapping_item_pos);
 }
 
 void TexturedBox::SetTexturedBoxPixmaps(const TexturedBoxPixmaps& pixmaps) {
@@ -132,6 +180,7 @@ void TexturedBox::SetTexturedBoxPixmaps(const TexturedBoxPixmaps& pixmaps) {
   wrapping_item_->setPos(
       textured_box_pixmaps_.left_side->width(),
       textured_box_pixmaps_.top_side->height());
+  RecalculateInnerPos();
 }
 
 void TexturedBox::SetWrappingItem(QGraphicsItem* wrapping_item) {
@@ -141,4 +190,14 @@ void TexturedBox::SetWrappingItem(QGraphicsItem* wrapping_item) {
   wrapping_item->setPos(
       textured_box_pixmaps_.left_side->width(),
       textured_box_pixmaps_.top_side->height());
+  RecalculateInnerPos();
+}
+
+enum TexturedBox::OriginPoint TexturedBox::OriginPoint() const {
+  return origin_point_;
+}
+
+void TexturedBox::SetOriginPoint(enum TexturedBox::OriginPoint origin_point) {
+  origin_point_ = origin_point;
+  RecalculateInnerPos();
 }

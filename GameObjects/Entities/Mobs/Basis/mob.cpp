@@ -45,8 +45,8 @@ void Mob::SetRoute(Route* route) {
   }
   std::vector<VectorF> points = route->GetPoints();
   for (int i = 0; i < points.size(); ++i) {
-    points[i].setX(points[i].x() + Randomaizer::Random() % 30);
-    points[i].setY(points[i].y() + Randomaizer::Random() % 30);
+    points[i].setX(points[i].x() + Randomaizer::Random() % 50);
+    points[i].setY(points[i].y() + Randomaizer::Random() % 50);
   }
   route_ = new Route(points);
   if (route_ != nullptr) {

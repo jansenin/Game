@@ -62,6 +62,9 @@ void BearTrap::paint(QPainter* painter,
 }
 
 void BearTrap::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+  if (!is_broken_) {
+    return;
+  }
   if (!Controller::Instance()->HaveEnoughMoney(Costs::kBearTrapRepairingCost)) {
     return;
   }
