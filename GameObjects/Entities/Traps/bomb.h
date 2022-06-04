@@ -4,7 +4,7 @@
 
 class Bomb : public Entity {
  public:
-  Bomb(const VectorF& coordinates);
+  explicit Bomb(const VectorF& coordinates);
   Bomb(const VectorF& coordinates, Animation* animation);
   ~Bomb();
 

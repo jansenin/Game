@@ -70,7 +70,6 @@ Bomb::~Bomb() {
 
 void Bomb::Explode() {
   activated_ = true;
-
 }
 
 
