@@ -1,0 +1,91 @@
+<RCC>
+    <qresource>
+        <file>images/background.png</file>
+        <file>images/magic_tower_level1.png</file>
+        <file>images/magic_tower_level2.png</file>
+        <file>images/magic_tower_level3.png</file>
+        <file>images/cannon_tower_level1.png</file>
+        <file>images/cannon_tower_level2.png</file>
+        <file>images/cannon_tower_level3.png</file>
+        <file>images/magic_projectile_level1.png</file>
+        <file>images/magic_projectile_level2.png</file>
+        <file>images/magic_projectile_level3.png</file>
+        <file>images/magic_projectile_animations_level1.png</file>
+        <file>images/magic_projectile_animations_level2.png</file>
+        <file>images/magic_projectile_animations_level3.png</file>
+        <file>images/cannon_projectile_level1.png</file>
+        <file>images/cannon_projectile_level2.png</file>
+        <file>images/cannon_projectile_level3.png</file>
+        <file>images/tower_slot.png</file>
+        <file>images/money_icon.png</file>
+        <file>images/health_status_1.png</file>
+        <file>images/health_status_2.png</file>
+
+
+
+        <file>images/fire_totem.png</file>
+
+        <file>images/skeleton/walk.png</file>
+        <file>images/skeleton/death.png</file>
+
+        <file>images/cobra.png</file>
+
+        <file>images/hedgehog.png</file>
+
+        <file>images/dwarf.png</file>
+
+        <file>Levels/Level1/map.png</file>
+        <file>Levels/Level1/level.json</file>
+
+        <file>images/explosion.png</file>
+
+        <file>images/bear_trap.png</file>
+        <file>images/bomb0.png</file>
+        <file>images/bomb1.png</file>
+        <file>images/bomb2.png</file>
+        <file>images/bomb3.png</file>
+        <file>images/bomb4.png</file>
+        <file>images/bomb5.png</file>
+        <file>images/coin.png</file>
+
+        <file>GUI/Textured boxes/Default/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Default/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Default/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Default/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Default/left_side.png</file>
+        <file>GUI/Textured boxes/Default/right_side.png</file>
+        <file>GUI/Textured boxes/Default/top_side.png</file>
+        <file>GUI/Textured boxes/Default/bottom_side.png</file>
+        <file>GUI/Textured boxes/Default/inside.png</file>
+
+        <file>GUI/Textured boxes/Menu/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu/left_side.png</file>
+        <file>GUI/Textured boxes/Menu/right_side.png</file>
+        <file>GUI/Textured boxes/Menu/top_side.png</file>
+        <file>GUI/Textured boxes/Menu/bottom_side.png</file>
+        <file>GUI/Textured boxes/Menu/inside.png</file>
+
+        <file>GUI/Textured boxes/Menu2/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Menu2/left_side.png</file>
+        <file>GUI/Textured boxes/Menu2/right_side.png</file>
+        <file>GUI/Textured boxes/Menu2/top_side.png</file>
+        <file>GUI/Textured boxes/Menu2/bottom_side.png</file>
+        <file>GUI/Textured boxes/Menu2/inside.png</file>
+
+        <file>GUI/Textured boxes/Button/top_left_corner.png</file>
+        <file>GUI/Textured boxes/Button/top_right_corner.png</file>
+        <file>GUI/Textured boxes/Button/bottom_left_corner.png</file>
+        <file>GUI/Textured boxes/Button/bottom_right_corner.png</file>
+        <file>GUI/Textured boxes/Button/left_side.png</file>
+        <file>GUI/Textured boxes/Button/right_side.png</file>
+        <file>GUI/Textured boxes/Button/top_side.png</file>
+        <file>GUI/Textured boxes/Button/bottom_side.png</file>
+        <file>GUI/Textured boxes/Button/inside.png</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,270 @@
+{
+  "startMoney": 10000,
+  "BearTraps": [
+    {
+      "points": [
+        {
+          "x": 50,
+          "y": -200
+        }
+      ]
+    }
+  ],
+  "Bombs": [
+    {
+      "points": [
+        {
+          "x": 650,
+          "y": 50
+        }
+      ]
+    }
+  ],
+  "towerSlotPositions": [
+    {
+      "x": 50,
+      "y": 200
+    },
+    {
+      "x": 180,
+      "y": 200
+    },
+    {
+      "x": -650,
+      "y": 150
+    },
+    {
+      "x": -650,
+      "y": 250
+    },
+    {
+      "x": -650,
+      "y": 350
+    },
+    {
+      "x": -100,
+      "y": -100
+    },
+    {
+      "x": -300,
+      "y": -100
+    },
+    {
+      "x": -300,
+      "y": 200
+    },
+    {
+      "x": 550,
+      "y": 200
+    },
+    {
+      "x": 750,
+      "y": 200
+    },
+    {
+      "x": 650,
+      "y": -100
+    },
+    {
+      "x": 450,
+      "y": -100
+    }
+  ],
+  "routes": [
+    {
+      "points": [
+        {
+          "x": -1000,
+          "y": 0
+        },
+        {
+          "x": -480,
+          "y": 0
+        },
+        {
+          "x": -480,
+          "y": -220
+        },
+        {
+          "x": 60,
+          "y": -220
+        },
+        {
+          "x": 60,
+          "y": 80
+        },
+        {
+          "x": 1500,
+          "y": 80
+        }
+      ]
+    },
+    {
+      "points": [
+        {
+          "x": -1000,
+          "y": 0
+        },
+        {
+          "x": -480,
+          "y": 0
+        },
+        {
+          "x": -480,
+          "y": 380
+        },
+        {
+          "x": 380,
+          "y": 380
+        },
+        {
+          "x": 380,
+          "y": 80
+        },
+        {
+          "x": 1500,
+          "y": 80
+        }
+      ]
+    }
+  ],
+  "waves": [
+    {
+      "startTimeRelativeToPrevWave": 0,
+      "spawnEntries": [
+        {
+          "mobType": "Hedgehog",
+          "count": 4,
+          "startTime": 0,
+          "entryDuration": 2000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "Hedgehog",
+          "count": 4,
+          "startTime": 2600,
+          "entryDuration": 2000,
+          "routeIndex": 0
+        }
+        ]
+    },
+    {
+    "startTimeRelativeToPrevWave": 10000,
+      "spawnEntries": [
+        {
+          "mobType": "Hedgehog",
+          "count": 12,
+          "startTime": 0,
+          "entryDuration": 8000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Cobra",
+          "count": 4,
+          "startTime": 12000,
+          "entryDuration": 4000,
+          "routeIndex": 0
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 10000,
+      "spawnEntries": [
+        {
+          "mobType": "Cobra",
+          "count": 10,
+          "startTime": 0,
+          "entryDuration": 6000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Hedgehog",
+          "count": 20,
+          "startTime": 10000,
+          "entryDuration": 10000,
+          "routeIndex": 1
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 8000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 2,
+          "startTime": 0,
+          "entryDuration": 12000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Hedgehog",
+          "count": 30,
+          "startTime": 10000,
+          "entryDuration": 10000,
+          "routeIndex": 1
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 8000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 4,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 8000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 6,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Dwarf",
+          "count": 1,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        }
+      ]
+    }
+    ],
+  "GrowTimes": [
+    4000,
+    1000,
+    1000,
+    3000,
+    3000,
+    10000,
+    10000,
+    1000,
+    1000,
+    20000,
+    10000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    10000,
+    10000,
+    5000,
+    3000,
+    10000,
+    10000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000,
+    1000
+  ]
+}
