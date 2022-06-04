@@ -5,6 +5,7 @@
 #include <QGraphicsScene>
 
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
+#include "GameObjects/explosion.h"
 #include "constants.h"
 
 LinearAutoguidedProjectile::LinearAutoguidedProjectile(
@@ -46,6 +47,9 @@ void LinearAutoguidedProjectile::Tick(Time delta) {
 
   if (target_->collidesWithItem(this)) {
     target_->ApplyDamage(damage_);
+    scene()->addItem(
+        new Explosion(
+            scenePos(), 10, Damage(10)));
     deleteLater();
   }
 }

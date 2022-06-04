@@ -11,7 +11,7 @@ QRectF BearTrap::boundingRect() const {
   return QRectF(QPointF(-15, -15), QSize(30, 30));
 }
 
-BearTrap::BearTrap(const VectorF& coordinates, QPixmap* pixmap)
+BearTrap::BearTrap(const VectorF& coordinates)
     : BearTrap(coordinates,
                new Animation(
                    PixmapLoader::Pixmaps::kBearTrapIdle,

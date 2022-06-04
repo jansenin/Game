@@ -3,6 +3,7 @@
 
 #include "constants.h"
 #include "Controller/controller.h"
+#include "GameObjects/explosion.h"
 
 #include <iostream>
 #include <game_scene.h>
@@ -12,7 +13,7 @@ QRectF Bomb::boundingRect() const {
   return QRectF(QPointF(-15, -15), QSize(30, 30));
 }
 
-Bomb::Bomb(const VectorF& coordinates, QPixmap* pixmap)
+Bomb::Bomb(const VectorF& coordinates)
     : Bomb(coordinates, new Animation(
     PixmapLoader::Pixmaps::kBombIdle,
     50_ms)) {
@@ -38,14 +39,10 @@ void Bomb::Tick(Time delta) {
 
   Entity::Tick(delta);
   if (activated_ && animation_->WasEndedDuringPreviousUpdate()) {
-    std::vector<Mob*> mobs = scene()->Mobs();
-    for (auto mob : mobs) {
-      if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect())) {
-        mob->ApplyDamage(Damage(mob->GetHealth()));
-        animation_ = explosion_animation_;
-      }
-    }
-    delete this;
+    scene()->addItem(
+        new Explosion(
+            scenePos(), 100, Damage(1000)));
+    deleteLater();
   }
 }
 

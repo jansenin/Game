@@ -1,41 +1,101 @@
 {
-  "startMoney": 100,
+  "startMoney": 10000,
+  "BearTraps": [
+    {
+      "points": [
+        {
+          "x": 50,
+          "y": -200
+        }
+      ]
+    }
+  ],
+  "Bombs": [
+    {
+      "points": [
+        {
+          "x": 650,
+          "y": 50
+        }
+      ]
+    }
+  ],
   "towerSlotPositions": [
     {
-      "x": -524,
-      "y": -172
+      "x": 50,
+      "y": 200
     },
     {
-      "x": -140,
-      "y": 60
+      "x": 180,
+      "y": 200
     },
     {
-      "x": -50,
-      "y": 60
+      "x": -650,
+      "y": 150
     },
     {
-      "x": 40,
-      "y": 60
+      "x": -650,
+      "y": 250
     },
     {
-      "x": 130,
-      "y": 60
+      "x": -650,
+      "y": 350
+    },
+    {
+      "x": -100,
+      "y": -100
+    },
+    {
+      "x": -300,
+      "y": -100
+    },
+    {
+      "x": -300,
+      "y": 200
+    },
+    {
+      "x": 550,
+      "y": 200
+    },
+    {
+      "x": 750,
+      "y": 200
+    },
+    {
+      "x": 650,
+      "y": -100
+    },
+    {
+      "x": 450,
+      "y": -100
     }
   ],
   "routes": [
     {
       "points": [
         {
-          "x": -200,
-          "y": -200
-        },
-        {
-          "x": 600,
+          "x": -1000,
           "y": 0
         },
         {
-          "x": 100,
-          "y": 100
+          "x": -480,
+          "y": 0
+        },
+        {
+          "x": -480,
+          "y": -220
+        },
+        {
+          "x": 60,
+          "y": -220
+        },
+        {
+          "x": 60,
+          "y": 80
+        },
+        {
+          "x": 1200,
+          "y": 80
         }
       ]
     },
@@ -43,35 +103,27 @@
       "points": [
         {
           "x": -1000,
-          "y": 48
+          "y": 0
         },
         {
-          "x": -650,
-          "y": 48
+          "x": -480,
+          "y": 0
         },
         {
-          "x": -650,
-          "y": -262
+          "x": -480,
+          "y": 380
         },
         {
-          "x": -262,
-          "y": -262
+          "x": 380,
+          "y": 380
         },
         {
-          "x": -262,
-          "y": 162
+          "x": 380,
+          "y": 80
         },
         {
-          "x": 250,
-          "y": 162
-        },
-        {
-          "x": 250,
-          "y": -54
-        },
-        {
-          "x": 1000,
-          "y": -54
+          "x": 1200,
+          "y": 80
         }
       ]
     }
@@ -81,7 +133,7 @@
       "startTimeRelativeToPrevWave": 0,
       "spawnEntries": [
         {
-          "mobType": "Cobra",
+          "mobType": "Hedgehog",
           "count": 4,
           "startTime": 0,
           "entryDuration": 2000,
@@ -90,35 +142,111 @@
         {
           "mobType": "Hedgehog",
           "count": 4,
-          "startTime": 3000,
+          "startTime": 2600,
           "entryDuration": 2000,
-          "routeIndex": 1
+          "routeIndex": 0
+        }
+        ]
+    },
+    {
+    "startTimeRelativeToPrevWave": 20000,
+      "spawnEntries": [
+        {
+          "mobType": "Hedgehog",
+          "count": 12,
+          "startTime": 0,
+          "entryDuration": 8000,
+          "routeIndex": 0
         },
         {
-          "mobType": "Dwarf",
+          "mobType": "Cobra",
           "count": 4,
-          "startTime": 6000,
+          "startTime": 12000,
           "entryDuration": 4000,
-          "routeIndex": 1
+          "routeIndex": 0
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 20000,
+      "spawnEntries": [
+        {
+          "mobType": "Cobra",
+          "count": 10,
+          "startTime": 0,
+          "entryDuration": 6000,
+          "routeIndex": 0
         },
         {
-          "mobType": "Skeleton",
-          "count": 4,
-          "startTime": 11000,
-          "entryDuration": 2000,
+          "mobType": "Hedgehog",
+          "count": 20,
+          "startTime": 10000,
+          "entryDuration": 10000,
           "routeIndex": 1
         }
       ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 12000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 2,
+          "startTime": 0,
+          "entryDuration": 12000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Hedgehog",
+          "count": 30,
+          "startTime": 10000,
+          "entryDuration": 10000,
+          "routeIndex": 1
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 12000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 4,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 20000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 6,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Dwarf",
+          "count": 1,
+          "startTime": 0,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        }
+      ]
     }
-  ],
+    ],
   "GrowTimes": [
-    3000,
-    3000,
-    3000,
-    3000,
-    3000,
-    3000,
-    3000,
-    3000
+    15000,
+    16000,
+    17000,
+    50000,
+    53000,
+    87000,
+    88000,
+    89000,
+    90000,
+    91000
   ]
 }
