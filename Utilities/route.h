@@ -18,6 +18,7 @@ class Route {
   void AddEntity(Entity* entity);
   void RemoveEntity(Entity* entity);
   bool isEnd(Entity* entity);
+  std::vector<VectorF> GetPoints() const;
   [[nodiscard]] VectorF GetStart() const;
 
  private:

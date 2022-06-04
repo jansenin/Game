@@ -35,3 +35,7 @@ VectorF Route::GetStart() const {
 void Route::RemoveEntity(Entity* entity) {
   entity_indexes_.erase(entity);
 }
+
+std::vector<VectorF> Route::GetPoints() const {
+  return points_;
+}
