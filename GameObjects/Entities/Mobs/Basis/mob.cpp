@@ -43,7 +43,12 @@ void Mob::SetRoute(Route* route) {
   if (route == nullptr && route_ != nullptr) {
     route_->RemoveEntity(this);
   }
-  route_ = route;
+  std::vector<VectorF> points = route->GetPoints();
+  for (int i = 0; i < points.size(); ++i) {
+    points[i].setX(points[i].x() + Randomaizer::Random() % 30);
+    points[i].setY(points[i].y() + Randomaizer::Random() % 30);
+  }
+  route_ = new Route(points);
   if (route_ != nullptr) {
     route_->AddEntity(this);
   }
@@ -77,6 +82,7 @@ Mob::~Mob() {
     scene()->addItem(new Coin(VectorF(pos().x(), pos().y()),
                               PixmapLoader::Pixmaps::kCoinAnimations));
   }
+  delete route_;
 }
 
 QRectF Mob::boundingRect() const {
