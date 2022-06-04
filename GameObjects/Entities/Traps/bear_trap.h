@@ -4,7 +4,7 @@
 
 class BearTrap : public Entity {
  public:
-  BearTrap(const VectorF& coordinates, QPixmap* pixmap);
+  BearTrap(const VectorF& coordinates);
   BearTrap(const VectorF& coordinates, Animation* animation);
   ~BearTrap();
 

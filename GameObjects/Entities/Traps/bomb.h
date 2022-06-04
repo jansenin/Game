@@ -4,7 +4,7 @@
 
 class Bomb : public Entity {
  public:
-  Bomb(const VectorF& coordinates, QPixmap* pixmap);
+  Bomb(const VectorF& coordinates);
   Bomb(const VectorF& coordinates, Animation* animation);
   ~Bomb();
 
