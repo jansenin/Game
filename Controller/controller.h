@@ -10,6 +10,7 @@
 #include "game_scene.h"
 #include "level.h"
 #include "constants.h"
+#include "UI/resource_displayer.h"
 
 class Controller : public QObject {
   Q_OBJECT
@@ -22,6 +23,8 @@ class Controller : public QObject {
   [[nodiscard]] Level* GetLevel() const;
 
   void DealDamageToBase(int damage);
+
+  void SetupInterface();
 
   void AddMoney(int money);
   void LoseMoney(int money);
@@ -48,8 +51,9 @@ class Controller : public QObject {
   GameView* view_;
   QTimer* tick_timer_;
   Level* level_;
-  int balance_ = kStartBalance;
+  int balance_;
 
   int base_hp_;
   int damage_per_current_tick_;
+  ResourcesDisplayer* resource_displayer_;
 };

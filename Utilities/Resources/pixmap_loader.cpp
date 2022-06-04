@@ -20,6 +20,9 @@ QPixmap* P::kCannonTowerLevel2;
 QPixmap* P::kCannonTowerLevel3;
 QPixmap* P::kTowerSlot;
 std::vector<QPixmap*> P::kLevelMaps;
+QPixmap* P::kMoneyIcon;
+QPixmap* P::kHealthStatus1;
+QPixmap* P::kHealthStatus2;
 QPixmap* P::kEmpty;
 
 QPixmap* P::kBombIdleFrame;
@@ -100,6 +103,9 @@ void PixmapLoader::LoadPixmaps() {
   P::kCannonTowerLevel1 = new QPixmap(":images/cannon_tower_level1.png");
   P::kCannonTowerLevel2 = new QPixmap(":images/cannon_tower_level2.png");
   P::kCannonTowerLevel3 = new QPixmap(":images/cannon_tower_level3.png");
+  P::kMoneyIcon = new QPixmap(":images/money_icon.png");
+  P::kHealthStatus1 = new QPixmap(":images/health_status_1.png");
+  P::kHealthStatus2 = new QPixmap(":images/health_status_2.png");
   for (int i = 1; i <= LevelData::kLevelsCount; ++i) {
     P::kLevelMaps.push_back(new QPixmap(":Levels/Level"
                                             + QString::number(i)

@@ -61,7 +61,8 @@ set(UI
         UI/button.cpp
         UI/padding_box.cpp
         UI/pixmap_object.cpp
-        UI/pixmap_object.h)
+        UI/pixmap_object.h
+        UI/resource_displayer.cpp)
 
 add_executable(Game
         ${RESOURCES}

@@ -8,6 +8,8 @@
 
 class TexturedBox : public QGraphicsObject {
  public:
+  enum class OriginPoint { kTopLeft, kBottomLeft, kTopRight, kBottomRight };
+
   explicit TexturedBox(
       QGraphicsItem* wrapping_item,
       TexturedBoxPixmaps textured_box_pixmaps =
@@ -21,9 +23,17 @@ class TexturedBox : public QGraphicsObject {
   void SetTexturedBoxPixmaps(const TexturedBoxPixmaps& pixmaps);
   void SetWrappingItem(QGraphicsItem* wrapping_item);
 
+  OriginPoint OriginPoint() const;
+  void SetOriginPoint(enum OriginPoint origin_point);
+
+  void RecalculateInnerPos();
+
  protected:
   TexturedBox();
 
+  QRectF ConvertRectConsideringOriginPoint(QRectF rect) const;
+
   TexturedBoxPixmaps textured_box_pixmaps_;
   QGraphicsItem* wrapping_item_;
+  enum OriginPoint origin_point_;
 };

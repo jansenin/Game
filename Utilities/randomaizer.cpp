@@ -1,17 +1,13 @@
 #include "randomaizer.h"
 #include <cstdlib>
 #include <ctime>
+#include <random>
 
-int random_seed = time(0);
+std::random_device dev;
+std::mt19937 rng(dev());
+std::uniform_int_distribution<std::mt19937::result_type>
+    dist(-100000, 100000);
 
 int Randomaizer::Random() {
-  srand(time(0));
-  int result = rand(); // NOLINT
-  result %= random_seed;
-  result += random_seed;
-  result *= random_seed;
-  random_seed = rand(); // NOLINT
-  srand(random_seed);
-  random_seed = rand() + result; // NOLINT
-  return result;
+  return dist(rng);
 }

@@ -27,6 +27,9 @@ class PixmapLoader {
     static QPixmap* kCannonTowerLevel2;
     static QPixmap* kCannonTowerLevel3;
     static std::vector<QPixmap*> kLevelMaps;
+    static QPixmap* kMoneyIcon;
+    static QPixmap* kHealthStatus1;
+    static QPixmap* kHealthStatus2;
     static QPixmap* kEmpty;
 
     static QPixmap* kBearTrap;

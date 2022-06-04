@@ -26,9 +26,12 @@ Controller::Controller() :
   view_(new GameView(scene_)),
   tick_timer_(new QTimer(this)),
   level_(new Level(1)),
-  base_hp_(20),
-  damage_per_current_tick_(0) {
+  base_hp_(5),
+  balance_(kStartBalance),
+  damage_per_current_tick_(0),
+  resource_displayer_(nullptr) {
   SetupScene();
+  SetupInterface();
   LaunchTickTimer();
 
   connect(this, &Controller::GameOver, [this]() {
@@ -36,6 +39,16 @@ Controller::Controller() :
     // it's needed, but it also blocks close button
     // view_->setInteractive(false);
     tick_timer_->stop();
+    QGraphicsTextItem* game_over_item = new QGraphicsTextItem();
+    game_over_item->setPlainText("Game Over");
+    QFont font = game_over_item->font();
+    font.setPixelSize(150);
+    game_over_item->setFont(font);
+    game_over_item->setPos(
+        -game_over_item->boundingRect().width() / 2,
+    -game_over_item->boundingRect().height() / 2);
+    game_over_item->setZValue(1000000);
+    scene_->addItem(game_over_item);
   });
 }
 
@@ -103,6 +116,7 @@ void Controller::TickAllTickables() {
   level_->Tick(delta);
 
   base_hp_ -= damage_per_current_tick_;
+  resource_displayer_->SetHp(base_hp_);
   damage_per_current_tick_ = 0;
   if (base_hp_ <= 0) {
     base_hp_ = 0;
@@ -111,15 +125,26 @@ void Controller::TickAllTickables() {
 }
 
 void Controller::DealDamageToBase(int damage) {
-  // damage_per_current_tick_ += damage;
+  damage_per_current_tick_ += damage;
+}
+
+void Controller::SetupInterface() {
+  resource_displayer_ = new ResourcesDisplayer();
+  resource_displayer_->SetMoney(balance_);
+  resource_displayer_->SetHp(base_hp_);
+  resource_displayer_->SetOriginPoint(TexturedBox::OriginPoint::kTopLeft);
+  resource_displayer_->setPos(scene_->sceneRect().topLeft() + VectorF(5, 5));
+  scene_->addItem(resource_displayer_);
 }
 
 void Controller::AddMoney(int money) {
   balance_ += money;
+  resource_displayer_->SetMoney(balance_);
 }
 
 void Controller::LoseMoney(int money) {
     balance_ -= money;
+    resource_displayer_->SetMoney(balance_);
 }
 
 int Controller::GetBalance() {
