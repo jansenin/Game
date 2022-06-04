@@ -49,7 +49,7 @@ void ResourcesDisplayer::SetMoney(int money) {
 
 void ResourcesDisplayer::SetHp(int hp) {
   hp_item_->setPlainText("Hp: " + QString::number(hp));
-  if (hp < 5 / 2) { //  half hp
+  if (hp < 5 / 2) {  //  half hp
       hp_icon_->SetPixmap(PixmapLoader::Pixmaps::kHealthStatus2);
     }
   resources_layout_->RecalculatePositions();
