@@ -17,9 +17,7 @@ Bomb::Bomb(const VectorF& coordinates)
     : Bomb(coordinates, new Animation(
     PixmapLoader::Pixmaps::kBombIdle,
     50_ms)) {
-  idle_animation_ = new Animation(
-      PixmapLoader::Pixmaps::kBombIdle,
-      50_ms);
+  idle_animation_ = animation_;
   explosion_animation_ = new Animation(
       PixmapLoader::Pixmaps::kBombExplosion,
       50_ms);
@@ -41,7 +39,7 @@ void Bomb::Tick(Time delta) {
   if (activated_ && animation_->WasEndedDuringPreviousUpdate()) {
     scene()->addItem(
         new Explosion(
-            scenePos(), 100, Damage(1000)));
+            scenePos(), 300, Damage(10000)));
     deleteLater();
   }
 }

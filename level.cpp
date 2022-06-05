@@ -93,30 +93,20 @@ Level::Level(int level_number) : level_number_(level_number) {
   QJsonArray bear_traps = root.value("BearTraps").toArray();
   bear_traps_.reserve(bear_traps.size());
   for (auto trap : bear_traps) {
-    QJsonArray points = trap.toObject().value("points").toArray();
-    VectorF point_for_trap;
-    for (auto point : points) {
-      QJsonObject point_object = point.toObject();
-      int x = point_object.value("x").toInt();
-      int y = point_object.value("y").toInt();
-      point_for_trap.setX(x);
-      point_for_trap.setY(y);
-    }
-    bear_traps_.push_back(new BearTrap(point_for_trap));
+    QJsonObject coordinates_object =
+        trap.toObject().value("coordinates").toObject();
+    int x = coordinates_object.value("x").toInt();
+    int y = coordinates_object.value("y").toInt();
+    bear_traps_.push_back(new BearTrap(VectorF(x, y)));
   }
   QJsonArray bombs = root.value("Bombs").toArray();
-  bombs_.reserve(bear_traps.size());
+  bombs_.reserve(bombs.size());
   for (auto bomb : bombs) {
-    QJsonArray points = bomb.toObject().value("points").toArray();
-    VectorF point_for_bomb;
-    for (auto point : points) {
-      QJsonObject point_object = point.toObject();
-      int x = point_object.value("x").toInt();
-      int y = point_object.value("y").toInt();
-      point_for_bomb.setX(x);
-      point_for_bomb.setY(y);
-    }
-    bombs_.push_back(new Bomb(point_for_bomb));
+    QJsonObject coordinates_object =
+        bomb.toObject().value("coordinates").toObject();
+    int x = coordinates_object.value("x").toInt();
+    int y = coordinates_object.value("y").toInt();
+    bombs_.push_back(new Bomb(VectorF(x, y)));
   }
 }
 

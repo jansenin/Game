@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObjects/Entities/Mobs/Basis/mob.h"
+#include "Utilities/timer.h"
 
 class BearTrap : public Entity {
  public:
@@ -24,4 +25,5 @@ class BearTrap : public Entity {
   Animation* repairing_animation_;
 
   bool is_broken_ = false;
+  Timer cooldown_timer_;
 };

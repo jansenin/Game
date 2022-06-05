@@ -25,7 +25,7 @@ AutoguidedProjectile::AutoguidedProjectile(
     enemy_find_distance_(enemy_find_distance),
     damage_(damage), is_destroying_(false) {
   connect(target_, &Entity::destroyed, this,
-          &AutoguidedProjectile::FindNewTargetOrDie);
+          &AutoguidedProjectile::FindNewTargetOrStop);
 }
 
 AutoguidedProjectile::AutoguidedProjectile(
@@ -50,12 +50,14 @@ AutoguidedProjectile::AutoguidedProjectile(
 void AutoguidedProjectile::Tick(Time delta) {
   Projectile::Tick(delta);
   if (target_ == nullptr) {
+    is_destroying_ = true;
     return;
   }
   if (target_->GetHealth() <= 0) {
-    FindNewTargetOrDie();
+    FindNewTargetOrStop();
   }
   if (target_ == nullptr) {
+    is_destroying_ = true;
     return;
   }
 
@@ -83,10 +85,9 @@ void AutoguidedProjectile::Move(Time delta) {
   MoveBy(speed_ * delta.seconds());
 }
 
-void AutoguidedProjectile::FindNewTargetOrDie() {
+void AutoguidedProjectile::FindNewTargetOrStop() {
   if (scene()->Mobs().empty()) {
     SetTarget(nullptr);
-    deleteLater();
   } else {
     auto old_target = target_;
     for (auto new_target : scene()->Mobs()) {
@@ -102,7 +103,6 @@ void AutoguidedProjectile::FindNewTargetOrDie() {
     }
     if (old_target == target_) {
       SetTarget(nullptr);
-      deleteLater();
     }
   }
 }
@@ -113,14 +113,14 @@ void AutoguidedProjectile::SetTarget(Entity* target) {
       target_,
       &Entity::destroyed,
       this,
-      &AutoguidedProjectile::FindNewTargetOrDie);
+      &AutoguidedProjectile::FindNewTargetOrStop);
   target_ = target;
   if (target_ != nullptr) {
     connect(
         target_,
         &Entity::destroyed,
         this,
-        &AutoguidedProjectile::FindNewTargetOrDie);
+        &AutoguidedProjectile::FindNewTargetOrStop);
   }
 }
 

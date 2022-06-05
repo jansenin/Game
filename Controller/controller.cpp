@@ -116,6 +116,7 @@ void Controller::TickAllTickables() {
   level_->Tick(delta);
 
   base_hp_ -= damage_per_current_tick_;
+  base_hp_ = std::max(0, base_hp_);
   resource_displayer_->SetHp(base_hp_);
   damage_per_current_tick_ = 0;
   if (base_hp_ <= 0) {

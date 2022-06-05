@@ -2,22 +2,30 @@
   "startMoney": 10000,
   "BearTraps": [
     {
-      "points": [
-        {
-          "x": 50,
-          "y": -200
-        }
-      ]
+      "coordinates": {
+        "x": 50,
+        "y": -200
+      }
     }
   ],
   "Bombs": [
     {
-      "points": [
-        {
-          "x": 650,
-          "y": 50
-        }
-      ]
+      "coordinates": {
+        "x": 600,
+        "y": 50
+      }
+    },
+    {
+      "coordinates": {
+        "x": 650,
+        "y": 50
+      }
+    },
+    {
+      "coordinates": {
+        "x": -700,
+        "y": 0
+      }
     }
   ],
   "towerSlotPositions": [
@@ -141,7 +149,7 @@
         },
         {
           "mobType": "Hedgehog",
-          "count": 4,
+          "count": 1,
           "startTime": 2600,
           "entryDuration": 2000,
           "routeIndex": 0
@@ -235,17 +243,76 @@
           "routeIndex": 0
         }
       ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 25000,
+      "spawnEntries": [
+        {
+          "mobType": "Hedgehog",
+          "count": 100,
+          "startTime": 5000,
+          "entryDuration": 10000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Cobra",
+          "count": 20,
+          "startTime": 5000,
+          "entryDuration": 5000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Skeleton",
+          "count": 2,
+          "startTime": 7500,
+          "entryDuration": 2500,
+          "routeIndex": 0
+        }
+      ]
+    },
+    {
+      "startTimeRelativeToPrevWave": 10000,
+      "spawnEntries": [
+        {
+          "mobType": "Skeleton",
+          "count": 10,
+          "startTime": 0,
+          "entryDuration": 20000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Dwarf",
+          "count": 2,
+          "startTime": 0,
+          "entryDuration": 20000,
+          "routeIndex": 0
+        },
+        {
+          "mobType": "Skeleton",
+          "count": 10,
+          "startTime": 0,
+          "entryDuration": 20000,
+          "routeIndex": 1
+        },
+        {
+          "mobType": "Dwarf",
+          "count": 2,
+          "startTime": 0,
+          "entryDuration": 20000,
+          "routeIndex": 1
+        }
+      ]
     }
-    ],
+  ],
   "GrowTimes": [
-    4000,
-    1000,
-    1000,
-    3000,
-    3000,
-    10000,
-    10000,
-    1000,
+    2000,
+    2000,
+    2000,
+    2000,
+    2000,
+    2000,
+    2000,
+    2000,
     1000,
     20000,
     10000,
@@ -265,6 +332,38 @@
     1000,
     1000,
     1000,
-    1000
+    1000,
+    4000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    3000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000,
+    5000
   ]
 }

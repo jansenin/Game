@@ -47,9 +47,10 @@ void LinearAutoguidedProjectile::Tick(Time delta) {
 
   if (target_->collidesWithItem(this)) {
     target_->ApplyDamage(damage_);
-    scene()->addItem(
-        new Explosion(
-            scenePos(), 10, Damage(10)));
+    qreal splash_damage_percent = Entities::CannonTower::kSplashDamagePercent;
+    Damage splash_damage =
+        Damage(round(splash_damage_percent * damage_.GetDamage()));
+    scene()->addItem(new Explosion(scenePos(), 50, splash_damage));
     deleteLater();
   }
 }

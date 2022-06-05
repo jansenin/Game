@@ -28,7 +28,7 @@ class AutoguidedProjectile : public Projectile {
 
  protected:
   void Move(Time delta);
-  void FindNewTargetOrDie();
+  void FindNewTargetOrStop();
 
   VectorF VectorFromThisToTarget();
 

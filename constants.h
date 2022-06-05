@@ -52,6 +52,11 @@ extern const QString kHedgehogId;
 extern const QString kDwarfId;
 extern const int kCoinAppearChance;
 
+namespace BearTrap {
+extern const Time kCooldown;
+extern const Damage kDamage;
+}
+
 namespace MagicTower {
 extern const qreal kAttackRangeLevel1;
 extern const Time kAttackCooldownLevel1;
@@ -72,6 +77,7 @@ extern const qreal kAttackRangeLevel3;
 extern const Time kAttackCooldownLevel3;
 extern const int kMaxLevel;
 extern const int kPrice;
+extern const qreal kSplashDamagePercent;
 }
 
 namespace Skeleton {

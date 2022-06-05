@@ -33,9 +33,10 @@ BearTrap::BearTrap(const VectorF& coordinates)
 }
 
 BearTrap::BearTrap(const VectorF& coordinates, Animation* animation)
-    : Entity(coordinates, animation) {}
+    : Entity(coordinates, animation), cooldown_timer_(0_ms) {}
 
 void BearTrap::Tick(Time delta) {
+  cooldown_timer_.Tick(delta);
   if (animation_->WasEndedDuringPreviousUpdate()) {
     if (is_broken_) {
       animation_ = repairing_animation_;
@@ -48,7 +49,7 @@ void BearTrap::Tick(Time delta) {
   for (auto mob : mobs) {
     if (mob->sceneBoundingRect().intersects(this->sceneBoundingRect())
         && !is_broken_) {
-      mob->ApplyDamage(Damage(mob->GetHealth()));
+      mob->ApplyDamage(Entities::BearTrap::kDamage);
       animation_ = attacking_animation_;
       is_broken_ = true;
     }
@@ -62,6 +63,9 @@ void BearTrap::paint(QPainter* painter,
 }
 
 void BearTrap::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+  if (!cooldown_timer_.IsExpired()) {
+    return;
+  }
   if (!is_broken_) {
     return;
   }
@@ -72,6 +76,7 @@ void BearTrap::mousePressEvent(QGraphicsSceneMouseEvent* event) {
     return;
   }
   RepairTrap();
+  cooldown_timer_.Start(Entities::BearTrap::kCooldown);
 }
 
 void BearTrap::RepairTrap() {

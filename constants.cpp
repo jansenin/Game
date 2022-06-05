@@ -3,7 +3,7 @@
 
 const bool kDebugMode = false;
 const int kFPS = 60;
-const int kStartBalance = 10000;
+const int kStartBalance = 500;
 
 namespace Scene {
 const qreal kWidth = 1920;
@@ -41,77 +41,84 @@ const QString kHedgehogId = "Hedgehog";
 const QString kDwarfId = "Dwarf";
 const int kCoinAppearChance = 3;
 
+
+namespace BearTrap {
+const Time kCooldown = 1000_ms;
+const Damage kDamage = Damage(1000);
+}
+
 namespace MagicTower {
-const qreal kAttackRangeLevel1 = 300;
-const Time kAttackCooldownLevel1 = Time(4000);
+const qreal kAttackRangeLevel1 = 400;
+const Time kAttackCooldownLevel1 = Time(600);
 const qreal kAttackRangeLevel2 = 400;
-const Time kAttackCooldownLevel2 = Time(3000);
-const qreal kAttackRangeLevel3 = 600;
-const Time kAttackCooldownLevel3 = Time(2000);
+const Time kAttackCooldownLevel2 = Time(600);
+const qreal kAttackRangeLevel3 = 400;
+const Time kAttackCooldownLevel3 = Time(600);
 const int kMaxLevel = 3;
 const int kPrice = 110;
 }
 
 namespace CannonTower {
-const qreal kAttackRangeLevel1 = 200;
-const Time kAttackCooldownLevel1 = Time(1250);
-const qreal kAttackRangeLevel2 = 300;
-const Time kAttackCooldownLevel2 = Time(1000);
-const qreal kAttackRangeLevel3 = 500;
-const Time kAttackCooldownLevel3 = Time(1000);
+const qreal kAttackRangeLevel1 = 450;
+const Time kAttackCooldownLevel1 = Time(3000);
+const qreal kAttackRangeLevel2 = 450;
+const Time kAttackCooldownLevel2 = Time(3000);
+const qreal kAttackRangeLevel3 = 450;
+const Time kAttackCooldownLevel3 = Time(3000);
 const int kMaxLevel = 3;
 const int kPrice = 70;
+const qreal kSplashDamagePercent = 0.35;
 }
 
 namespace Skeleton {
 const Time kTimeBetweenFrames = 50_ms;
-const qreal kSpeed = 50;
+const qreal kSpeed = 40;
 const int kHealth = 2000;
 const int kDamageToBase = 1;
 }
 
 namespace Cobra {
 const Time kTimeBetweenFrames = 50_ms;
-const qreal kSpeed = 70;
-const int kHealth = 160;
+const qreal kSpeed = 100;
+const int kHealth = 300;
 const int kDamageToBase = 1;
 }
 
 namespace Hedgehog {
 const Time kTimeBetweenFrames = 50_ms;
-const qreal kSpeed = 110;
-const int kHealth = 80;
+const qreal kSpeed = 130;
+const int kHealth = 100;
 const int kDamageToBase = 1;
 }
 
 namespace Dwarf {
 const Time kTimeBetweenFrames = 50_ms;
-const qreal kSpeed = 80;
-const int kHealth = 10000;
-const int kDamageToBase = 1;
+const qreal kSpeed = 60;
+const int kHealth = 5000;
+const int kDamageToBase = 3;
 }
 
 namespace MagicProjectile {
-const Damage kDamageLevel1 = Damage(60);
-const Damage kDamageLevel2 = Damage(100);
-const Damage kDamageLevel3 = Damage(180);
-const qreal kSpeed = 50;
-const qreal kAcceleration = 1500;
-const qreal kMaxSpeed = 300;
+const Damage kDamageLevel1 = Damage(15);
+const Damage kDamageLevel2 = Damage(30);
+const Damage kDamageLevel3 = Damage(60);
+const qreal kSpeed = 20;
+const qreal kAcceleration = 400;
+const qreal kMaxSpeed = 250;
 const qreal kEnemyFindDistance = 300;
-const Time kTimeBetweenFrames = 50_ms;
+const Time kTimeBetweenFrames = 100_ms;
 }
 
 namespace CannonProjectile {
-const Damage kDamageLevel1 = Damage(10);
-const Damage kDamageLevel2 = Damage(20);
-const Damage kDamageLevel3 = Damage(40);
-const qreal kSpeed = 500;
+const Damage kDamageLevel1 = Damage(100);
+const Damage kDamageLevel2 = Damage(200);
+const Damage kDamageLevel3 = Damage(400);
+const qreal kSpeed = 1000;
 }
 }  // namespace Entities
 
 namespace Costs {
-const int kCoinCost = 50;
+const int kCoinCost = 100;
 const int kCannonTowerCost = 200;
 const int kMagicTowerCost = 300;
 const int kTowerLevel2Upgrade = 100;

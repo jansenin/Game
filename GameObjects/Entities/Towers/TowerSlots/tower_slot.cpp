@@ -34,11 +34,11 @@ void TowerSlot::Tick(Time time) {
 }
 
 void TowerSlot::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-  if (!Controller::Instance()->HaveEnoughMoney(Costs::kMagicTowerCost)) {
-    return;
-  }
   if (event->button() == Qt::MouseButton::LeftButton) {
     if (!IsTakenUp()) {
+      if (!Controller::Instance()->HaveEnoughMoney(Costs::kMagicTowerCost)) {
+        return;
+      }
       MagicTower* tower = new MagicTower(scenePos());
       scene()->addItem(tower);
       TakeUpArea(tower);
@@ -48,6 +48,9 @@ void TowerSlot::mousePressEvent(QGraphicsSceneMouseEvent* event) {
   }
   if (event->button() == Qt::MouseButton::RightButton) {
     if (!IsTakenUp()) {
+      if (!Controller::Instance()->HaveEnoughMoney(Costs::kCannonTowerCost)) {
+        return;
+      }
       CannonTower* tower = new CannonTower(scenePos());
       scene()->addItem(tower);
       TakeUpArea(tower);
