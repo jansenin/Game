@@ -16,4 +16,4 @@ Tower Defense: BIG - некоммерческая игра с видом све�
 
 # Скриншоты
 
-![Screenshot](https://github.com/jansenin/Game/blob/master/project%20description/Screenshot.png?raw=true)
+![Screenshot](https://github.com/jansenin/Game/blob/main/project%20description/Screenshot.png?raw=true)
